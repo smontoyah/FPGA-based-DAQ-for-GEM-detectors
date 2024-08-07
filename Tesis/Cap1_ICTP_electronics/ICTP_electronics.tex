@@ -35,14 +35,16 @@
 
 La señal de salida del preamplificador está caracterizada por... y teniendo en cuenta que el ADC tiene un rango de trabajo de ..., es necesario agregar una etapa de amplificación para imprimir en la señal una ganancia de x.\\
 
-Como explica [2], la amplificación por etapas de una señal ofrece numerosas ventajas significativas. Principalmente, permite reducir el ruido generado en cada etapa individual, resultando en una señal final más limpia y menos propensa a la distorsión. Este método también mejora la estabilidad del sistema al distribuir la amplificación, evitando la saturación que podría ocurrir con una amplificación intensa en una sola etapa. Además, facilita el control preciso de la ganancia y la adaptación de impedancias entre diferentes componentes, lo cual mejora la eficiencia y la transferencia de la señal. La amplificación gradual es particularmente útil para manejar señales débiles, amplificándolas sin riesgo de distorsión. Asimismo, distribuye la carga térmica generada, disminuyendo el riesgo de sobrecalentamiento de los componentes. 
-
-
-
+Como explica [2], la amplificación por etapas de una señal ofrece numerosas ventajas significativas. Principalmente, permite reducir el ruido generado en cada etapa individual, resultando en una señal final más limpia y menos propensa a la distorsión. Este método también mejora la estabilidad del sistema al distribuir la amplificación, evitando la saturación que podría ocurrir con una amplificación intensa en una sola etapa. Además, facilita el control preciso de la ganancia y la adaptación de impedancias entre diferentes componentes, lo cual mejora la eficiencia y la transferencia de la señal. La amplificación gradual es particularmente útil para manejar señales débiles, amplificándolas sin riesgo de distorsión. Asimismo, distribuye la carga térmica generada, disminuyendo el riesgo de sobrecalentamiento de los componentes. \\
 
 %aquí seria necesario poner datos experimentales de la caracterización del detector, mostrando el factor de ganacia etc
 %debería poner el desarrollo matemático de un charge-sensitive preamp? (lo tengo referenciado)
 
+De esta manera, dando continuidad al recorrido de la señal después del preamplificador, se implementa un amplificador [referencia del amp NIM], hacer una caracterización similar a la del preamp y preguntar si sacar curvas experimentales y qué tantos datos técnicos del fabricante.
+
+Teniendo en cuenta que el rango de operación del ADC es de [] mv, ya se cuenta con una señal que puede ser digitalizada
+
+ADC:
 
 
 
