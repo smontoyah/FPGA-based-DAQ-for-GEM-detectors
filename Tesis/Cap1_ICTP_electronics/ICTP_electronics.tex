@@ -22,18 +22,26 @@
     
 \noindent Tal es el caso de los detectores GEM. Tras los fenómenos físicos consecuentes a la detección de una partícula, que se describen en el capítulo de física del detector, los electrones multiplicados son recogidos en un conjunto de electrodos, resultando una señal de corriente eléctrica que puede ser medida y analizada.\\
 
-
 \noindent No obstante, las corrientes típicas medidas en la salida del detector pueden ser muy pequeñas, del orden de nanoamperios, lo que obstaculiza el uso de electrónica convencional para el procesamiento de la señal. Por lo tanto, es necesario implementar etapas de preamplificación y amplificación, hasta lograr señales con características adecuadas para su digitalización y el subsecuente procesamiento. A continuación, tanto los elementos de la etapa de front-end, como los de procesamiento digital utilizados en el presente trabajo serán explicados con detalle.
 
 \subsection*{Front-end electronics}
 
-\noindent Según la configuración de los electrodos de recolección de carga del detector, es posible sensar eventos en varios canales de lectura paralelamente, logrando así una importante resolución espacial. Sin embargo, en este trabajo se desarrolla un sistema monocanal para la adquisición de datos de un detector GEM como versión mínima funcional. Los electrodos de salida del detector están conectados en paralelo y conducidos a una única conexión con un cable tipo X. Posteriormente, se conecta una resistencia en serie para permitir la medición de la caída de voltaje en sus terminales, lo que convierte la señal de corriente original del detector en una señal de voltaje que puede ser acondicionada.
+\noindent Según la configuración de los electrodos de recolección de carga del detector, es posible sensar eventos en varios canales de lectura paralelamente, logrando una importante resolución espacial. Sin embargo, en este trabajo se desarrolla un sistema monocanal para la adquisición de datos de un detector GEM como versión mínima funcional. Los electrodos de salida del detector están conectados en paralelo y conducidos a una única conexión con un cable tipo X. Posteriormente, se conecta una resistencia en serie para permitir la medición de la caída de voltaje en sus terminales, lo que convierte la señal de corriente original del detector en una señal de voltaje que puede ser acondicionada.\\
 
 %inlcuir fotografía de los terminales soldados y la resistencia en serie con el conector del cable
 
-\noindent De acuerdo a [Knoll], La función principal del preamplificador es captar la señal del detector sin deteriorar notablemente la relación señal/ruido inherente. Por ello, el preamplificador se ubica generalmente lo más cerca posible del detector para reducir la carga capacitiva sobre este, y los circuitos de entrada del preamplificador están diseñados para ajustarse a las características del detector. En particular, el sistema de preamplificación utilizado en este trabajo es el Ortec 142B, diseñado para capacitancias de entrada entre 100 y 400 pF. %qué tantas especificaciones técnicas del preamp debería incluir aquí?
+\noindent De acuerdo a [1], La función principal del preamplificador es captar la señal del detector sin deteriorar notablemente la relación señal/ruido inherente. Por ello, el preamplificador se ubica generalmente lo más cerca posible del detector para reducir la carga capacitiva sobre este, y los circuitos de entrada del preamplificador están diseñados para ajustarse a las características del detector. En particular, el sistema de preamplificación utilizado en este trabajo es el Ortec 142B, un dispositivo charge-sensitive diseñado para capacitancias de entrada de entre 100 y 400 pF. %inlcuir fotografía del preamp\\
+%qué tantas especificaciones técnicas del preamp debería incluir aquí?
 
-%inlcuir fotografía del preamp
+La señal de salida del preamplificador está caracterizada por... y teniendo en cuenta que el ADC tiene un rango de trabajo de ..., es necesario agregar una etapa de amplificación para imprimir en la señal una ganancia de x.\\
+
+Como explica [2], la amplificación por etapas de una señal ofrece numerosas ventajas significativas. Principalmente, permite reducir el ruido generado en cada etapa individual, resultando en una señal final más limpia y menos propensa a la distorsión. Este método también mejora la estabilidad del sistema al distribuir la amplificación, evitando la saturación que podría ocurrir con una amplificación intensa en una sola etapa. Además, facilita el control preciso de la ganancia y la adaptación de impedancias entre diferentes componentes, lo cual mejora la eficiencia y la transferencia de la señal. La amplificación gradual es particularmente útil para manejar señales débiles, amplificándolas sin riesgo de distorsión. Asimismo, distribuye la carga térmica generada, disminuyendo el riesgo de sobrecalentamiento de los componentes. 
+
+
+
+
+%aquí seria necesario poner datos experimentales de la caracterización del detector, mostrando el factor de ganacia etc
+%debería poner el desarrollo matemático de un charge-sensitive preamp? (lo tengo referenciado)
 
 
 
@@ -43,9 +51,10 @@
 \noindent 
 
 \subsection*{References}
-\begin{itemize}
+\begin{enumerate}
     \item Knoll, G F. (2000) Radiation Detection and Measurement, 3rd edition, John Wiley, New
     York.
-\end{itemize}
+    \item "Digital Signal Processing: Principles, Algorithms, and Applications" de John G. Proakis y Dimitris K. Manolakis.
+\end{enumerate}
 
 \end{document}
