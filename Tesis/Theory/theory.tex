@@ -1,13 +1,15 @@
 \documentclass[]{book}
 \usepackage[english]{babel}
 \usepackage{graphicx}
+\usepackage{amsmath}
+
 
 \begin{document}
 
 
 \chapter*{Teoría}
 
-\section{GEM Detector Physics}
+\section{GEM Physics}
 
 % Tal es el caso de los detectores GEM. Tras las generaci´on de pares de electrones
 % y iones en el interior de la c´amara de gas por su interacci´on con part´ıculas
@@ -23,10 +25,11 @@
 
 \section{Electrónica}
 
-\noindent Como se expuso anteriormente, los sistemas de detección de partículas cuentan con secciones encargadas de generar señales eléctricas que contienen la información física de interés del evento detectado. Dependiendo de la naturaleza del detector y de los objetivos del experimento, distintos elementos electrónicos pueden ser implementados a continuación. Sin embargo, el objetivo de estas etapas converge a preservar y transportar la mencionada información. \\
+\noindent Como se expuso anteriormente, los electrones multiplicados son recogidos en los electrodos de salida del GEM, resultando una señal de corriente eléctrica que puede ser medida y analizada. Dependiendo de los objetivos del experimento, distintas etapas electrónicas pueden ser implementadas a continuación. Sin embargo, el objetivo de estas converge a preservar y transportar la información física de interés contenida en la señal. \\
 
 \subsection{Electrónica de Front-end}
-\noindent Próxima al detector, se encuentra la etapa denominada front-end, que típicamente comprende electrónica analógica para la amplificación de la señal, shaping y discriminación, así como digitalización y transporte por cables. A continuación pueden encontrarse sistemas de más alto nivel como procesadores digitales y de adquisición de datos, que permiten transformar las señales y extraer la información necesaria para su posterior estudio. En la figura \ref{fig:generic_frontend} se observa un esquema genérico de la electrónica de front-end de un detector [1].
+
+\noindent Próxima al detector, se encuentra la etapa denominada front-end, que típicamente comprende electrónica analógica para la amplificación de la señal, shaping y discriminación, así como digitalización y transporte. A continuación pueden encontrarse sistemas de más alto nivel como procesadores digitales y de adquisición de datos, que permiten transformar las señales y extraer la información necesaria para su posterior estudio. En la figura \ref{fig:generic_frontend} se observa un esquema genérico de la electrónica de front-end de un detector [1].\\
 
 \begin{figure}[h]
     \centering
@@ -37,19 +40,14 @@
     \label{fig:generic_frontend}
 
 \end{figure}
-    
-\noindent Tal es el caso de los detectores GEM. Tras los fenómenos físicos consecuentes a la detección de una partícula, que se describen en el capítulo de física del detector, los electrones multiplicados son recogidos en un conjunto de electrodos, resultando una señal de corriente eléctrica que puede ser medida y analizada.\\
 
-\noindent No obstante, las corrientes típicas medidas en la salida del detector pueden ser muy pequeñas, del orden de nanoamperios, lo que obstaculiza el uso de electrónica convencional para el procesamiento de la señal. Por lo tanto, es necesario implementar etapas de preamplificación y amplificación, hasta lograr señales con características adecuadas para su digitalización y el subsecuente procesamiento. A continuación, tanto los elementos de la etapa de front-end, como los de procesamiento digital utilizados en el presente trabajo serán explicados con detalle.
+\noindent Tal es el caso de los detectores GEM. Las corrientes típicas medidas en su salida pueden ser muy pequeñas, del orden de nanoamperios [citar]. Por lo tanto, es necesario implementar etapas de preamplificación y amplificación, hasta lograr señales con características adecuadas para su digitalización y el subsecuente procesamiento. Sin embargo, la insturmentación típicamente está diseñada para procesar señales de voltaje, por lo que es necesario conectar una resistencia $R$ en serie con la salida del detector para medir una señal de voltaje $V$ en sus terminales, de acuerdo a la ley de Ohm, $$V = R I$$ Como expone [2], La función principal del preamplificador es captar la señal del detector sin deteriorar notablemente la relación señal/ruido inherente. Por ello, el preamplificador se ubica generalmente lo más cerca posible del detector para reducir la carga capacitiva sobre este.\\
 
-\noindent Según la configuración de los electrodos de recolección de carga del detector, es posible sensar eventos en varios canales de lectura paralelamente, logrando una importante resolución espacial. Sin embargo, en este trabajo se desarrolla un sistema monocanal para la adquisición de datos de un detector GEM como versión mínima funcional. Los electrodos de salida del detector están conectados en paralelo y conducidos a una única conexión con un cable tipo X. Posteriormente, se conecta una resistencia en serie para permitir la medición de la caída de voltaje en sus terminales, lo que convierte la señal de corriente original del detector en una señal de voltaje que puede ser acondicionada.\\
+\noindent Los sistemas involucrados en la electrónica de front-end, deben cumplir con tres características: (a) ser causales, (b) invariantes en el tiempo, y (c) lineales al menos en la primera etapa de amplificación. Un sistema se considera causal si, en cualquier momento, solo depende del valor de su entrada en ese instante. Es invariante en el tiempo si la relación entre la salida y la entrada, por ejemplo, el ratio señal entrada / señal salida no varía con el tiempo [1]. La linealidad del sistema implica que el pulso de salida (por ejemplo, $v_{out(t)}$) no depende del tamaño de la señal de entrada (por ejemplo, $i_{in(t)}$), esto es, 
 
-%inlcuir fotografía de los terminales soldados y la resistencia en serie con el conector del cable
-
-\noindent De acuerdo a [2], La función principal del preamplificador es captar la señal del detector sin deteriorar notablemente la relación señal/ruido inherente. Por ello, el preamplificador se ubica generalmente lo más cerca posible del detector para reducir la carga capacitiva sobre este, y los circuitos de entrada del preamplificador están diseñados para ajustarse a las características del detector. En particular, el sistema de preamplificación utilizado en este trabajo es el Ortec 142B, un dispositivo charge-sensitive diseñado para capacitancias de entrada de entre 100 y 400 pF. %inlcuir fotografía del preamp\\
-%qué tantas especificaciones técnicas del preamp debería incluir aquí?
-
-La señal de salida del preamplificador está caracterizada por... y teniendo en cuenta que el ADC tiene un rango de trabajo de [citar satasheet del ADC500]..., es necesario agregar una etapa de amplificación para imprimir en la señal una ganancia de x.\\
+$$
+v_{\text {out }}\left(\alpha \times i_{\text {in }}(t)\right)=\alpha \times v_{\text {out }}\left(i_{\text {in }}(t)\right)
+$$
 
 \noindent Como explica [3], la amplificación por etapas de una señal ofrece numerosas ventajas significativas. Principalmente, permite reducir el ruido generado en cada etapa individual, resultando en una señal final más limpia y menos propensa a la distorsión. Este método también mejora la estabilidad del sistema al distribuir la amplificación, evitando la saturación que podría ocurrir con una amplificación intensa en una sola etapa. Además, facilita el control preciso de la ganancia y la adaptación de impedancias entre diferentes componentes, lo cual mejora la eficiencia y la transferencia de la señal. La amplificación gradual es particularmente útil para manejar señales débiles, amplificándolas sin riesgo de distorsión. Asimismo, distribuye la carga térmica generada, disminuyendo el riesgo de sobrecalentamiento de los componentes. \\
 
