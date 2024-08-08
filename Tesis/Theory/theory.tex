@@ -5,7 +5,7 @@
 
 
 \begin{document}
-
+ % glosario: SNR Sinal to Noise Ratio
 
 \chapter*{Teoría}
 
@@ -41,17 +41,17 @@
 
 \end{figure}
 
-\noindent Los sistemas involucrados en la electrónica de front-end, deben cumplir con tres características: (a) ser causales, (b) invariantes en el tiempo, y (c) lineales al menos en la primera etapa de amplificación. Un sistema se considera causal si, en cualquier momento, solo depende del valor de su entrada en ese instante. Es invariante en el tiempo si la relación entre la salida y la entrada, por ejemplo, el ratio señal entrada / señal salida no varía con el tiempo [1]. La linealidad del sistema implica que el pulso de salida (por ejemplo, $v_{out(t)}$) no depende del tamaño de la señal de entrada (por ejemplo, $i_{in(t)}$), esto es, 
+\noindent Los sistemas involucrados en la electrónica de front-end, deben cumplir con tres características: (a) ser causales, (b) invariantes en el tiempo, y (c) lineales al menos en la primera etapa de amplificación. Un sistema se considera causal si, en cualquier momento, solo depende del valor de su entrada en ese instante. Es invariante en el tiempo si la relación entre la salida y la entrada, por ejemplo, el ratio $\text{señal}_{\text{entrada}}/\text{señal}_{\text{salida}}$ no varía con el tiempo [1]. La linealidad del sistema implica que el pulso de salida (por ejemplo, $v_{out(t)}$) no depende del tamaño de la señal de entrada (por ejemplo, $i_{in(t)}$), esto es, 
 
 $$
 v_{\text {out }}\left(\alpha \times i_{\text {in }}(t)\right)=\alpha \times v_{\text {out }}\left(i_{\text {in }}(t)\right)
 $$
 
-\noindent Tal es el caso de los detectores GEM. Las corrientes típicas medidas en su salida pueden ser muy pequeñas, del orden de nanoamperios [citar]. Por lo tanto, es necesario implementar etapas de preamplificación y amplificación, hasta lograr señales con características adecuadas para su digitalización y el subsecuente procesamiento. Sin embargo, la instrumentación está diseñada típicamente para procesar señales de voltaje, por lo que es necesario conectar una resistencia $R$ en serie con la salida del detector para medir una señal de voltaje $V$ en sus terminales, de acuerdo a la ley de Ohm, $$V = R I$$ 
+\noindent Tal es el caso de los detectores GEM. Las corrientes típicas medidas en su salida pueden ser muy pequeñas, del orden de nanoamperios [citar]. Por lo tanto, es necesario implementar etapas de preamplificación y amplificación, hasta lograr señales con características adecuadas para su digitalización y el subsecuente procesamiento. Sin embargo, si se busca procesar señales de voltaje, es necesario conectar una resistencia $R$ en serie con la salida del detector para medir una señal de voltaje $V$ en sus terminales, de acuerdo a la ley de Ohm, $$V = R I$$ 
 
 \subsubsection{Preamplificador}
 
-\noindent Como expone [2], La función principal del preamplificador es captar la señal del detector sin deteriorar notablemente la relación señal/ruido inherente ($\frac{S}{N}$). Por ello, el preamplificador se ubica generalmente lo más cerca posible del detector para reducir la carga capacitiva $(C)$ sobre este. El preamplificador de voltaje amplifica directamente la señal de voltaje $V_{\text{in}}$, manteniendo una alta impedancia de entrada $Z_{\text{in}}$ y una baja impedancia de salida $Z_{\text{out}}$ para asegurar una transferencia eficiente y reducir la influencia del ruido. En ambos casos, la linealidad del preamplificador es crucial para que la relación $V_{\text{out}}/ V_{\text{in}}$ se mantenga constante, lo cual es esencial para la precisión en la medición [9].\\
+\noindent Como expone [2], La función principal del preamplificador es captar la señal del detector sin deteriorar notablemente la SNR inherente. Por ello, el preamplificador se ubica generalmente lo más cerca posible del detector para reducir la carga capacitiva $(C)$ sobre este. El preamplificador de voltaje amplifica directamente la señal de voltaje $V_{\text{in}}$, manteniendo una alta impedancia de entrada $Z_{\text{in}}$ y una baja impedancia de salida $Z_{\text{out}}$ para asegurar una transferencia eficiente y reducir la influencia del ruido. En ambos casos, la linealidad del preamplificador es crucial para que la relación $V_{\text{out}}/ V_{\text{in}}$ se mantenga constante, lo cual es esencial para la precisión en la medición [9].\\
 
 \noindent Por otro lado, un preamplificador de carga convierte una señal de carga $Q$ generada por el detector en un voltaje proporcional $V$, dada la relación: $$V = \frac{Q}{C}$$
 
@@ -59,7 +59,7 @@ $$
 
 \subsubsection{Amplificador}
 
-\noindent En general, se realiza mediante un amplificador operacional con una resistencia en realimentación. Como modelo matemático, el detector, representado como una capacitancia a descargar, suministra la señal de corriente $i_{s}$ a través de la resistencia $R_{s}$ a un nivel de referencia en un tiempo $\Delta t$. Si el tiempo de descarga es grande comparado al tiempo de duración de la señal $$\left(\tau=R_S C_D \gg\right. \Delta t)$$,en cierto sentido, el detector integra la señal de corriente en la capacitancia del detector $$\left(V_D=Q_S / C_D\right)$$ y a la entrada del amplificador se tiene el voltaje $$v_{\text{in}}(t)=V_D \exp \left(-t / R_S C_D\right)$$ El voltaje de salida es proporcional a $v_{i n}$ y el sistema opera como un amplificador de voltaje [1]:
+\noindent En general, se realiza mediante un amplificador operacional con una resistencia en realimentación. Como modelo matemático, el detector, representado como una capacitancia a descargar, suministra la señal de corriente $i_{s}$ a través de la resistencia $R_{s}$ a un nivel de referencia en un tiempo $\Delta t$. Si el tiempo de descarga es grande comparado al tiempo de duración de la señal $$\left(\tau=R_S C_D \gg\right. \Delta t)$$ en cierto sentido, el detector integra la señal de corriente en la capacitancia del detector $$\left(V_D=Q_S / C_D\right)$$ y a la entrada del amplificador se tiene el voltaje $$v_{\text{in}}(t)=V_D \exp \left(-t / R_S C_D\right)$$ El voltaje de salida es proporcional a $v_{i n}$ y el sistema opera como un amplificador de voltaje [1]:
 $$
 v_{\text {out }}(t)=-\frac{R_f}{R_S} v_{\text {in }}(t)=-\frac{R_f V_D}{R_S} \exp \left(-t / R_S C_D\right) .
 $$
@@ -68,7 +68,7 @@ $$
 
 \noindent En la cadena de modulación de señales de la electrónica de front-end, la etapa de shaping es un circuito electrónico diseñado para modificar la forma de una señal de pulso para mejorar su calidad y adecuarla a las necesidades de procesamiento posterior. Está encargado de transformar las señales pulsadas del detector, que pueden tener formas variadas, en pulsos uniformes y bien definidos. Esto es crucial para evitar la superposición de pulsos (pile-up) y reducir el ruido mediante filtrado de frecuencia [9].\\
 
-\noindent Los pulsos electrónicos generados por el preamplificador tienen tiempos de decaimiento típicos que varían entre unos pocos nanosegundos y varios microsegundos. Si llegan señales adicionales durante el tiempo de decaimiento, puede ocurrir pile-up a pesar de que el capacitor de retroalimentación del preamplificador se descargue. Para mitigar esto, se utilizan filtros pasa-altos y pasa-bajos, que permiten separar las señales superpuestas y moldear los pulsos de salida en formas más Gaussianas. Además, los filtros ayudan a reducir el ruido blanco que afecta a todas las frecuencias, mejorando así la relación señal/ruido (SNR) [1].
+\noindent Los pulsos electrónicos generados por el preamplificador tienen tiempos de decaimiento típicos que varían entre unos pocos nanosegundos y varios microsegundos. Si llegan señales adicionales durante el tiempo de decaimiento, puede ocurrir pile-up a pesar de que el capacitor de retroalimentación del preamplificador se descargue. Para mitigar esto, se utilizan filtros pasa-altos y pasa-bajos, que permiten separar las señales superpuestas y moldear los pulsos de salida en formas más Gaussianas. Además, los filtros ayudan a reducir el ruido blanco que afecta a todas las frecuencias, mejorando así la SNR [1].
 
 
 \noindent De acuerdo a [2], la digitalización de las señales provenientes de un detector es crucial debido a la precisión y flexibilidad que ofrece frente a los métodos analógicos tradicionales. Con el avance de los convertidores analógico-digitales (ADC) de alta velocidad y buena resolución desde los años 90, la posibilidad de procesar digitalmente los pulsos de los detectores se ha consolidado. Las ventajas de este enfoque incluyen una flexibilidad ilimitada en la elección de parámetros de conformación, mayor estabilidad al eliminar el riesgo de derivas debido a cambios de temperatura o voltaje, y la capacidad de realizar análisis más detallados con múltiples salidas de un mismo detector. Además, la manipulación digital no introduce ruido adicional y permite la implementación precisa de formas de pulso que serían difíciles o imposibles de lograr en circuitos analógicos. Sin embargo, una desventaja potencial es la limitación en la precisión del tiempo de detección, ya que los sistemas digitales están restringidos a la frecuencia de muestreo más cercana, lo que puede ser menos exacto que los métodos analógicos simples en aplicaciones que requieren una temporización muy rápida.\\
