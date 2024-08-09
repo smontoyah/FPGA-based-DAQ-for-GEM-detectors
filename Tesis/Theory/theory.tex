@@ -76,27 +76,21 @@ $$
 
 \noindent La función principal de un ADC es generar un código digital o número en su salida, que sea proporcional a la tensión analógica suministrada a su entrada. En un ADC genérico, las conversiones se realizan de forma continua a una frecuencia de reloj fija. Por ejemplo, un reloj de 500 MHz producirá 500 MSPS, lo que equivale a una muestra cada 2 ns. En un ADC ideal, cada conversión de voltaje de entrada a código de salida es independiente, perfectamente lineal y ocurre instantáneamente. Sin embargo, las imperfecciones en los ADCs reales limitan tanto la frecuencia máxima de muestreo como la linealidad y la precisión de la conversión. \\
 
-\noindent En este trabajo, se utilizó la tarjeta ICTP-INFN ADC500 como plataforma de digitalización, en adelante referida como ADC500 (véase fig \ref*{fig:adc500}). Esta tarjeta está basada en un Texas Instruments ADC08500 [4] de alta velocidad, con una frecuencia de muestreo de 500 MHz y 8 bits de resolución. Cumple con las especificaciones ANSI/VITA 57.1 y está equipada con un conector de tarjeta mezzanine FPGA (FMC) de bajo número de pines (LPC) [5].\\
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{ADC500.png}
-    \caption{Plataforma de digitalización de señales ICTP-INFN ADC500. Tomada de [7].}
-    \label{fig:adc500}
-
-\end{figure}
-
-\noindent Según el fabricante, el ADC cuenta con un demultiplexor 1:2 que alimenta dos buses de salida LVDS (Low-Voltage Differential Signaling). Los datos de estos buses se entregan a una tasa de palabras de salida en cada bus equivalente a la mitad de la tasa de muestreo del ADC, y deben ser intercalados por el usuario para proporcionar palabras de salida a la tasa de conversión completa. Esto implica que, una vez digitalizada la señal, esta es enviada mediante el protocolo LVDS a través del conector FMC hacia una plataforma digital compatible con las capacidades técnicas para realizar procesamiento paralelizado en tiempo real y a alta frecuencia. Para este fin,en este trabajo se propone el uso de la tarjeta de desarrollo Avnet Digilent Zedboard, que se basa en un SoC (System on Chip) Xilinx Zynq-7000, compuesto por una FPGA Artix-7 y un procesador ARM Cortex-A9 [6].
-
 %incluir fotografía de la tarjeta
 
-\subsection*{Sistema de adquisición y procesamiento}
+\subsection*{Sistema de adquisición y procesamiento digital}
 
-\noindent Si bien existen diversos tipos de hardware programable para el despliegue de sistemas embebidos como los microcontroladores y procesadores, en función de los requerimientos impuestos por el ADC500 y la necesidad de contar con una plataforma flexible para la evolución de un sistema experimental como el que se propone en este trabajo, es necesaria la implementación de un dispositivo basado en FPGA (Field-Programmable Gate Array). Este tipo de arquitectura ofrece una capacidad de procesamiento en paralelo significativa y baja latencia, lo cual es esencial para manejar el alto volumen de datos generados por los ADCs de alta velocidad en tiempo real. Esta capacidad de procesamiento paralelo permite el manejo eficiente de altas tasas de muestreo, asegurando que los datos provenientes del detector se procesen sin pérdidas ni retrasos. Además, las FPGA proporcionan una flexibilidad considerable en el diseño y la implementación de algoritmos de procesamiento de señales, permitiendo la reconfiguración y actualización del hardware según sea necesario, adaptándose a nuevas necesidades sin requerir cambios físicos en el circuito [8].\\
+\noindent Si bien existen diversos tipos de hardware programable para el despliegue de sistemas embebidos como los microcontroladores y procesadores, en función de los requerimientos impuestos por un ADC de alta velocidad y la necesidad de contar con una plataforma flexible para la evolución de un sistema de detección experimental, es necesaria la implementación de un dispositivo basado en FPGA. 
 
-\noindent El procesamiento digital en la FPGA es inherentemente modular, lo que permite activar o desactivar módulos y añadir nuevos módulos en el futuro.
+\subsubsection{FPGA}
+\noindent Una FPGA es un tipo de circuito integrado reconfigurable que permite a los usuarios personalizar su arquitectura interna para realizar tareas específicas, lo que las diferencia de los microprocesadores tradicionales que siguen un conjunto de instrucciones fijas. Estas matrices de puertas programables en campo son ampliamente utilizadas en aplicaciones que requieren procesamiento en paralelo y alta flexibilidad, como en sistemas de telecomunicaciones y procesamiento de señales digitales. La capacidad de ser reprogramadas múltiples veces les otorga una ventaja significativa en términos de adaptabilidad a nuevas necesidades sin requerir cambios físicos en el hardware. Para programar una FPGA, se emplean lenguajes de descripción de hardware (HDL), como VHDL o Verilog, lo que permite definir circuitos personalizados que se cargan directamente en el dispositivo, haciendo que se comporten según el diseño especificado [10].\\
 
-\noindent Conectar al uso de FPGA. Que es una fpga y por que usalas en daq de particulas. Cual es el fin de todo esto?    
+\noindent Este tipo de arquitectura ofrece baja latencia, lo cual es esencial para manejar el alto volumen de datos generados por los ADCs de alta velocidad. Además, su capacidad de procesamiento paralelo permite el manejo eficiente de altas tasas de muestreo, asegurando que los datos provenientes del detector se procesen minimizando la pérdida de información. En particular, las FPGA proporcionan una flexibilidad considerable en el diseño y la implementación de algoritmos de procesamiento de señales, contando con módulos de hardware dedicado a esta tarea llamados DSP (Digital Signal Processor) [8].\\
+
+\subsubsection{FPGA SoC}
+
+\noindent No obstante, como expone [11], los avances en tecnología FPGA se han direccionado al desarrollo de sistemas híbridos como los SoC. De acuerdo a [12], Un FPGA SoC es un dispositivo que combina en un solo chip la flexibilidad programable de una FPGA con las capacidades de procesamiento de un procesador, típicamente basado en la arquitectura ARM. Este tipo de dispositivo integra tanto el procesamiento de software, que es típicamente manejado por la CPU integrada, como la programación de hardware de la FPGA, permitiendo la aceleración de hardware y la ejecución de funciones específicas directamente en el silicio. Esto hace posible al diseñador, aprovechar lo mejor de ambos mundos: la capacidad de realizar tareas complejas y variables mediante software y, al mismo tiempo, la ejecución de operaciones intensivas en paralelo y en tiempo real mediante la lógica programable de la FPGA. Además, esta integración incluye funcionalidades adicionales como procesamiento digital de señales (DSP), dispositivos de señal mixta, y la posibilidad de reemplazar otros componentes dedicados como los ASICs (Application-Specific Integrated Circuits) o ASSPs (Application-Specific Standard Products), todo en un solo dispositivo, optimizando así el rendimiento y la eficiencia energética para aplicaciones específicas.
+
 
 \subsection*{References}
 \begin{enumerate}
@@ -111,6 +105,9 @@ $$
     \item https://gitlab.com/ictp-mlab/smr3765/-/wikis/uploads/d6f86235c15669356a9567b2aa0363c4/image.png
     \item Meyer-Baese, U. (2020). Digital Signal Processing with Field Programmable Gate Arrays. Springer.
     \item Leo, William R. Techniques for Nuclear and Particle Physics Experiments: A How-To Approach. 2nd ed., Springer, 1994.
+    \item Brown, S., and Vranesic, Z. (2005). Fundamentals of Digital Logic with VHDL Design. McGraw-Hill Education.
+    \item Bravo-Muñoz, I., Gardel-Vicente, A., and Lázaro-Galilea, J. L. (2020). New Applications and Architectures Based on FPGA/SoC. Electronics, 9(11), 1789.
+    \item https://www.amd.com/en/products/adaptive-socs-and-fpgas/soc/zynq-7000.html
 \end{enumerate}
 
 \end{document}
