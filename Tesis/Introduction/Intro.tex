@@ -26,9 +26,20 @@ Desde los inicios de la humanidad, el conocimiento sobre el mundo ha surgido de 
 % sistema de adquisición de datos al montaje experimental que incluye las etapas de acondicionamiento de señales y procesamiento digital, las cuales permiten la lectura de las señales eléctricas resultantes de las avalanchas de electrones generadas en el detector. Utilizando electrónica analógica para la preamplificación y amplificación, un conversor análogo a digital (ADC) de alto rendimiento de un canal, una plataforma de hardware configurable para procesamiento digital tipo SoC (que incluye una FPGA y un procesador), y una interfaz de comunicación de alta velocidad con la computadora, se adquirirán, procesarán y visualizarán las señales provenientes de un detector GEM en varias configuraciones.
 
 \subsection{Objetivos}
+\noindent Como meta principal se propone diseñar y desarrollar un sistema de adquisición de datos basado en FPGA para detectores GEM. Para lograr esto, se plantean los siguientes objetivos específicos:
 
+\begin{itemize}
+    \item Caracterizar los requerimientos técnicos del sistema de adquisición de datos (DAQ) en función del sistema de detección
+    \item Seleccionar el hardware adecuado para cumplir con los requerimientos del DAQ
+    \item Programar el hardware, firmware y software para la adquisición y procesamiento de datos de acuerdo a las necesidades del experimento 
+    \item Implementar la comunicación entre las distintas etapas del DAQ 
+    \item Diseñar y programar una interfaz de usuario acorde a las necesidades del experimento para la interacción con el DAQ
+    
+\end{itemize}
 
 \subsection{Estructura de la tesis}
+
+\noindent Este trabajo se divide en capítulos. Inicialmente, en el capítulo de teoría se abordan tanto los principales conceptos de la física de los detectores GEM, como una revisión general de la electrónica involucrada en un DAQ en el contexto de la instrumentación para detectores. En segundo lugar, en el capítulo de sistema, se realiza una descripción y caracterización general de los dispositivos utilizados en la cadena de lectura de señales, así como de su integración en un sistema completo de detección de partículas. A continuación, se presentan los resultados experimentales que incluyen la calibración del DAQ y su respectivo análisis. Finalmente, se exponen las conclusiones y perspectivas del trabajo.
 
 
 \end{document}
