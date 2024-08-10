@@ -25,7 +25,13 @@
 
 \section{Read-out Electronics}
 
-\noindent Como se expuso anteriormente, los electrones multiplicados son recogidos en los electrodos de salida del GEM, resultando una señal de corriente eléctrica que puede ser medida y analizada. Dependiendo de los objetivos del experimento, distintas etapas electrónicas pueden ser implementadas a continuación. Sin embargo, el objetivo de estas converge a preservar y transportar la información física de interés contenida en la señal. \\
+\noindent Como se expuso anteriormente, los electrones multiplicados son recogidos en los electrodos de salida del GEM, resultando una señal de corriente eléctrica que puede ser medida y analizada. Dependiendo de los objetivos del experimento, distintas etapas electrónicas pueden ser implementadas a continuación. Sin embargo, el objetivo de estas converge a preservar y transportar la información física de interés contenida en la señal, optmizando factores clave como [2]:
+
+\begin{itemize}
+    \item Supresión de ruido 
+    \item Reducción del tiempo muerto
+    \item Reducción del déficit balístico para mejorar la resolución y reducir la distorsión de los picos
+\end{itemize}
 
 \noindent Aunque los distintos tipos de detectores generan señales eléctricas únicas, dependiendo de los procesos físicos que ocurren en su interior, es posible identificar características comunes que facilitan la comprensión de conceptos clave en el acondicionamiento y procesamiento de señales.
 
@@ -83,7 +89,15 @@ $$
 
 \noindent Como expone [2], La función principal del preamplificador es captar la señal del detector sin deteriorar notablemente la SNR inherente. Por ello, el preamplificador se ubica generalmente lo más cerca posible del detector para reducir la carga capacitiva $(C)$ sobre este. El preamplificador de voltaje amplifica directamente la señal de voltaje $V_{\text{in}}$, manteniendo una alta impedancia de entrada $Z_{\text{in}}$ y una baja impedancia de salida $Z_{\text{out}}$ para asegurar una transferencia eficiente y reducir la influencia del ruido. En ambos casos, la linealidad del preamplificador es crucial para que la relación $V_{\text{out}}/ V_{\text{in}}$ se mantenga constante, lo cual es esencial para la precisión en la medición [9].\\
 
-\noindent Por otro lado, un preamplificador de carga convierte una señal de carga $Q$ generada por el detector en un voltaje proporcional $V$, dada la relación: $$V = \frac{Q}{C}$$
+\noindent Por otro lado, un preamplificador de carga convierte una señal de carga $Q$ generada por el detector en un voltaje proporcional $V$, dada la relación: $$V = \frac{Q}{C}$$ La figura \ref{fig:preamp} ilustra su comportamiento típico sobre la señal del detector.\\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{preamp.PNG}
+    \caption{Ilustración del comportamiento típico del preamplificador de carga.}
+    \label{fig:preamp}
+
+\end{figure}
 
 \noindent Como explica [3], la amplificación por etapas de una señal ofrece numerosas ventajas significativas. Principalmente, permite reducir el ruido generado en cada etapa individual, resultando en una señal final más limpia y menos propensa a la distorsión. Este método también mejora la estabilidad del sistema al distribuir la amplificación, evitando la saturación que podría ocurrir con una amplificación intensa en una sola etapa. Además, facilita el control preciso de la ganancia y la adaptación de impedancias entre diferentes componentes, lo cual mejora la eficiencia y la transferencia de la señal. La amplificación gradual es particularmente útil para manejar señales débiles, amplificándolas sin riesgo de distorsión. Asimismo, distribuye la carga térmica generada, disminuyendo el riesgo de sobrecalentamiento de los componentes. \\
 
@@ -122,8 +136,8 @@ $$
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{pulse_chain.png}
-    \caption{Un esquema de la cadena de electrónica de lectura usualmente utilizado para la lectura de un
+    \includegraphics[width=0.8\textwidth]{pulse_chain_generic.png}
+    \caption{Un esquema de la cadena de electrónica usualmente utilizado para la lectura de un
     detector, que ilustra la etapa de adquisición y procesamiento digital a continuación de la etapa de front-end.}
     \label{fig:pulse_chain}
 
@@ -148,7 +162,25 @@ $$
 
 \end{figure}
 
- \noindent En el capítulo System, se desarrolla la aplicación de los conceptos expuestos en este capítulo, en un sistema experimental de lectura y procesamiento para detectores GEM.
+\subsection{Procesamiento Digital de Pulsos}
+ 
+\noindent Como se explicó en el apartado de electrónica de front-end, los filtros analógicos suelen aplicar una combinación de diferenciaciones e integraciones de la forma de onda de voltaje para transformarla en una forma similar a la de una gaussiana, cuya amplitud es proporcional al voltaje $V$ y, por lo tanto, a la energía de la radiación. Sin embargo, de acuerdo a [14], en el enfoque digital, tras la digitalización de la señal utilizando un ADC, se aplica un filtro matemático a esta serie de valores digitales para eliminar los componentes de ruido de alta frecuencia, mejorando así la relación señal-ruido y determinando la amplitud de voltaje $V$.\\
+
+\noindent Este enfoque presenta ventajas significativas en comparación con el procesamiento de señales analógicas tradicional, entre las cuales destacan:
+
+\begin{itemize}
+    \item Aplicación de análisis considerando diferencias pulso a pulso: Permite analizar cada pulso individualmente, teniendo en cuenta sus particularidades.
+    \item Análisis de señales de carga inducida transitoria: Facilita la interpretación de señales transitorias que pueden ser difíciles de captar con métodos analógicos.
+    \item  Mejora del parámetro de tiempo muerto: Reduce las limitaciones temporales que pueden afectar la adquisición continua de señales.
+    \item Captura fácil de señales, incluida la implementación de análisis complejos: Simplifica la adquisición de datos y permite realizar análisis detallados y sofisticados.
+    \item Procesamiento de señales con criterios basados en coincidencias (diferentes detectores o diferentes partes del mismo detector): Facilita la correlación de eventos entre múltiples detectores o áreas de un detector.
+    \item Aplicación efectiva de post-procesamiento de datos: Permite el pre-análisis de formas de onda, modelado de pulsos y verificación de algoritmos de deconvolución de superposición de pulsos (pulse pile-up).
+
+\end{itemize}
+
+\noindent La implementación de procesadores digitales de pulsos (DPP) en FPGA, gracias a su riqueza en recursos lógicos digitales, les permite soportar múltiples modos de adquisición, como análisis de altura de pulso, escalado de canales múltiples, escalado de espectros múltiples y adquisición en modo de lista con marcas de tiempo. Además, ofrecen funcionalidades muy especializadas como discriminación y corrección de la forma del pulso, rechazo de superposición de pulsos (pulse pile-up), conteo sin pérdidas y otras características que respaldan la medición. Adicionalmente, múltiples DPP pueden operar de manera sincronizada para permitir la correlación temporal de eventos provenientes de múltiples fuentes de señal, como detectores separados o segmentos de un mismo detector. 
+
+\noindent En el capítulo System, se desarrolla la aplicación de los conceptos expuestos en este capítulo, en un sistema experimental de lectura y procesamiento para detectores GEM.
 
 \subsection*{References}
 \begin{enumerate}

@@ -116,7 +116,7 @@
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1046"
-     inkscape:window-x="2149"
+     inkscape:window-x="2869"
      inkscape:window-y="-11"
      inkscape:window-maximized="1" />
   <metadata
@@ -127,7 +127,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -383,9 +383,14 @@
        id="text15151"><tspan
          sodipodi:role="line"
          id="tspan15149"
-         x="173.39368"
+         x="174.01379"
          y="32.442669"
-         style="stroke-width:0.065">digital processing</tspan></text>
+         style="stroke-width:0.065">DAQ </tspan><tspan
+         sodipodi:role="line"
+         x="173.39368"
+         y="39.057251"
+         style="stroke-width:0.065"
+         id="tspan5100">&amp; digital processing</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.16500001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker15036-2)"
        d="m 186.63854,60.26819 12.17389,0.117234"
