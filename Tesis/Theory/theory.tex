@@ -104,13 +104,22 @@ $$
 
 \noindent De acuerdo a [2], la digitalización de las señales provenientes de un detector es crucial debido a la precisión y flexibilidad que ofrece frente a los métodos analógicos tradicionales. Con el avance de los convertidores analógico-digitales (ADC) de alta velocidad y buena resolución desde los años 90, la posibilidad de procesar digitalmente los pulsos de los detectores se ha consolidado. Las ventajas de este enfoque incluyen una flexibilidad ilimitada en la elección de parámetros de conformación, mayor estabilidad al eliminar el riesgo de derivas debido a cambios de temperatura o voltaje, y la capacidad de realizar análisis más detallados con múltiples salidas de un mismo detector. Además, la manipulación digital no introduce ruido adicional y permite la implementación precisa de formas de pulso que serían difíciles o imposibles de lograr en circuitos analógicos. Sin embargo, una desventaja potencial es la limitación en la precisión del tiempo de detección, ya que los sistemas digitales están restringidos a la frecuencia de muestreo más cercana, lo que puede ser menos exacto que los métodos analógicos simples en aplicaciones que requieren una temporización muy rápida.\\
 
-\noindent La función principal de un ADC es generar un código digital o número en su salida, que sea proporcional a la tensión analógica suministrada a su entrada. En un ADC genérico, las conversiones se realizan de forma continua a una frecuencia de reloj fija. Por ejemplo, un reloj de 500 MHz producirá 500 MSPS, lo que equivale a una muestra cada 2 ns. En un ADC ideal, cada conversión de voltaje de entrada a código de salida es independiente, perfectamente lineal y ocurre instantáneamente. Sin embargo, las imperfecciones en los ADCs reales limitan tanto la frecuencia máxima de muestreo como la linealidad y la precisión de la conversión. \\
+\noindent La función principal de un ADC es generar un código digital o número en su salida, que sea proporcional a la tensión analógica suministrada a su entrada. En un ADC genérico, las conversiones se realizan de forma continua a una frecuencia de reloj fija. Por ejemplo, un reloj de 500 MHz producirá 500 MSPS (Megasamples per Second), lo que equivale a una muestra cada 2 ns. En un ADC ideal, cada conversión de voltaje de entrada a código de salida es independiente, perfectamente lineal y ocurre instantáneamente. Sin embargo, las imperfecciones en los ADCs reales limitan tanto la frecuencia máxima de muestreo como la linealidad y la precisión de la conversión. \\
 
 %incluir fotografía de la tarjeta
 
 \subsection{Sistema de adquisición y procesamiento digital}
 
-\noindent Si bien existen diversos tipos de hardware programable para el despliegue de sistemas embebidos como los microcontroladores y procesadores, en función de los requerimientos impuestos por un ADC de alta velocidad y la necesidad de contar con una plataforma flexible para la evolución de un sistema de detección experimental, es necesaria la implementación de un dispositivo basado en FPGA. 
+\noindent Si bien existen diversos tipos de hardware programable para el despliegue de sistemas embebidos como los microcontroladores y procesadores, en función de los requerimientos impuestos por un ADC de alta velocidad y la necesidad de contar con una plataforma flexible para la evolución de un sistema de detección experimental, es necesaria la implementación de un dispositivo basado en FPGA. En la figura \ref{fig:pulse_chain} se ilustra la ubicación típica de la plataforma digital de procesamiento en la cadena de lectura de un detector.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{pulse_chain.png}
+    \caption{Un esquema de la cadena de electrónica de lectura usualmente utilizado para la lectura de un
+    detector, que ilustra la etapa de adquisición y procesamiento digital a continuación de la etapa de front-end.}
+    \label{fig:pulse_chain}
+
+\end{figure}
 
 \subsubsection{FPGA}
 \noindent Una FPGA es un tipo de circuito integrado reconfigurable que permite a los usuarios personalizar su arquitectura interna para realizar tareas específicas, lo que las diferencia de los microprocesadores tradicionales que siguen un conjunto de instrucciones fijas. Estas matrices de puertas programables en campo son ampliamente utilizadas en aplicaciones que requieren procesamiento en paralelo y alta flexibilidad, como en sistemas de telecomunicaciones y procesamiento de señales digitales. La capacidad de ser reprogramadas múltiples veces les otorga una ventaja significativa en términos de adaptabilidad a nuevas necesidades sin requerir cambios físicos en el hardware. Para programar una FPGA, se emplean lenguajes de descripción de hardware (HDL), como VHDL o Verilog, lo que permite definir circuitos personalizados que se cargan directamente en el dispositivo, haciendo que se comporten según el diseño especificado [10].\\
@@ -119,8 +128,17 @@ $$
 
 \subsubsection{FPGA SoC}
 
-\noindent No obstante, como expone [11], los avances en tecnología FPGA se han direccionado al desarrollo de sistemas híbridos como los SoC. De acuerdo a [12], Un FPGA SoC es un dispositivo que combina en un solo chip la flexibilidad programable de una FPGA con las capacidades de procesamiento de un procesador, típicamente basado en la arquitectura ARM. Este tipo de dispositivo integra tanto el procesamiento de software, que es típicamente manejado por la CPU integrada, como la programación de hardware de la FPGA, permitiendo la aceleración de hardware y la ejecución de funciones específicas directamente en el silicio. Esto hace posible al diseñador, aprovechar lo mejor de ambos mundos: la capacidad de realizar tareas complejas y variables mediante software y, al mismo tiempo, la ejecución de operaciones intensivas en paralelo y en tiempo real mediante la lógica programable de la FPGA. Además, esta integración incluye funcionalidades adicionales como procesamiento digital de señales (DSP), dispositivos de señal mixta, y la posibilidad de reemplazar otros componentes dedicados como los ASICs (Application-Specific Integrated Circuits) o ASSPs (Application-Specific Standard Products), todo en un solo dispositivo, optimizando así el rendimiento y la eficiencia energética para aplicaciones específicas.
+\noindent No obstante, como expone [11], los avances en tecnología FPGA se han direccionado al desarrollo de sistemas híbridos como los SoC. De acuerdo a [12], Un FPGA SoC es un dispositivo que combina en un solo chip la flexibilidad programable de una FPGA, también denominado PL (Programmable Logic), con las capacidades de procesamiento de un procesador o PS (Processing System), típicamente basado en la arquitectura ARM. La figura \ref{fig:fpga_soc} ilustra la infraestructura típica de un SoC. Esta configuración permite aprovechar lo mejor de ambos mundos: la capacidad de realizar tareas complejas y variables mediante software y, al mismo tiempo, la ejecución de operaciones intensivas en paralelo y en tiempo real mediante la lógica programable de la FPGA. Además, esta integración incluye funcionalidades adicionales como procesamiento digital de señales (DSP), dispositivos de señal mixta, y la posibilidad de reemplazar otros componentes dedicados como los ASICs (Application-Specific Integrated Circuits) o ASSPs (Application-Specific Standard Products), todo en un solo dispositivo, optimizando así el rendimiento y la eficiencia energética para aplicaciones específicas.
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{FPGA_SoC.png}
+    \caption{Arquitectura típica de un FPGA SoC. Adaptado de [13]}
+    \label{fig:fpga_soc}
+
+\end{figure}
+
+ En el capítulo System, se desarrolla la aplicación de los conceptos expuestos en este capítulo, en un sistema experimental de lectura y procesamiento para detectores GEM.
 
 \subsection*{References}
 \begin{enumerate}
@@ -138,6 +156,7 @@ $$
     \item Brown, S., and Vranesic, Z. (2005). Fundamentals of Digital Logic with VHDL Design. McGraw-Hill Education.
     \item Bravo-Muñoz, I., Gardel-Vicente, A., and Lázaro-Galilea, J. L. (2020). New Applications and Architectures Based on FPGA/SoC. Electronics, 9(11), 1789.
     \item https://www.amd.com/en/products/adaptive-socs-and-fpgas/soc/zynq-7000.html
+    \item Shafiq, F., Yamada, T., Vilchez, A. T., Dasgupta, S. (2017). Automated flow for compressing convolution neural networks for efficient edge-computation with FPGA. arXiv preprint arXiv:1712.06272.
 \end{enumerate}
 
 \end{document}
