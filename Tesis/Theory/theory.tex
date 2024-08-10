@@ -9,20 +9,6 @@
 
 \chapter*{Teoría}
 
-\section{GEM Physics}
-
-% Tal es el caso de los detectores GEM. Tras las generaci´on de pares de electrones
-% y iones en el interior de la c´amara de gas por su interacci´on con part´ıculas
-% cargadas incidentes, Los electrones libres generados en la ionizaci´on primaria
-% son atra´ıdos hacia los agujeros de la hoja de GEM debido al campo el´ectrico.
-% Al pasar a trav´es de los agujeros, los electrones experimentan un fuerte campo
-% el´ectrico local dentro de estos, lo que causa una avalancha de electrones (multi-
-% plicaci´on de electrones), de tal manera que un solo electr´on puede generar varios
-% ´ordenes de magnitud de electrones secundarios (ganancia). Los electrones mul-
-% tiplicados son recogidos en un conjunto de electrodos o en una segunda capa de
-% multiplicaci´on, resultando una se˜nal de corriente el´ectrica que puede ser medida
-% y analizada.
-
 \section{Read-out Electronics}
 
 \noindent Como se expuso anteriormente, los electrones multiplicados son recogidos en los electrodos de salida del GEM, resultando una señal de corriente eléctrica que puede ser medida y analizada. Dependiendo de los objetivos del experimento, distintas etapas electrónicas pueden ser implementadas a continuación. Sin embargo, el objetivo de estas converge a preservar y transportar la información física de interés contenida en la señal, optmizando factores clave como [2]:
@@ -116,11 +102,13 @@ $$
 
 \subsubsection{Digitalización}
 
-\noindent De acuerdo a [2], la digitalización de las señales provenientes de un detector es crucial debido a la precisión y flexibilidad que ofrece frente a los métodos analógicos tradicionales. Con el avance de los convertidores analógico-digitales (ADC) de alta velocidad y buena resolución desde los años 90, la posibilidad de procesar digitalmente los pulsos de los detectores se ha consolidado. Las ventajas de este enfoque incluyen una flexibilidad ilimitada en la elección de parámetros de conformación, mayor estabilidad al eliminar el riesgo de derivas debido a cambios de temperatura o voltaje, y la capacidad de realizar análisis más detallados con múltiples salidas de un mismo detector. Además, la manipulación digital no introduce ruido adicional y permite la implementación precisa de formas de pulso que serían difíciles o imposibles de lograr en circuitos analógicos. Sin embargo, una desventaja potencial es la limitación en la precisión del tiempo de detección, ya que los sistemas digitales están restringidos a la frecuencia de muestreo más cercana, lo que puede ser menos exacto que los métodos analógicos simples en aplicaciones que requieren una temporización muy rápida.\\
+\noindent De acuerdo a [2], la digitalización de las señales provenientes de un detector es crucial debido a la precisión y flexibilidad que ofrece frente a los métodos analógicos tradicionales. Con el avance de los convertidores analógico-digitales (ADC) de alta velocidad y buena resolución desde los años 90, la posibilidad de procesar digitalmente los pulsos de los detectores se ha consolidado.\\
+
+\noindent Las ventajas de este enfoque incluyen una flexibilidad ilimitada en la elección de parámetros de conformación, mayor estabilidad al eliminar el riesgo de derivas debido a cambios de temperatura o voltaje, y la capacidad de realizar análisis más detallados con múltiples salidas de un mismo detector. Además, la manipulación digital no introduce ruido adicional y permite la implementación precisa de formas de pulso que serían difíciles o imposibles de lograr en circuitos analógicos. Sin embargo, una desventaja potencial es la limitación en la precisión del tiempo de detección, ya que los sistemas digitales están restringidos a la frecuencia de muestreo más cercana, lo que puede ser menos exacto que los métodos analógicos simples en aplicaciones que requieren una temporización muy rápida.\\
 
 \noindent La función principal de un ADC es generar un código digital o número en su salida, que sea proporcional a la tensión analógica suministrada a su entrada. En un ADC genérico, las conversiones se realizan de forma continua a una frecuencia de reloj fija. Por ejemplo, un reloj de 500 MHz producirá 500 MSPS (Megasamples per Second), lo que equivale a una muestra cada 2 ns. \\
 
-\noindent Un número binario con $n$ bits puede representar $2^{n}$ valores. Durante la digitalización, el rango de voltaje desde $(V_{\text{min}}$ (usualmente $V_{\text{min}} = 0$) hasta $V_{\text{max}}$ se subdivide en $2^{n} - 1$ intervalos, a cada uno de los cuales se le asigna un valor binario. Si la conversión es lineal, el rango se divide en intervalos de tamaño igual. El paso de voltaje más pequeño corresponde al bit menos significativo (LSB, por sus siglas en inglés), que se encuentra más a la derecha en un número binario. En un convertidor analógico-digital (ADC) de $n$ bits, un LSB corresponde a un paso de voltaje de:
+\noindent Un número binario con $n$ bits puede representar $2^{n}$ valores. Durante la digitalización, el rango de voltaje desde $V_{\text{min}}$ (usualmente $V_{\text{min}} = 0$) hasta $V_{\text{max}}$ se subdivide en $2^{n} - 1$ intervalos, a cada uno de los cuales se le asigna un valor binario. Si la conversión es lineal, el rango se divide en intervalos de tamaño igual. El paso de voltaje más pequeño corresponde al bit menos significativo (LSB, por sus siglas en inglés), que se encuentra más a la derecha en un número binario. En un convertidor analógico-digital (ADC) de $n$ bits, un LSB corresponde a un paso de voltaje de:
 
 $$
 1 \text{ LSB} = \frac{V_{\text{max}} - V_{\text{min}}}{2^n - 1}
@@ -144,7 +132,9 @@ $$
 \end{figure}
 
 \subsubsection{FPGA}
-\noindent Una FPGA es un tipo de circuito integrado reconfigurable que permite a los usuarios personalizar su arquitectura interna para realizar tareas específicas, lo que las diferencia de los microprocesadores tradicionales que siguen un conjunto de instrucciones fijas. Estas matrices de puertas programables en campo son ampliamente utilizadas en aplicaciones que requieren procesamiento en paralelo y alta flexibilidad, como en sistemas de telecomunicaciones y procesamiento de señales digitales. La capacidad de ser reprogramadas múltiples veces les otorga una ventaja significativa en términos de adaptabilidad a nuevas necesidades sin requerir cambios físicos en el hardware. Para programar una FPGA, se emplean lenguajes de descripción de hardware (HDL), como VHDL o Verilog, lo que permite definir circuitos personalizados que se cargan directamente en el dispositivo, haciendo que se comporten según el diseño especificado [10].\\
+\noindent Una FPGA es un tipo de circuito integrado reconfigurable que permite a los usuarios personalizar su arquitectura interna para realizar tareas específicas, lo que las diferencia de los microprocesadores tradicionales que siguen un conjunto de instrucciones fijas. Estas matrices de puertas programables en campo son ampliamente utilizadas en aplicaciones que requieren procesamiento en paralelo y alta flexibilidad, como en sistemas de telecomunicaciones y procesamiento de señales digitales. \\
+
+\noindent La capacidad de ser reprogramadas múltiples veces les otorga una ventaja significativa en términos de adaptabilidad a nuevas necesidades sin requerir cambios físicos en el hardware. Para programar una FPGA, se emplean lenguajes de descripción de hardware (HDL), como VHDL o Verilog, lo que permite definir circuitos personalizados que se cargan directamente en el dispositivo, haciendo que se comporten según el diseño especificado [10].\\
 
 \noindent Este tipo de arquitectura ofrece baja latencia, lo cual es esencial para manejar el alto volumen de datos generados por los ADCs de alta velocidad. Además, su capacidad de procesamiento paralelo permite el manejo eficiente de altas tasas de muestreo, asegurando que los datos provenientes del detector se procesen minimizando la pérdida de información. En particular, las FPGA proporcionan una flexibilidad considerable en el diseño y la implementación de algoritmos de procesamiento de señales, contando con módulos de hardware dedicado a esta tarea llamados DSP (Digital Signal Processor) [8].\\
 
@@ -164,7 +154,7 @@ $$
 
 \subsection{Procesamiento Digital de Pulsos}
  
-\noindent Como se explicó en el apartado de electrónica de front-end, los filtros analógicos suelen aplicar una combinación de diferenciaciones e integraciones de la forma de onda de voltaje para transformarla en una forma similar a la de una gaussiana, cuya amplitud es proporcional al voltaje $V$ y, por lo tanto, a la energía de la radiación. Sin embargo, de acuerdo a [14], en el enfoque digital, tras la digitalización de la señal utilizando un ADC, se aplica un filtro matemático a esta serie de valores digitales para eliminar los componentes de ruido de alta frecuencia, mejorando así la relación señal-ruido y determinando la amplitud de voltaje $V$.\\
+\noindent Como se explicó en el apartado de electrónica de front-end, los filtros analógicos suelen aplicar una combinación de diferenciaciones e integraciones de la forma de onda de voltaje para transformarla en una forma similar a la de una gaussiana, cuya amplitud es proporcional al voltaje $V$ y, por lo tanto, a la energía de la radiación. Sin embargo, de acuerdo a [14], en el enfoque digital, tras la digitalización de la señal utilizando un ADC, se aplica un filtro matemático a esta serie de valores digitales para eliminar los componentes de ruido de alta frecuencia, mejorando así la SNR y determinando la amplitud de voltaje $V$.\\
 
 \noindent Este enfoque presenta ventajas significativas en comparación con el procesamiento de señales analógicas tradicional, entre las cuales destacan [15]:
 
