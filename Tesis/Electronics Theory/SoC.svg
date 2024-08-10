@@ -16,7 +16,10 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92pre5 r15287"
-   sodipodi:docname="SoC.svg">
+   sodipodi:docname="SoC.svg"
+   inkscape:export-filename="C:\Users\Sebas\Documents\FPGA-based-DAQ-for-GEM-detectors\Tesis\Theory\FPGA_SoC.png"
+   inkscape:export-xdpi="244.2"
+   inkscape:export-ydpi="244.2">
   <defs
      id="defs2">
     <linearGradient
@@ -137,7 +140,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="136.71392"
+     inkscape:cx="70.713922"
      inkscape:cy="884.96682"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"

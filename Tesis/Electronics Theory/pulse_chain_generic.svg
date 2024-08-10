@@ -16,7 +16,10 @@
    version="1.1"
    id="svg14084"
    inkscape:version="0.92pre5 r15287"
-   sodipodi:docname="pulse_chain_generic.svg">
+   sodipodi:docname="pulse_chain_generic.svg"
+   inkscape:export-filename="C:\Users\Sebas\Documents\FPGA-based-DAQ-for-GEM-detectors\Tesis\Theory\pulse_chain_generic.png"
+   inkscape:export-xdpi="244.2"
+   inkscape:export-ydpi="244.2">
   <defs
      id="defs14078">
     <marker
@@ -109,16 +112,16 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.8429014"
-     inkscape:cx="448.2871"
+     inkscape:cx="305.57735"
      inkscape:cy="899.16997"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1046"
-     inkscape:window-x="2869"
-     inkscape:window-y="-11"
-     inkscape:window-maximized="1" />
+     inkscape:window-x="-29120"
+     inkscape:window-y="-32000"
+     inkscape:window-maximized="0" />
   <metadata
      id="metadata14081">
     <rdf:RDF>
