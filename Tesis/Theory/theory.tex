@@ -7,9 +7,9 @@
 \begin{document}
  % glosario: SNR Sinal to Noise Ratio
 
-\chapter*{Teoría}
+\chapter*{Overview on Detector Read-out Electronics }
 
-\section{Read-out Electronics}
+\section{Front-end Electronics}
 
 \noindent Como se expuso anteriormente, los electrones multiplicados son recogidos en los electrodos de salida del GEM, resultando una señal de corriente eléctrica que puede ser medida y analizada. Dependiendo de los objetivos del experimento, distintas etapas electrónicas pueden ser implementadas a continuación. Sin embargo, el objetivo de estas converge a preservar y transportar la información física de interés contenida en la señal, optmizando factores clave como [2]:
 
@@ -50,7 +50,7 @@
     \item Señal bipolar: Es una forma de pulso en la que la parte del pulso que ocurre más tarde en el tiempo tiene un signo opuesto al de la parte que ocurre primero.
 \end{itemize}
 
-\subsection{Electrónica de Front-end}
+\subsection{Analog Front-end}
 
 \noindent Próxima al detector, se encuentra la etapa denominada front-end, que típicamente comprende electrónica analógica para la amplificación de la señal, shaping y discriminación, así como digitalización y transporte. A continuación pueden encontrarse sistemas de más alto nivel como procesadores digitales y de adquisición de datos, que permiten transformar las señales y extraer la información necesaria para su posterior estudio. En la figura \ref{fig:generic_frontend} se observa un esquema genérico de la electrónica de front-end de un detector.\\
 
@@ -118,7 +118,7 @@ $$
 
 %incluir fotografía de la tarjeta
 
-\subsection{Sistema de adquisición y procesamiento digital}
+\section{DAQ and Digital Processing}
 
 \noindent Si bien existen diversos tipos de hardware programable para el despliegue de sistemas embebidos como los microcontroladores y procesadores, en función de los requerimientos impuestos por un ADC de alta velocidad y la necesidad de contar con una plataforma flexible para la evolución de un sistema de detección experimental, es necesaria la implementación de un dispositivo basado en FPGA. En la figura \ref{fig:pulse_chain} se ilustra la ubicación típica de la plataforma digital de procesamiento en la cadena de lectura de un detector.
 
@@ -168,7 +168,7 @@ $$
 
 \end{itemize}
 
-\noindent La implementación de procesadores digitales de pulsos (DPP) en FPGA, gracias a su riqueza en recursos lógicos digitales, les permite soportar múltiples modos de adquisición, como análisis de altura de pulso, escalado de canales múltiples, escalado de espectros múltiples y adquisición en modo de lista con marcas de tiempo. Además, ofrecen funcionalidades muy especializadas como discriminación y corrección de la forma del pulso, rechazo de superposición de pulsos (pulse pile-up), conteo sin pérdidas y otras características que respaldan la medición. Adicionalmente, múltiples DPP pueden operar de manera sincronizada para permitir la correlación temporal de eventos provenientes de múltiples fuentes de señal, como detectores separados o segmentos de un mismo detector. 
+\noindent La implementación de procesadores digitales de pulsos (DPP) en FPGA, gracias a su riqueza en recursos lógicos digitales, les permite soportar múltiples modos de adquisición, como análisis de altura de pulso, escalado de canales múltiples, escalado de espectros múltiples y adquisición en modo de lista con marcas de tiempo. Además, ofrecen funcionalidades muy especializadas como discriminación y corrección de la forma del pulso, rechazo de superposición de pulsos (pulse pile-up), conteo sin pérdidas y otras características que respaldan la medición. Adicionalmente, múltiples DPP pueden operar de manera sincronizada para permitir la correlación temporal de eventos provenientes de múltiples fuentes de señal, como detectores separados o segmentos de un mismo detector. \\
 
 \noindent En el capítulo System, se desarrolla la aplicación de los conceptos expuestos en este capítulo, en un sistema experimental de lectura y procesamiento para detectores GEM.
 
