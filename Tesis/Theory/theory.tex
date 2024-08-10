@@ -25,6 +25,16 @@
 
 \section{Electrónica}
 
+\subsection{Características generales de un pulso}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{pulse_edited.png}
+    \caption{pulse}
+    \label{fig:pulse}
+
+\end{figure}
+
 \noindent Como se expuso anteriormente, los electrones multiplicados son recogidos en los electrodos de salida del GEM, resultando una señal de corriente eléctrica que puede ser medida y analizada. Dependiendo de los objetivos del experimento, distintas etapas electrónicas pueden ser implementadas a continuación. Sin embargo, el objetivo de estas converge a preservar y transportar la información física de interés contenida en la señal. \\
 
 \subsection{Electrónica de Front-end}
@@ -33,10 +43,9 @@
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.7\textwidth]{typical_readout_electronics.PNG}
+    \includegraphics[width=0.8\textwidth]{front-end.png}
     \caption{Un esquema de electrónica de front-end típico, utilizado a menudo para la lectura de un
-    detector, que incluye amplificación, conformación de impulsos, discriminación
-    (aquí analógica) y digitalización (representada aquí por un ADC).}
+    detector, que incluye amplificación, conformación de impulsos y digitalización (representada aquí por un ADC).}
     \label{fig:generic_frontend}
 
 \end{figure}
@@ -78,7 +87,7 @@ $$
 
 %incluir fotografía de la tarjeta
 
-\subsection*{Sistema de adquisición y procesamiento digital}
+\subsection{Sistema de adquisición y procesamiento digital}
 
 \noindent Si bien existen diversos tipos de hardware programable para el despliegue de sistemas embebidos como los microcontroladores y procesadores, en función de los requerimientos impuestos por un ADC de alta velocidad y la necesidad de contar con una plataforma flexible para la evolución de un sistema de detección experimental, es necesaria la implementación de un dispositivo basado en FPGA. 
 
