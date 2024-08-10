@@ -23,23 +23,44 @@
 % multiplicaci´on, resultando una se˜nal de corriente el´ectrica que puede ser medida
 % y analizada.
 
-\section{Electrónica}
+\section{Read-out Electronics}
+
+\noindent Como se expuso anteriormente, los electrones multiplicados son recogidos en los electrodos de salida del GEM, resultando una señal de corriente eléctrica que puede ser medida y analizada. Dependiendo de los objetivos del experimento, distintas etapas electrónicas pueden ser implementadas a continuación. Sin embargo, el objetivo de estas converge a preservar y transportar la información física de interés contenida en la señal. \\
+
+\noindent Aunque los distintos tipos de detectores generan señales eléctricas únicas, dependiendo de los procesos físicos que ocurren en su interior, es posible identificar características comunes que facilitan la comprensión de conceptos clave en el acondicionamiento y procesamiento de señales.
 
 \subsection{Características generales de un pulso}
 
+\noindent Las señales producidas por un detector son, en general, de naturaleza pulsada. En este contexto, se puede asociar la detección de un evento con una perturbación, denominada pulso, que se define sobre la línea base de la señal de salida. La figura \ref{fig:pulse} muestra un ejemplo genérico de un pulso individual, utilizado para ilustrar algunas de sus características principales.\\
+
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.9\textwidth]{pulse_edited.png}
-    \caption{pulse}
+    \includegraphics[width=1.0\textwidth]{pulse_edited.png}
+    \caption{Pulso típico genérico para ilustrar las principales características. Reproducido a partir de [1]}
     \label{fig:pulse}
 
 \end{figure}
 
-\noindent Como se expuso anteriormente, los electrones multiplicados son recogidos en los electrodos de salida del GEM, resultando una señal de corriente eléctrica que puede ser medida y analizada. Dependiendo de los objetivos del experimento, distintas etapas electrónicas pueden ser implementadas a continuación. Sin embargo, el objetivo de estas converge a preservar y transportar la información física de interés contenida en la señal. \\
+\noindent Según [2], suponiendo que la señal generada por el detector es corta comparado con los tiempos típicos de procesamiento de la electrónica de lectura, las cantidades que caracterizan un pulso son:
+
+\begin{itemize}
+    \item La amplitud máxima del pulso: también conocida como altura del pulso, es el valor máximo que alcanza la señal. En sistemas lineales, este valor es proporcional a la energía primaria depositada en el detector.
+    \item Tiempo de pico: Es el momento en el tiempo en el que se alcanza la amplitud máxima del pulso.
+    \item Área o integral del pulso: Representa el área bajo la curva del pulso. En sistemas lineales y para señales cortas tipo $\delta$, su valor debería ser proporcional a la energía primaria depositada.
+    \item Ancho del pulso: Se refiere a la duración del pulso, que generalmente se define como el ancho total a la mitad de la altura máxima (FWHM, por sus siglas en inglés).
+    \item Bordes de subida y bajada: Son las pendientes ascendente y descendente del pulso.
+    \item Tiempo de subida: Caracteriza la rapidez con la que el pulso aumenta. Comúnmente se define como el tiempo necesario para que el pulso pase del 10\% al 90\% de su amplitud máxima, aunque existen otras definiciones.
+    \item Tasa de variación (Slew rate): Indica el cambio de voltaje por unidad de tiempo $dV/dt$ y se expresa en unidades de $V/s$.
+    \item Línea base o valor de pedestal: Es el valor de salida cuando no hay ninguna señal de entrada. Define el nivel 'cero' desde el cual se mide la altura de la señal. Aunque generalmente la línea base tiene un valor fijo, pueden ocurrir desviaciones durante un cierto (y breve) período de tiempo. Estas desviaciones se conocen como desplazamientos de la línea base.
+    \item Tiempo de retorno a la línea base: Es el tiempo necesario para que la amplitud del pulso vuelva al valor de la línea base.
+    \item Suboscilación: Se refiere a la parte de la amplitud de un pulso que tiene un signo opuesto (con respecto a la línea base) en comparación con la amplitud principal.
+    \item Señal unipolar: Es una forma de pulso en la que, salvo por las fluctuaciones de ruido, el valor de la amplitud se mantiene por encima o por debajo de la línea base en todo momento $t$. Por lo general, también se incluyen en esta definición las señales con pequeñas suboscilaciones.
+    \item Señal bipolar: Es una forma de pulso en la que la parte del pulso que ocurre más tarde en el tiempo tiene un signo opuesto al de la parte que ocurre primero.
+\end{itemize}
 
 \subsection{Electrónica de Front-end}
 
-\noindent Próxima al detector, se encuentra la etapa denominada front-end, que típicamente comprende electrónica analógica para la amplificación de la señal, shaping y discriminación, así como digitalización y transporte. A continuación pueden encontrarse sistemas de más alto nivel como procesadores digitales y de adquisición de datos, que permiten transformar las señales y extraer la información necesaria para su posterior estudio. En la figura \ref{fig:generic_frontend} se observa un esquema genérico de la electrónica de front-end de un detector [1].\\
+\noindent Próxima al detector, se encuentra la etapa denominada front-end, que típicamente comprende electrónica analógica para la amplificación de la señal, shaping y discriminación, así como digitalización y transporte. A continuación pueden encontrarse sistemas de más alto nivel como procesadores digitales y de adquisición de datos, que permiten transformar las señales y extraer la información necesaria para su posterior estudio. En la figura \ref{fig:generic_frontend} se observa un esquema genérico de la electrónica de front-end de un detector.\\
 
 \begin{figure}[h]
     \centering
