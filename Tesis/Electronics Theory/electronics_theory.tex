@@ -60,7 +60,7 @@
 
 \end{figure}
 
-\noindent Según [2], suponiendo que la señal generada por el detector es corta comparado con los tiempos típicos de procesamiento de la electrónica de lectura, las cantidades que caracterizan un pulso son:
+\noindent Según \cite{knoll2010radiation}, suponiendo que la señal generada por el detector es corta comparado con los tiempos típicos de procesamiento de la electrónica de lectura, las cantidades que caracterizan un pulso son:
 
 \begin{itemize}
     \item La amplitud máxima del pulso: también conocida como altura del pulso, es el valor máximo que alcanza la señal. En sistemas lineales, este valor es proporcional a la energía primaria depositada en el detector.
@@ -90,7 +90,7 @@
 
 \end{figure}
 
-\noindent Los sistemas involucrados en la electrónica de front-end, deben cumplir con tres características: (a) ser causales, (b) invariantes en el tiempo, y (c) lineales al menos en la primera etapa de amplificación. Un sistema se considera causal si, en cualquier momento, solo depende del valor de su entrada en ese instante. Es invariante en el tiempo si la relación entre la salida y la entrada, por ejemplo, el ratio $\text{señal}_{\text{entrada}}/\text{señal}_{\text{salida}}$ no varía con el tiempo [1]. La linealidad del sistema implica que el pulso de salida (por ejemplo, $v_{out(t)}$) no depende del tamaño de la señal de entrada (por ejemplo, $i_{in(t)}$), esto es, 
+\noindent Los sistemas involucrados en la electrónica de front-end, deben cumplir con tres características: (a) ser causales, (b) invariantes en el tiempo, y (c) lineales al menos en la primera etapa de amplificación. Un sistema se considera causal si, en cualquier momento, solo depende del valor de su entrada en ese instante. Es invariante en el tiempo si la relación entre la salida y la entrada, por ejemplo, el ratio $\text{señal}_{\text{entrada}}/\text{señal}_{\text{salida}}$ no varía con el tiempo \cite{kolanoski2020particle}. La linealidad del sistema implica que el pulso de salida (por ejemplo, $v_{out(t)}$) no depende del tamaño de la señal de entrada (por ejemplo, $i_{in(t)}$), esto es, 
 
 $$
 v_{\text {out }}\left(\alpha \times i_{\text {in }}(t)\right)=\alpha \times v_{\text {out }}\left(i_{\text {in }}(t)\right)
@@ -100,7 +100,7 @@ $$
 
 \subsubsection{Preamplificador}
 
-\noindent Como expone [2], La función principal del preamplificador es captar la señal del detector sin deteriorar notablemente la SNR inherente. Por ello, el preamplificador se ubica generalmente lo más cerca posible del detector para reducir la carga capacitiva $(C)$ sobre este. El preamplificador de voltaje amplifica directamente la señal de voltaje $V_{\text{in}}$, manteniendo una alta impedancia de entrada $Z_{\text{in}}$ y una baja impedancia de salida $Z_{\text{out}}$ para asegurar una transferencia eficiente y reducir la influencia del ruido. En ambos casos, la linealidad del preamplificador es crucial para que la relación $V_{\text{out}}/ V_{\text{in}}$ se mantenga constante, lo cual es esencial para la precisión en la medición [9].\\
+\noindent Como expone \cite{knoll2010radiation}, La función principal del preamplificador es captar la señal del detector sin deteriorar notablemente la SNR inherente. Por ello, el preamplificador se ubica generalmente lo más cerca posible del detector para reducir la carga capacitiva $(C)$ sobre este. El preamplificador de voltaje amplifica directamente la señal de voltaje $V_{\text{in}}$, manteniendo una alta impedancia de entrada $Z_{\text{in}}$ y una baja impedancia de salida $Z_{\text{out}}$ para asegurar una transferencia eficiente y reducir la influencia del ruido. En ambos casos, la linealidad del preamplificador es crucial para que la relación $V_{\text{out}}/ V_{\text{in}}$ se mantenga constante, lo cual es esencial para la precisión en la medición \cite{leo1994techniques}.\\
 
 \noindent Por otro lado, un preamplificador de carga convierte una señal de carga $Q$ generada por el detector en un voltaje proporcional $V$, dada la relación: $$V = \frac{Q}{C}$$ La figura \ref{fig:preamp} ilustra su comportamiento típico sobre la señal del detector.\\
 
@@ -112,7 +112,7 @@ $$
 
 \end{figure}
 
-\noindent Como explica [3], la amplificación por etapas de una señal ofrece numerosas ventajas significativas. Principalmente, permite reducir el ruido generado en cada etapa individual, resultando en una señal final más limpia y menos propensa a la distorsión. Este método también mejora la estabilidad del sistema al distribuir la amplificación, evitando la saturación que podría ocurrir con una amplificación intensa en una sola etapa. Además, facilita el control preciso de la ganancia y la adaptación de impedancias entre diferentes componentes, lo cual mejora la eficiencia y la transferencia de la señal. La amplificación gradual es particularmente útil para manejar señales débiles, amplificándolas sin riesgo de distorsión. Asimismo, distribuye la carga térmica generada, disminuyendo el riesgo de sobrecalentamiento de los componentes. \\
+\noindent Como explica \cite{proakis2007digital}, la amplificación por etapas de una señal ofrece numerosas ventajas significativas. Principalmente, permite reducir el ruido generado en cada etapa individual, resultando en una señal final más limpia y menos propensa a la distorsión. Este método también mejora la estabilidad del sistema al distribuir la amplificación, evitando la saturación que podría ocurrir con una amplificación intensa en una sola etapa. Además, facilita el control preciso de la ganancia y la adaptación de impedancias entre diferentes componentes, lo cual mejora la eficiencia y la transferencia de la señal. La amplificación gradual es particularmente útil para manejar señales débiles, amplificándolas sin riesgo de distorsión. Asimismo, distribuye la carga térmica generada, disminuyendo el riesgo de sobrecalentamiento de los componentes. \\
 
 \subsubsection{Amplificador}
 
@@ -123,13 +123,13 @@ $$
 
 \subsubsection{Signal Shaping}
 
-\noindent En la cadena de modulación de señales de la electrónica de front-end, la etapa de shaping es un circuito electrónico diseñado para modificar la forma de una señal de pulso para mejorar su calidad y adecuarla a las necesidades de procesamiento posterior. Está encargado de transformar las señales pulsadas del detector, que pueden tener formas variadas, en pulsos uniformes y bien definidos. Esto es crucial para evitar la superposición de pulsos (pile-up) y reducir el ruido mediante filtrado de frecuencia [9].\\
+\noindent En la cadena de modulación de señales de la electrónica de front-end, la etapa de shaping es un circuito electrónico diseñado para modificar la forma de una señal de pulso para mejorar su calidad y adecuarla a las necesidades de procesamiento posterior. Está encargado de transformar las señales pulsadas del detector, que pueden tener formas variadas, en pulsos uniformes y bien definidos. Esto es crucial para evitar la superposición de pulsos (pile-up) y reducir el ruido mediante filtrado de frecuencia \cite{leo1994techniques}.\\
 
-\noindent Los pulsos electrónicos generados por el preamplificador tienen tiempos de decaimiento típicos que varían entre unos pocos nanosegundos y varios microsegundos. Si llegan señales adicionales durante el tiempo de decaimiento, puede ocurrir pile-up a pesar de que el capacitor de retroalimentación del preamplificador se descargue. Para mitigar esto, se utilizan filtros pasa-altos y pasa-bajos, que permiten separar las señales superpuestas y moldear los pulsos de salida en formas más Gaussianas. Además, los filtros ayudan a reducir el ruido blanco que afecta a todas las frecuencias, mejorando así la SNR [1].\\
+\noindent Los pulsos electrónicos generados por el preamplificador tienen tiempos de decaimiento típicos que varían entre unos pocos nanosegundos y varios microsegundos. Si llegan señales adicionales durante el tiempo de decaimiento, puede ocurrir pile-up a pesar de que el capacitor de retroalimentación del preamplificador se descargue. Para mitigar esto, se utilizan filtros pasa-altos y pasa-bajos, que permiten separar las señales superpuestas y moldear los pulsos de salida en formas más Gaussianas. Además, los filtros ayudan a reducir el ruido blanco que afecta a todas las frecuencias, mejorando así la SNR \cite{kolanoski2020particle}.\\
 
 \subsubsection{Digitalización}
 
-\noindent De acuerdo a [2], la digitalización de las señales provenientes de un detector es crucial debido a la precisión y flexibilidad que ofrece frente a los métodos analógicos tradicionales. Con el avance de los convertidores analógico-digitales (ADC) de alta velocidad y buena resolución desde los años 90, la posibilidad de procesar digitalmente los pulsos de los detectores se ha consolidado.\\
+\noindent De acuerdo a \cite{knoll2010radiation}, la digitalización de las señales provenientes de un detector es crucial debido a la precisión y flexibilidad que ofrece frente a los métodos analógicos tradicionales. Con el avance de los convertidores analógico-digitales (ADC) de alta velocidad y buena resolución desde los años 90, la posibilidad de procesar digitalmente los pulsos de los detectores se ha consolidado.\\
 
 \noindent Las ventajas de este enfoque incluyen una flexibilidad ilimitada en la elección de parámetros de conformación, mayor estabilidad al eliminar el riesgo de derivas debido a cambios de temperatura o voltaje, y la capacidad de realizar análisis más detallados con múltiples salidas de un mismo detector. Además, la manipulación digital no introduce ruido adicional y permite la implementación precisa de formas de pulso que serían difíciles o imposibles de lograr en circuitos analógicos. Sin embargo, una desventaja potencial es la limitación en la precisión del tiempo de detección, ya que los sistemas digitales están restringidos a la frecuencia de muestreo más cercana, lo que puede ser menos exacto que los métodos analógicos simples en aplicaciones que requieren una temporización muy rápida.\\
 
@@ -141,7 +141,7 @@ $$
 1 \text{ LSB} = \frac{V_{\text{max}} - V_{\text{min}}}{2^n - 1}
 $$
 
-\noindent En un ADC ideal, cada conversión de voltaje de entrada a código de salida es independiente, perfectamente lineal y ocurre instantáneamente. Sin embargo, las imperfecciones en los ADCs reales limitan tanto la frecuencia máxima de muestreo como la linealidad y la precisión de la conversión [1]. 
+\noindent En un ADC ideal, cada conversión de voltaje de entrada a código de salida es independiente, perfectamente lineal y ocurre instantáneamente. Sin embargo, las imperfecciones en los ADCs reales limitan tanto la frecuencia máxima de muestreo como la linealidad y la precisión de la conversión \cite{kolanoski2020particle}. 
 
 %incluir fotografía de la tarjeta
 
@@ -161,29 +161,29 @@ $$
 \subsubsection{FPGA}
 \noindent Una FPGA es un tipo de circuito integrado reconfigurable que permite a los usuarios personalizar su arquitectura interna para realizar tareas específicas, lo que las diferencia de los microprocesadores tradicionales que siguen un conjunto de instrucciones fijas. Estas matrices de puertas programables en campo son ampliamente utilizadas en aplicaciones que requieren procesamiento en paralelo y alta flexibilidad, como en sistemas de telecomunicaciones y procesamiento de señales digitales. \\
 
-\noindent La capacidad de ser reprogramadas múltiples veces les otorga una ventaja significativa en términos de adaptabilidad a nuevas necesidades sin requerir cambios físicos en el hardware. Para programar una FPGA, se emplean lenguajes de descripción de hardware (HDL), como VHDL o Verilog, lo que permite definir circuitos personalizados que se cargan directamente en el dispositivo, haciendo que se comporten según el diseño especificado [10].\\
+\noindent La capacidad de ser reprogramadas múltiples veces les otorga una ventaja significativa en términos de adaptabilidad a nuevas necesidades sin requerir cambios físicos en el hardware. Para programar una FPGA, se emplean lenguajes de descripción de hardware (HDL), como VHDL o Verilog, lo que permite definir circuitos personalizados que se cargan directamente en el dispositivo, haciendo que se comporten según el diseño especificado \cite{brown2000fundamentals}.\\
 
-\noindent Este tipo de arquitectura ofrece baja latencia, lo cual es esencial para manejar el alto volumen de datos generados por los ADCs de alta velocidad. Además, su capacidad de procesamiento paralelo permite el manejo eficiente de altas tasas de muestreo, asegurando que los datos provenientes del detector se procesen minimizando la pérdida de información. En particular, las FPGA proporcionan una flexibilidad considerable en el diseño y la implementación de algoritmos de procesamiento de señales, contando con módulos de hardware dedicado a esta tarea llamados DSP (Digital Signal Processor) [8].\\
+\noindent Este tipo de arquitectura ofrece baja latencia, lo cual es esencial para manejar el alto volumen de datos generados por los ADCs de alta velocidad. Además, su capacidad de procesamiento paralelo permite el manejo eficiente de altas tasas de muestreo, asegurando que los datos provenientes del detector se procesen minimizando la pérdida de información. En particular, las FPGA proporcionan una flexibilidad considerable en el diseño y la implementación de algoritmos de procesamiento de señales, contando con módulos de hardware dedicado a esta tarea llamados DSP (Digital Signal Processor) \cite{meyer2007digital}.\\
 
 \subsubsection{FPGA SoC}
 
-\noindent No obstante, como expone [11], los avances en tecnología FPGA se han direccionado al desarrollo de sistemas híbridos como los SoC. De acuerdo a [12], Un FPGA SoC es un dispositivo que combina en un solo chip la flexibilidad programable de una FPGA, también denominado PL (Programmable Logic), con las capacidades de procesamiento de un procesador o PS (Processing System), típicamente basado en la arquitectura ARM. La figura \ref{fig:fpga_soc} ilustra la infraestructura típica de un SoC. \\ 
+\noindent No obstante, como expone \cite{bravo2020new}, los avances en tecnología FPGA se han direccionado al desarrollo de sistemas híbridos como los SoC. De acuerdo a \cite{amd_zynq_7000}, Un FPGA SoC es un dispositivo que combina en un solo chip la flexibilidad programable de una FPGA, también denominado PL (Programmable Logic), con las capacidades de procesamiento de un procesador o PS (Processing System), típicamente basado en la arquitectura ARM. La figura \ref{fig:fpga_soc} ilustra la infraestructura típica de un SoC. \\ 
 
 \noindent Esta configuración permite aprovechar lo mejor de ambos mundos: la capacidad de realizar tareas complejas y variables mediante software y, al mismo tiempo, la ejecución de operaciones intensivas en paralelo y en tiempo real mediante la lógica programable de la FPGA. Además, esta integración incluye funcionalidades adicionales como procesamiento digital de señales (DSP), dispositivos de señal mixta, y la posibilidad de reemplazar otros componentes dedicados como los ASICs (Application-Specific Integrated Circuits) o ASSPs (Application-Specific Standard Products), todo en un solo dispositivo, optimizando así el rendimiento y la eficiencia energética para aplicaciones específicas.\\
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\textwidth]{FPGA_SoC.png}
-    \caption{Arquitectura típica de un FPGA SoC. Adaptado de [13]}
+    \caption{Arquitectura típica de un FPGA SoC.}
     \label{fig:fpga_soc}
 
 \end{figure}
 
 \subsection{Procesamiento Digital de Pulsos}
  
-\noindent Como se explicó en el apartado de electrónica de front-end, los filtros analógicos suelen aplicar una combinación de diferenciaciones e integraciones de la forma de onda de voltaje para transformarla en una forma similar a la de una gaussiana, cuya amplitud es proporcional al voltaje $V$ y, por lo tanto, a la energía de la radiación. Sin embargo, de acuerdo a [14], en el enfoque digital, tras la digitalización de la señal utilizando un ADC, se aplica un filtro matemático a esta serie de valores digitales para eliminar los componentes de ruido de alta frecuencia, mejorando así la SNR y determinando la amplitud de voltaje $V$.\\
+\noindent Como se explicó en el apartado de electrónica de front-end, los filtros analógicos suelen aplicar una combinación de diferenciaciones e integraciones de la forma de onda de voltaje para transformarla en una forma similar a la de una gaussiana, cuya amplitud es proporcional al voltaje $V$ y, por lo tanto, a la energía de la radiación. Sin embargo, de acuerdo a \cite{loudenuclearspectroscopy}, en el enfoque digital, tras la digitalización de la señal utilizando un ADC, se aplica un filtro matemático a esta serie de valores digitales para eliminar los componentes de ruido de alta frecuencia, mejorando así la SNR y determinando la amplitud de voltaje $V$.\\
 
-\noindent Este enfoque presenta ventajas significativas en comparación con el procesamiento de señales analógicas tradicional, entre las cuales destacan [15]:
+\noindent Este enfoque presenta ventajas significativas en comparación con el procesamiento de señales analógicas tradicional, entre las cuales destacan \cite{radeka1968optimum}:
 
 \begin{itemize}
     \item Aplicación de análisis considerando diferencias pulso a pulso: Permite analizar cada pulso individualmente, teniendo en cuenta sus particularidades.
@@ -203,28 +203,7 @@ $$
 \section{Resultados}
 \section{Análisis y conclusiones}
 
-\section*{References}
-\begin{enumerate}
 
-    \item Kolanoski, H., and Wermes, N. (2020). Particle Detectors: Fundamentals and Applications. Oxford University Press, USA.
-    \item Knoll, G F. (2000) Radiation Detection and Measurement, 3rd edition, John Wiley, New
-    York.
-    \item "Digital Signal Processing: Principles, Algorithms, and Applications" de John G. Proakis y Dimitris K. Manolakis.
-    \item DC08500 High Performance, Low Power 8-Bit 500 MSPS A/D Converter. Rev. 3. Available online: https://www.ti.com/lit/ds/symlink/adc08500.pdf (accessed on 07 August 2024).
-    \item Crespo, M. L., Foulon, F., Cicuttin, A., Bogovac, M., Onime, C., Sisterna, C., ... and Valinoti, B. (2021). Remote laboratory for e-learning of systems on chip and their applications to nuclear and scientific instrumentation. Electronics, 10(18), 2191.
-    \item Avnet. (2012). Zedboard: Zynq-7000 ARM/FPGA SoC Development Board. Recuperado de https://www.zedboard.org/product/zedboard (accessed on 07 August 2024).
-    \item https://gitlab.com/ictp-mlab/smr3765/-/wikis/uploads/d6f86235c15669356a9567b2aa0363c4/image.png
-    \item Meyer-Baese, U. (2020). Digital Signal Processing with Field Programmable Gate Arrays. Springer.
-    \item Leo, William R. Techniques for Nuclear and Particle Physics Experiments: A How-To Approach. 2nd ed., Springer, 1994.
-    \item Brown, S., and Vranesic, Z. (2005). Fundamentals of Digital Logic with VHDL Design. McGraw-Hill Education.
-    \item Bravo-Muñoz, I., Gardel-Vicente, A., and Lázaro-Galilea, J. L. (2020). New Applications and Architectures Based on FPGA/SoC. Electronics, 9(11), 1789.
-    \item https://www.amd.com/en/products/adaptive-socs-and-fpgas/soc/zynq-7000.html
-    \item Shafiq, F., Yamada, T., Vilchez, A. T., Dasgupta, S. (2017). Automated flow for compressing convolution neural networks for efficient edge-computation with FPGA. arXiv preprint arXiv:1712.06272.
-    \item LOUDE, J.-F., “Energy Resolution in Nuclear Spectroscopy”, internal report,
-    Laboratory for High Energy Physics LPHE, Lausanne, Switzerland (2000).
-    \item REDEKA, V., Optimum signal processing for pulse amplitude spectrometry in the
-    presence of high rate effects and noise, IEEE Trans. Nucl. Sci. NS-15 (1968) 455.
-\end{enumerate}
 
 \bibliographystyle{plain}
 \bibliography{references}

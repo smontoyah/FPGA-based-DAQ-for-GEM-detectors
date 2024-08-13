@@ -1,4 +1,23 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{amd_zynq_7000}
+{AMD}.
+\newblock Zynq-7000 soc.
+\newblock
+  \url{https://www.amd.com/en/products/adaptive-socs-and-fpgas/soc/zynq-7000.html},
+  2024.
+\newblock Último acceso: 13 de agosto de 2024.
+
+\bibitem{bravo2020new}
+Ignacio Bravo-Mu{\~n}oz, Alfredo Gardel-Vicente, and Jos{\'e}~Luis
+  L{\'a}zaro-Galilea.
+\newblock New applications and architectures based on fpga/soc, 2020.
+
+\bibitem{brown2000fundamentals}
+Stephen~D Brown and Zvonko~G Vranesic.
+\newblock {\em Fundamentals of digital logic with VHDL design}, volume
+  70125910.
+\newblock McGraw-Hill New York, 2000.
 
 \bibitem{knoll2010radiation}
 Glenn~F Knoll.
@@ -9,5 +28,35 @@ Glenn~F Knoll.
 Hermann Kolanoski and Norbert Wermes.
 \newblock {\em Particle Detectors: Fundamentals and Applications}.
 \newblock Oxford University Press, USA, 2020.
+
+\bibitem{leo1994techniques}
+William~R Leo.
+\newblock {\em Techniques for nuclear and particle physics experiments: a
+  how-to approach}.
+\newblock Springer Science \& Business Media, 1994.
+
+\bibitem{loudenuclearspectroscopy}
+J.~F Loude.
+\newblock Energy resolution in nuclear spectroscopy.
+\newblock {\em internal report,Laboratory for High Energy Physics LPHE,
+  Lausanne, Switzerland}, 2000.
+
+\bibitem{meyer2007digital}
+Uwe Meyer-Baese and U~Meyer-Baese.
+\newblock {\em Digital signal processing with field programmable gate arrays},
+  volume~65.
+\newblock Springer, 2007.
+
+\bibitem{proakis2007digital}
+John~G Proakis.
+\newblock {\em Digital signal processing: principles, algorithms, and
+  applications, 4/E}.
+\newblock Pearson Education India, 2007.
+
+\bibitem{radeka1968optimum}
+V~Radeka.
+\newblock Optimum signal-processing for pulse-amplitude spectrometry in the
+  presence of high-rate effects and noise.
+\newblock {\em IEEE Transactions on Nuclear Science}, 15(3):455--470, 1968.
 
 \end{thebibliography}
