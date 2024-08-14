@@ -1,62 +1,64 @@
 \begin{thebibliography}{10}
 
+\bibitem{webster2018measurement}
+J.~G. Webster and H.~Eren, {\em Measurement, Instrumentation, and Sensors
+  Handbook: Two-Volume Set}.
+\newblock CRC press, 2018.
+
+\bibitem{weinberg1976first}
+S.~Weinberg, ``The first three minutes,'' {\em FLAMINGO, Fontana}, 1976.
+
+\bibitem{ernst1990principles}
+R.~R. Ernst, G.~Bodenhausen, and A.~Wokaun, {\em Principles of nuclear magnetic
+  resonance in one and two dimensions}.
+\newblock Oxford university press, 1990.
+
+\bibitem{knoll2010radiation}
+G.~F. Knoll, {\em Radiation detection and measurement}.
+\newblock John Wiley \& Sons, 2010.
+
+\bibitem{kolanoski2020particle}
+H.~Kolanoski and N.~Wermes, {\em Particle Detectors: Fundamentals and
+  Applications}.
+\newblock Oxford University Press, USA, 2020.
+
+\bibitem{leo1994techniques}
+W.~R. Leo, {\em Techniques for nuclear and particle physics experiments: a
+  how-to approach}.
+\newblock Springer Science \& Business Media, 1994.
+
+\bibitem{proakis2007digital}
+J.~G. Proakis, {\em Digital signal processing: principles, algorithms, and
+  applications, 4/E}.
+\newblock Pearson Education India, 2007.
+
+\bibitem{brown2000fundamentals}
+S.~D. Brown and Z.~G. Vranesic, {\em Fundamentals of digital logic with VHDL
+  design}, vol.~70125910.
+\newblock McGraw-Hill New York, 2000.
+
+\bibitem{meyer2007digital}
+U.~Meyer-Baese and U.~Meyer-Baese, {\em Digital signal processing with field
+  programmable gate arrays}, vol.~65.
+\newblock Springer, 2007.
+
+\bibitem{bravo2020new}
+I.~Bravo-Mu{\~n}oz, A.~Gardel-Vicente, and J.~L. L{\'a}zaro-Galilea, ``New
+  applications and architectures based on fpga/soc,'' 2020.
+
 \bibitem{amd_zynq_7000}
-{AMD}.
-\newblock Zynq-7000 soc.
-\newblock
+{AMD}, ``Zynq-7000 soc.''
   \url{https://www.amd.com/en/products/adaptive-socs-and-fpgas/soc/zynq-7000.html},
   2024.
 \newblock Último acceso: 13 de agosto de 2024.
 
-\bibitem{bravo2020new}
-Ignacio Bravo-Mu{\~n}oz, Alfredo Gardel-Vicente, and Jos{\'e}~Luis
-  L{\'a}zaro-Galilea.
-\newblock New applications and architectures based on fpga/soc, 2020.
-
-\bibitem{brown2000fundamentals}
-Stephen~D Brown and Zvonko~G Vranesic.
-\newblock {\em Fundamentals of digital logic with VHDL design}, volume
-  70125910.
-\newblock McGraw-Hill New York, 2000.
-
-\bibitem{knoll2010radiation}
-Glenn~F Knoll.
-\newblock {\em Radiation detection and measurement}.
-\newblock John Wiley \& Sons, 2010.
-
-\bibitem{kolanoski2020particle}
-Hermann Kolanoski and Norbert Wermes.
-\newblock {\em Particle Detectors: Fundamentals and Applications}.
-\newblock Oxford University Press, USA, 2020.
-
-\bibitem{leo1994techniques}
-William~R Leo.
-\newblock {\em Techniques for nuclear and particle physics experiments: a
-  how-to approach}.
-\newblock Springer Science \& Business Media, 1994.
-
 \bibitem{loudenuclearspectroscopy}
-J.~F Loude.
-\newblock Energy resolution in nuclear spectroscopy.
-\newblock {\em internal report,Laboratory for High Energy Physics LPHE,
-  Lausanne, Switzerland}, 2000.
-
-\bibitem{meyer2007digital}
-Uwe Meyer-Baese and U~Meyer-Baese.
-\newblock {\em Digital signal processing with field programmable gate arrays},
-  volume~65.
-\newblock Springer, 2007.
-
-\bibitem{proakis2007digital}
-John~G Proakis.
-\newblock {\em Digital signal processing: principles, algorithms, and
-  applications, 4/E}.
-\newblock Pearson Education India, 2007.
+J.~F. Loude, ``Energy resolution in nuclear spectroscopy,'' {\em internal
+  report,Laboratory for High Energy Physics LPHE, Lausanne, Switzerland}, 2000.
 
 \bibitem{radeka1968optimum}
-V~Radeka.
-\newblock Optimum signal-processing for pulse-amplitude spectrometry in the
-  presence of high-rate effects and noise.
-\newblock {\em IEEE Transactions on Nuclear Science}, 15(3):455--470, 1968.
+V.~Radeka, ``Optimum signal-processing for pulse-amplitude spectrometry in the
+  presence of high-rate effects and noise,'' {\em IEEE Transactions on Nuclear
+  Science}, vol.~15, no.~3, pp.~455--470, 1968.
 
 \end{thebibliography}

@@ -2,6 +2,7 @@
 \usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{amsmath}
+\usepackage{cite}
 \usepackage{hyperref}
 
 
@@ -10,9 +11,17 @@
 
 \chapter*{Data Acquisition System }
 
-\noindent La medición constituye un pilar fundamental de la investigación científica. Sin embargo, la cuantificación de una magnitud solo se puede llevar a cabo a través de la interacción con el sistema y la extracción de la información de interés. A partir de estos conceptos es posible enmarcar la guía del presente capítulo, explorando los métodos que permiten convertir fenómenos físicos en señales que transporten la información y las tecnologías que hacen posible la adquisición de dichas señales y su representación en un formato útil para el usuario final. El proceso para extraer información de un sistema físico incluye varias etapas, tal como se describe a continuación.\\
+\noindent La medición constituye un pilar fundamental de la investigación científica. Sin embargo, la cuantificación de una magnitud solo se puede llevar a cabo a través de la interacción con el sistema y la extracción de la información de interés. A partir de estos conceptos es posible enmarcar la guía del presente capítulo, explorando los métodos que permiten convertir fenómenos físicos en señales que transporten la información y las tecnologías que hacen posible la adquisición de dichas señales y su representación en un formato útil para el usuario final  \cite{webster2018measurement}. El conjunto de procesos que diseñados para extraer información de un sistema físico se denomina sistema de adquisición de datos e incluye varias etapas que se ilustran en la figura \ref{fig:DAQ_generic} y se describen a continuación.\\
 
-\noindent En primer lugar, es fundamental identificar un sistema de interés y las variables que se desean medir. Cualquier objeto físico puede ser estudiado siempre que se cuente con el marco teórico y los métodos experimentales adecuados para extraer sistemáticamente sus medidas. Por ejemplo, si se considera el universo observable, es posible medir su tasa de expansión mediante argumentos cosmológicos y un sistema de telescopios que observe cambios en las características de la luz proveniente de diversas galaxias, lo que evidencia la expansión del universo. Por otro lado, un tumor cerebral puede evaluarse mediante la inspección de los cambios en los espines nucleares de los tejidos, analizando las fluctuaciones en el campo magnético de una bobina en un sistema de resonancia magnética nuclear. Aunque estos ejemplos pueden parecer desconectados, comparten un elemento clave: son sistemas físicos cuyos atributos pueden medirse mediante la interacción con un medio capaz de extraer información. \\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.0\textwidth]{DAQ_chain.png}
+    \caption{Ilustración de los principales componentes de un sistema de adquisición de datos genérico}
+    \label{fig:DAQ_generic}
+
+\end{figure}
+
+\noindent En primer lugar, es fundamental identificar un sistema de interés y las variables que se desean medir. Cualquier objeto físico puede ser estudiado siempre que se cuente con el marco teórico y los métodos experimentales adecuados para extraer sistemáticamente sus medidas. Por ejemplo, si se considera el universo observable, es posible medir su tasa de expansión mediante argumentos cosmológicos y un sistema de telescopios que observe cambios en las características de la luz proveniente de diversas galaxias, lo que evidencia la expansión del universo \cite{weinberg1976first}. Por otro lado, un tumor cerebral puede evaluarse al analizar los cambios en los espines nucleares de los átomos de hidrógeno en los tejidos cerebrales al aplicar un campo magnético potente para alinear estos espines, y luego pulsos de radiofrecuencia para perturbar esta alineación. La respuesta de los espines al campo magnético y a los pulsos de radiofrecuencia se detecta y se utiliza para crear imágenes detalladas de los tejidos cerebrales \cite{ernst1990principles}. Aunque estos ejemplos pueden parecer desconectados, comparten un elemento clave: son sistemas físicos cuyos atributos pueden medirse mediante la interacción con un medio capaz de extraer información. \\
 
 \noindent El medio mencionado es diseñado sistemáticamente para interactuar con el objeto de interés. Estos medios son comúnmente dispositivos llamados sensores, un tipo de transductor capaz de convertir estímulos físicos en señales, generalmente eléctricas. Como se ha mencionado, existe una amplia variedad de sensores diseñados para medir todo tipo de magnitudes físicas, los cuales explotan distintos fenómenos en función de los requisitos de la medición. Por ejemplo, para medir la temperatura de un objeto, se pueden utilizar aleaciones metálicas que cambian su resistividad eléctrica ante variaciones de temperatura. Sin embargo, una cámara fotosensible al espectro infrarrojo también podría cumplir la misma función. Estos sistemas se diferencian en la metodología con la que la información de los cambios de temperatura es transferida al usuario. En el primer caso, se requiere la lectura de la resistividad eléctrica y el conocimiento de su tasa de cambio en función de la temperatura, mientras que en el segundo caso, se emplea un sistema óptico equipado con la tecnología necesaria para convertir la radiación electromagnética en señales eléctricas. Estas señales luego pueden ser manipuladas para calcular la temperatura del objeto original utilizando la ley de Planck.\\
 
@@ -205,6 +214,6 @@ $$
 
 
 
-\bibliographystyle{plain}
+\bibliographystyle{ieeetr}
 \bibliography{references}
 \end{document}
