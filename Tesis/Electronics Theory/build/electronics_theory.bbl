@@ -54,14 +54,14 @@ M.~L. Crespo, F.~Foulon, A.~Cicuttin, M.~Bogovac, C.~Onime, C.~Sisterna,
   applications to nuclear and scientific instrumentation,'' {\em Electronics},
   vol.~10, no.~18, p.~2191, 2021.
 
-\bibitem{knoll2010radiation}
-G.~F. Knoll, {\em Radiation detection and measurement}.
-\newblock John Wiley \& Sons, 2010.
-
 \bibitem{kolanoski2020particle}
 H.~Kolanoski and N.~Wermes, {\em Particle Detectors: Fundamentals and
   Applications}.
 \newblock Oxford University Press, USA, 2020.
+
+\bibitem{knoll2010radiation}
+G.~F. Knoll, {\em Radiation detection and measurement}.
+\newblock John Wiley \& Sons, 2010.
 
 \bibitem{leo1994techniques}
 W.~R. Leo, {\em Techniques for nuclear and particle physics experiments: a
