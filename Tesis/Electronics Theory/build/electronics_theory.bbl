@@ -13,6 +13,30 @@ R.~R. Ernst, G.~Bodenhausen, and A.~Wokaun, {\em Principles of nuclear magnetic
   resonance in one and two dimensions}.
 \newblock Oxford university press, 1990.
 
+\bibitem{scarr1960thermistors}
+R.~Scarr and R.~Setterington, ``Thermistors, their theory, manufacture and
+  application,'' {\em Proceedings of the IEE-Part B: Electronic and
+  Communication Engineering}, vol.~107, no.~35, pp.~395--405, 1960.
+
+\bibitem{driggers2012introduction}
+R.~G. Driggers, M.~H. Friedman, and J.~Nichols, {\em Introduction to infrared
+  and electro-optical systems}.
+\newblock Artech House, 2012.
+
+\bibitem{krane2019modern}
+K.~S. Krane, {\em Modern physics}.
+\newblock John Wiley \& Sons, 2019.
+
+\bibitem{kledrowetz2023fully}
+V.~Kledrowetz, R.~Prokop, L.~Fujcik, and J.~Haze, ``A fully differential analog
+  front-end for signal processing from emg sensor in 28 nm fdsoi technology,''
+  {\em Sensors}, vol.~23, no.~7, p.~3422, 2023.
+
+\bibitem{proakis2007digital}
+J.~G. Proakis, {\em Digital signal processing: principles, algorithms, and
+  applications, 4/E}.
+\newblock Pearson Education India, 2007.
+
 \bibitem{knoll2010radiation}
 G.~F. Knoll, {\em Radiation detection and measurement}.
 \newblock John Wiley \& Sons, 2010.
@@ -26,11 +50,6 @@ H.~Kolanoski and N.~Wermes, {\em Particle Detectors: Fundamentals and
 W.~R. Leo, {\em Techniques for nuclear and particle physics experiments: a
   how-to approach}.
 \newblock Springer Science \& Business Media, 1994.
-
-\bibitem{proakis2007digital}
-J.~G. Proakis, {\em Digital signal processing: principles, algorithms, and
-  applications, 4/E}.
-\newblock Pearson Education India, 2007.
 
 \bibitem{brown2000fundamentals}
 S.~D. Brown and Z.~G. Vranesic, {\em Fundamentals of digital logic with VHDL
