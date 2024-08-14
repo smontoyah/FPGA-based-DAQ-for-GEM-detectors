@@ -7,7 +7,6 @@
 
 
 \begin{document}
- % glosario: SNR Sinal to Noise Ratio
 
 \chapter*{Data Acquisition System }
 
@@ -16,7 +15,7 @@
 \begin{figure}[h]
     \centering
     \includegraphics[width=1.0\textwidth]{DAQ_chain.png}
-    \caption{Ilustración de los principales componentes de un sistema de adquisición de datos genérico}
+    \caption{Diagrama de los principales componentes de un sistema de adquisición de datos genérico}
     \label{fig:DAQ_generic}
 
 \end{figure}
@@ -38,8 +37,13 @@
 \noindent A continuación, se presentarán algunos conceptos clave sobre los sistemas de Adquisición de Datos (DAQ) con el propósito de profundizar en las características de sus etapas generales y establecer una base sólida para abordar el DAQ desarrollado en este trabajo. Posteriormente, se describirá el montaje experimental y la metodología empleada para su implementación.\\
 
 \section{Marco Teórico}
+\subsection{Sensores y Detectores}
 
+\noindent Como se expuso anteriormente, un sensor es un dispositivo que detecta cambios en una cantidad física y los convierte en una señal que puede ser medida o interpretada. Formalmente, un sensor se define como un dispositivo que responde a un estímulo físico, químico o biológico específico, y genera una señal correspondiente, generalmente de tipo eléctrico, que tiene una relación funcional con la magnitud del estímulo. Los sensores suelen estar compuestos por dos componentes principales: el elemento sensible o transductor, que interactúa directamente con el estímulo (por ejemplo, temperatura, presión, luz, concentración química), y un mecanismo de conversión que traduce la respuesta del transductor en una señal utilizable (como una corriente o voltaje eléctrico). La precisión, sensibilidad, resolución y rango de operación son características clave que determinan el rendimiento de un sensor \cite{webster2018measurement}.\\
 
+\noindent Los sensores se pueden clasificar según diversos criterios: por el tipo de magnitud que miden (físicos, químicos, biológicos, ópticos), el principio de funcionamiento (resistivos, capacitivos, inductivos, piezoeléctricos), el tipo de señal de salida (analógicos, digitales), la forma de operación (activos, pasivos), y la naturaleza del contacto con la magnitud medida (de contacto, sin contacto). Además, según su contexto de uso, los sensores pueden ser clasificados como domésticos (utilizados en electrodomésticos y dispositivos de consumo), industriales (empleados en automatización y control de procesos), o científicos (destinados a investigación y aplicaciones especializadas) \cite{sinclair2000sensors}.\\
+
+\noindent En particular, estos últimos destacan por su alta precisión, exactitud, sensibilidad, robustez y fiabilidad. Su objetivo es proporcionar mediciones extremadamente precisas y reproducibles, ya que los resultados son cruciales para investigaciones avanzadas. Además, suelen poseer un amplio rango dinámico, lo que les permite detectar tanto variaciones muy pequeñas como extremadamente grandes en las magnitudes de interés. Un ejemplo destacado en este grupo son los detectores de radiación o partículas, que sobresalen por su capacidad para interactuar con corpúsculos a nivel atómico y subatómico, generando señales pulsadas que revelan propiedades esenciales de las partículas incidentes, como su energía, momento lineal o trayectoria, entre otras \cite{kolanoski2020particle}.
 
 \section{Tratamiento y acondicionamiento de Señales}
 
