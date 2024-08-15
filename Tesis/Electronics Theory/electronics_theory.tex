@@ -41,9 +41,60 @@
 
 \noindent Como se expuso anteriormente, un sensor es un dispositivo que detecta cambios en una cantidad física y los convierte en una señal que puede ser medida o interpretada. Formalmente, un sensor se define como un dispositivo que responde a un estímulo físico, químico o biológico específico, y genera una señal correspondiente, generalmente de tipo eléctrico, que tiene una relación funcional con la magnitud del estímulo. Los sensores suelen estar compuestos por dos componentes principales: el elemento sensible o transductor, que interactúa directamente con el estímulo (por ejemplo, temperatura, presión, luz, concentración química), y un mecanismo de conversión que traduce la respuesta del transductor en una señal utilizable (como una corriente o voltaje eléctrico). La precisión, sensibilidad, resolución y rango de operación son características clave que determinan el rendimiento de un sensor \cite{webster2018measurement}.\\
 
-\noindent Los sensores se pueden clasificar según diversos criterios: por el tipo de magnitud que miden (físicos, químicos, biológicos, ópticos), el principio de funcionamiento (resistivos, capacitivos, inductivos, piezoeléctricos), el tipo de señal de salida (analógicos, digitales), la forma de operación (activos, pasivos), y la naturaleza del contacto con la magnitud medida (de contacto, sin contacto). Además, según su contexto de uso, los sensores pueden ser clasificados como domésticos (utilizados en electrodomésticos y dispositivos de consumo), industriales (empleados en automatización y control de procesos), o científicos (destinados a investigación y aplicaciones especializadas) \cite{sinclair2000sensors}.\\
+\noindent Los sensores se pueden clasificar según diversos criterios: por el tipo de magnitud que miden, el principio de funcionamiento (resistivos, capacitivos, inductivos, piezoeléctricos), el tipo de señal de salida (analógicos, digitales), la forma de operación (activos, pasivos), y la naturaleza del contacto con la magnitud medida (de contacto, sin contacto). Además, según su contexto de uso, los sensores pueden ser clasificados como domésticos (utilizados en electrodomésticos y dispositivos de consumo), industriales (empleados en automatización y control de procesos), o científicos (destinados a investigación y aplicaciones especializadas) \cite{sinclair2000sensors}.\\
 
 \noindent En particular, estos últimos destacan por su alta precisión, exactitud, sensibilidad, robustez y fiabilidad. Su objetivo es proporcionar mediciones extremadamente precisas y reproducibles, ya que los resultados son cruciales para investigaciones avanzadas. Además, suelen poseer un amplio rango dinámico, lo que les permite detectar tanto variaciones muy pequeñas como extremadamente grandes en las magnitudes de interés. Un ejemplo destacado en este grupo son los detectores de radiación o partículas, que sobresalen por su capacidad para interactuar con corpúsculos a nivel atómico y subatómico, generando señales pulsadas que revelan propiedades esenciales de las partículas incidentes, como su energía, momento lineal o trayectoria, entre otras \cite{kolanoski2020particle}.
+
+\subsection{Señales Eléctricas de Sensores}
+
+\noindent Dado que las señales eléctricas son esenciales en este contexto como portadoras de la información física que se busca extraer, es fundamental describir sus principales características para comprender cómo las etapas electrónicas del sistema de adquisición de datos (DAQ) las afectan. Aunque las señales pueden ser digitales o análogas, generalmente las producidas por un sensor o detector son de tipo análogo. \\
+
+\noindent Una señal analógica proveniente de un sensor se caracteriza principalmente por su variación continua en el tiempo y su capacidad para representar información en un rango infinito de valores. La amplitud de la señal refleja la magnitud del parámetro medido, como temperatura o presión, y puede variar suavemente en respuesta a cambios en el entorno. La frecuencia de la señal puede no ser relevante en todos los casos, pero el tiempo de respuesta y la estabilidad son cruciales para asegurar mediciones precisas. Además, la señal puede estar afectada por ruido y errores, lo que requiere técnicas de filtrado y calibración para obtener datos confiables. La forma de onda de la señal es continua y puede ser analizada en el dominio del tiempo para evaluar su comportamiento y en el dominio de la frecuencia para identificar componentes relevantes \cite{sinclair2000sensors}. En la figura \ref{fig:generic_signal}, se ilustra una señal en el dominio del tiempo proveniente de un sensor de aceleración
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{mysignal.png}
+    \caption{Señal no periódica en el dominio del tiempo proveniente de un sensor de aceleración. En ella es posible observar algunas características como duración, rango de la magnitud de interés en el lapso registrado, ruido electrónico, tendencia y transitorios. La amplitud de la señal solo puede ser definida con base a un nivel de referencia.}
+    \label{fig:generic_signal}
+
+\end{figure}
+
+\noindent Un caso de particular interés son las señales producidas por los detectores de partículas, que en general son de naturaleza pulsada. En este contexto, se puede asociar la detección de un evento con una perturbación, denominada pulso, que se define sobre la línea base de la señal de salida. La figura \ref{fig:pulse} muestra un ejemplo genérico de un pulso individual, utilizado para ilustrar algunas de sus características principales.\\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.0\textwidth]{pulse_edited.png}
+    \caption{Pulso típico genérico para ilustrar las principales características. Reproducido a partir de \cite{kolanoski2020particle}}
+    \label{fig:pulse}
+
+\end{figure}
+
+\noindent Según \cite{knoll2010radiation}, suponiendo que la señal generada por el detector es corta comparado con los tiempos típicos de procesamiento de la electrónica de lectura, las cantidades que caracterizan un pulso son:
+
+\begin{itemize}
+    \item La amplitud máxima del pulso: también conocida como altura del pulso, es el valor máximo que alcanza la señal. En sistemas lineales, este valor es proporcional a la energía primaria depositada en el detector.
+    \item Tiempo de pico: Es el momento en el tiempo en el que se alcanza la amplitud máxima del pulso.
+    \item Área o integral del pulso: Representa el área bajo la curva del pulso. En sistemas lineales y para señales cortas tipo $\delta$, su valor debería ser proporcional a la energía primaria depositada.
+    \item Ancho del pulso: Se refiere a la duración del pulso, que generalmente se define como el ancho total a la mitad de la altura máxima (FWHM, por sus siglas en inglés).
+    \item Bordes de subida y bajada: Son las pendientes ascendente y descendente del pulso.
+    \item Tiempo de subida: Caracteriza la rapidez con la que el pulso aumenta. Comúnmente se define como el tiempo necesario para que el pulso pase del 10\% al 90\% de su amplitud máxima, aunque existen otras definiciones.
+    \item Tasa de variación (Slew rate): Indica el cambio de voltaje por unidad de tiempo $dV/dt$ y se expresa en unidades de $V/s$.
+    \item Línea base o valor de pedestal: Es el valor de salida cuando no hay ninguna señal de entrada. Define el nivel 'cero' desde el cual se mide la altura de la señal. Aunque generalmente la línea base tiene un valor fijo, pueden ocurrir desviaciones durante un cierto (y breve) período de tiempo. Estas desviaciones se conocen como desplazamientos de la línea base.
+    \item Tiempo de retorno a la línea base: Es el tiempo necesario para que la amplitud del pulso vuelva al valor de la línea base.
+    \item Suboscilación: Se refiere a la parte de la amplitud de un pulso que tiene un signo opuesto (con respecto a la línea base) en comparación con la amplitud principal.
+    \item Señal unipolar: Es una forma de pulso en la que, salvo por las fluctuaciones de ruido, el valor de la amplitud se mantiene por encima o por debajo de la línea base en todo momento $t$. Por lo general, también se incluyen en esta definición las señales con pequeñas suboscilaciones.
+    \item Señal bipolar: Es una forma de pulso en la que la parte del pulso que ocurre más tarde en el tiempo tiene un signo opuesto al de la parte que ocurre primero.
+\end{itemize}
+
+\noindent Por otro lado, las señales digitales, esenciales en el procesamiento de información, se caracterizan por su naturaleza discreta tanto en el tiempo como en la amplitud. Estas señales solo pueden adoptar dos estados, representados por los valores 1 y 0. A partir de una señal base con frecuencia constante, conocida como reloj, se puede codificar información en señales digitales mediante código binario y operaciones de conteo. Básicamente, se mide cuántos ciclos de reloj la señal permanece en un estado u otro. Esta metodología es altamente versátil, ya que permite realizar operaciones matemáticas utilizando el sistema binario \cite{brown2000fundamentals}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{digital_signal.png}
+    \caption{Señal digital}
+    \label{fig:digital_siganl}
+
+\end{figure}
 
 \section{Tratamiento y acondicionamiento de Señales}
 
@@ -180,32 +231,7 @@ $$
 %Particularmente en la medición de eventos propios de cor´pusculos, se presentan señales de tipo pulsado...
 \subsection{Características generales de un pulso}
 
-\noindent Las señales producidas por un detector son, en general, de naturaleza pulsada. En este contexto, se puede asociar la detección de un evento con una perturbación, denominada pulso, que se define sobre la línea base de la señal de salida. La figura \ref{fig:pulse} muestra un ejemplo genérico de un pulso individual, utilizado para ilustrar algunas de sus características principales.\\
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=1.0\textwidth]{pulse_edited.png}
-    \caption{Pulso típico genérico para ilustrar las principales características. Reproducido a partir de \cite{kolanoski2020particle}}
-    \label{fig:pulse}
-
-\end{figure}
-
-\noindent Según \cite{knoll2010radiation}, suponiendo que la señal generada por el detector es corta comparado con los tiempos típicos de procesamiento de la electrónica de lectura, las cantidades que caracterizan un pulso son:
-
-\begin{itemize}
-    \item La amplitud máxima del pulso: también conocida como altura del pulso, es el valor máximo que alcanza la señal. En sistemas lineales, este valor es proporcional a la energía primaria depositada en el detector.
-    \item Tiempo de pico: Es el momento en el tiempo en el que se alcanza la amplitud máxima del pulso.
-    \item Área o integral del pulso: Representa el área bajo la curva del pulso. En sistemas lineales y para señales cortas tipo $\delta$, su valor debería ser proporcional a la energía primaria depositada.
-    \item Ancho del pulso: Se refiere a la duración del pulso, que generalmente se define como el ancho total a la mitad de la altura máxima (FWHM, por sus siglas en inglés).
-    \item Bordes de subida y bajada: Son las pendientes ascendente y descendente del pulso.
-    \item Tiempo de subida: Caracteriza la rapidez con la que el pulso aumenta. Comúnmente se define como el tiempo necesario para que el pulso pase del 10\% al 90\% de su amplitud máxima, aunque existen otras definiciones.
-    \item Tasa de variación (Slew rate): Indica el cambio de voltaje por unidad de tiempo $dV/dt$ y se expresa en unidades de $V/s$.
-    \item Línea base o valor de pedestal: Es el valor de salida cuando no hay ninguna señal de entrada. Define el nivel 'cero' desde el cual se mide la altura de la señal. Aunque generalmente la línea base tiene un valor fijo, pueden ocurrir desviaciones durante un cierto (y breve) período de tiempo. Estas desviaciones se conocen como desplazamientos de la línea base.
-    \item Tiempo de retorno a la línea base: Es el tiempo necesario para que la amplitud del pulso vuelva al valor de la línea base.
-    \item Suboscilación: Se refiere a la parte de la amplitud de un pulso que tiene un signo opuesto (con respecto a la línea base) en comparación con la amplitud principal.
-    \item Señal unipolar: Es una forma de pulso en la que, salvo por las fluctuaciones de ruido, el valor de la amplitud se mantiene por encima o por debajo de la línea base en todo momento $t$. Por lo general, también se incluyen en esta definición las señales con pequeñas suboscilaciones.
-    \item Señal bipolar: Es una forma de pulso en la que la parte del pulso que ocurre más tarde en el tiempo tiene un signo opuesto al de la parte que ocurre primero.
-\end{itemize}
 
 \section{Montaje Experimental}
 \section{Resultados}

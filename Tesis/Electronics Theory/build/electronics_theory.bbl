@@ -67,15 +67,15 @@ H.~Kolanoski and N.~Wermes, {\em Particle Detectors: Fundamentals and
 G.~F. Knoll, {\em Radiation detection and measurement}.
 \newblock John Wiley \& Sons, 2010.
 
-\bibitem{leo1994techniques}
-W.~R. Leo, {\em Techniques for nuclear and particle physics experiments: a
-  how-to approach}.
-\newblock Springer Science \& Business Media, 1994.
-
 \bibitem{brown2000fundamentals}
 S.~D. Brown and Z.~G. Vranesic, {\em Fundamentals of digital logic with VHDL
   design}, vol.~70125910.
 \newblock McGraw-Hill New York, 2000.
+
+\bibitem{leo1994techniques}
+W.~R. Leo, {\em Techniques for nuclear and particle physics experiments: a
+  how-to approach}.
+\newblock Springer Science \& Business Media, 1994.
 
 \bibitem{meyer2007digital}
 U.~Meyer-Baese and U.~Meyer-Baese, {\em Digital signal processing with field

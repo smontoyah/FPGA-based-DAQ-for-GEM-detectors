@@ -17,7 +17,7 @@
    id="svg14084"
    inkscape:version="0.92pre5 r15287"
    sodipodi:docname="front-end_general.svg"
-   inkscape:export-filename="C:\Users\Sebas\Documents\FPGA-based-DAQ-for-GEM-detectors\Tesis\Theory\front-end.png"
+   inkscape:export-filename="C:\Users\Sebas\Documents\FPGA-based-DAQ-for-GEM-detectors\Tesis\Electronics Theory\front-end.png"
    inkscape:export-xdpi="244.2"
    inkscape:export-ydpi="244.2">
   <defs
@@ -112,8 +112,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.8429014"
-     inkscape:cx="305.57735"
-     inkscape:cy="899.16997"
+     inkscape:cx="233.47991"
+     inkscape:cy="928.62522"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -208,35 +208,35 @@
        sodipodi:nodetypes="cc" />
     <path
        style="opacity:1;fill:#00c7b4;fill-opacity:0.10194176;stroke:#000000;stroke-width:0.2;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       d="M 58.626959,59.192805 65.4404,59.124095"
+       d="m 58.626959,59.192805 4.884589,-0.01795"
        id="path14724"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <path
        style="opacity:1;fill:#00c7b4;fill-opacity:0.10194176;stroke:#000000;stroke-width:0.2;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 58.652341,63.481963 9.044644,-0.125624"
+       d="m 58.652341,63.481963 7.348736,-0.07179"
        id="path14724-1"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <path
        style="opacity:1;fill:#00c7b4;fill-opacity:0.10194176;stroke:#000000;stroke-width:0.2;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 65.467421,57.778311 c -0.03589,2.49451 -0.03589,2.49451 -0.03589,2.49451"
+       d="m 63.614708,57.87983 c -0.03589,2.49451 -0.03589,2.49451 -0.03589,2.49451"
        id="path14741"
        inkscape:connector-curvature="0" />
     <path
        style="opacity:1;fill:#00c7b4;fill-opacity:0.10194176;stroke:#000000;stroke-width:0.2;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 66.418563,57.769338 c -0.03589,2.49451 -0.03589,2.49451 -0.03589,2.49451"
+       d="m 64.56585,57.870857 c -0.03589,2.49451 -0.03589,2.49451 -0.03589,2.49451"
        id="path14741-4"
        inkscape:connector-curvature="0" />
     <path
        style="opacity:1;fill:#00c7b4;fill-opacity:0.10194176;stroke:#000000;stroke-width:0.2;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 66.418565,59.07043 9.206354,0.03589"
+       d="m 64.515092,59.07043 11.109827,0.03589"
        id="path14758"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <path
        style="opacity:1;fill:#00c7b4;fill-opacity:0.10194176;stroke:#000000;stroke-width:0.2;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 67.693813,63.454685 c 0.06754,-4.321799 0.05745,-4.475464 0.05745,-4.475464"
+       d="m 65.891859,63.429305 c 0.06754,-4.321799 0.07091,-4.412653 0.07091,-4.412653"
        id="path14760"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
@@ -283,25 +283,25 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:6.61458302px;font-family:sans-serif;-inkscape-font-specification:sans-serif;text-align:center;text-anchor:middle;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       x="48.526291"
-       y="72.027519"
+       x="43.357811"
+       y="71.883949"
        id="text14826"><tspan
          sodipodi:role="line"
          id="tspan14824"
-         x="48.526291"
-         y="72.027519"
-         style="font-size:3.52777767px;fill:#000000;fill-opacity:1;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none">detector</tspan></text>
+         x="43.357811"
+         y="71.883949"
+         style="font-size:3.52777767px;fill:#000000;fill-opacity:1;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none">detector/sensor</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:6.61458302px;font-family:sans-serif;-inkscape-font-specification:sans-serif;text-align:center;text-anchor:middle;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       x="16.653994"
-       y="58.962749"
+       x="14.213323"
+       y="55.517097"
        id="text14830"><tspan
          sodipodi:role="line"
          id="tspan14828"
-         x="16.653994"
-         y="58.962749"
-         style="stroke-width:0">particle</tspan></text>
+         x="14.213323"
+         y="55.517097"
+         style="stroke-width:0">physical</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:6.61458302px;font-family:sans-serif;-inkscape-font-specification:sans-serif;text-align:center;text-anchor:middle;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -352,6 +352,38 @@
          id="tspan15124"
          x="111.98374"
          y="32.689644"
-         style="stroke-width:0.065;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;fill:#000000;fill-opacity:1">front-end electronics</tspan></text>
+         style="fill:#000000;fill-opacity:1;stroke-width:0.065;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0">signal conditioning</tspan><tspan
+         sodipodi:role="line"
+         x="111.98374"
+         y="39.304226"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.065;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+         id="tspan2487" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:6.61458349px;font-family:sans-serif;-inkscape-font-specification:sans-serif;text-align:center;text-anchor:middle;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="13.779169"
+       y="59.373783"
+       id="text14830-4"><tspan
+         sodipodi:role="line"
+         id="tspan14828-6"
+         x="13.77917"
+         y="59.373783"
+         style="stroke-width:0">interaction</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:6.61458349px;font-family:sans-serif;-inkscape-font-specification:sans-serif;text-align:center;text-anchor:middle;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.065;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="113.77116"
+       y="36.249714"
+       id="text15126-9"><tspan
+         sodipodi:role="line"
+         id="tspan15124-8"
+         x="113.77116"
+         y="36.249714"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.065;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0">electronics</tspan><tspan
+         sodipodi:role="line"
+         x="113.77116"
+         y="42.864296"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.065;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+         id="tspan2487-0" /></text>
   </g>
 </svg>
