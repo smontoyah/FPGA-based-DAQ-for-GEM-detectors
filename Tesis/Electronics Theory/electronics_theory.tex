@@ -51,7 +51,7 @@
 
 \noindent Dado que las señales eléctricas son esenciales en este contexto como portadoras de la información física que se busca extraer, es fundamental describir sus principales características para comprender cómo las etapas electrónicas del sistema de adquisición de datos (DAQ) las afectan. Aunque las señales pueden ser digitales o análogas, generalmente las producidas por un sensor o detector son de tipo análogo. \\
 
-\noindent Una señal analógica proveniente de un sensor se caracteriza principalmente por su variación continua en el tiempo y su capacidad para representar información en un rango infinito de valores. La amplitud de la señal refleja la magnitud del parámetro medido, como temperatura o presión, y puede variar suavemente en respuesta a cambios en el entorno. La frecuencia de la señal puede no ser relevante en todos los casos, pero el tiempo de respuesta y la estabilidad son cruciales para asegurar mediciones precisas. Además, la señal puede estar afectada por ruido y errores, lo que requiere técnicas de filtrado y calibración para obtener datos confiables. La forma de onda de la señal es continua y puede ser analizada en el dominio del tiempo para evaluar su comportamiento y en el dominio de la frecuencia para identificar componentes relevantes \cite{sinclair2000sensors}. En la figura \ref{fig:generic_signal}, se ilustra una señal en el dominio del tiempo proveniente de un sensor de aceleración
+\noindent Una señal analógica proveniente de un sensor se caracteriza principalmente por su variación continua en el tiempo y su capacidad para representar información en un rango infinito de valores. La amplitud de la señal refleja la magnitud del parámetro medido, como temperatura o presión, y puede variar suavemente en respuesta a cambios en el entorno. La frecuencia de la señal puede no ser relevante en todos los casos, pero el tiempo de respuesta y la estabilidad son cruciales para asegurar mediciones precisas. Además, la señal puede estar afectada por ruido y errores, lo que requiere técnicas de filtrado y calibración para obtener datos confiables. La forma de onda de la señal es continua y puede ser analizada en el dominio del tiempo para evaluar su comportamiento y en el dominio de la frecuencia para identificar componentes relevantes \cite{sinclair2000sensors}. En la figura \ref{fig:generic_signal}, se ilustra una señal en el dominio del tiempo proveniente de un sensor de aceleración.\\
 
 \begin{figure}[h]
     \centering
@@ -61,7 +61,7 @@
 
 \end{figure}
 
-\noindent Un caso de particular interés son las señales producidas por los detectores de partículas, que en general son de naturaleza pulsada. En este contexto, se puede asociar la detección de un evento con una perturbación, denominada pulso, que se define sobre la línea base de la señal de salida. La figura \ref{fig:pulse} muestra un ejemplo genérico de un pulso individual, utilizado para ilustrar algunas de sus características principales.\\
+\noindent Un caso de particular interés son las señales producidas por los detectores de partículas, que en general son de naturaleza pulsada. En este contexto, se puede asociar la detección de un evento con una perturbación, denominada pulso, que se define sobre la línea base de la señal de salida. La figura \ref{fig:pulse} muestra un ejemplo genérico de un pulso individual, utilizado para ilustrar algunas de sus características principales.
 
 \begin{figure}[h]
     \centering
@@ -88,7 +88,7 @@
     \item Señal bipolar: Es una forma de pulso en la que la parte del pulso que ocurre más tarde en el tiempo tiene un signo opuesto al de la parte que ocurre primero.
 \end{itemize}
 
-\noindent Por otro lado, las señales digitales, esenciales en el procesamiento de información, se caracterizan por su naturaleza discreta tanto en el tiempo como en la amplitud. Estas señales solo pueden adoptar dos estados, representados por los valores 1 y 0. A partir de una señal base con frecuencia constante, conocida como reloj, se puede codificar información en señales digitales mediante código binario y operaciones de conteo. Básicamente, se mide cuántos ciclos de reloj la señal permanece en un estado u otro. Esta metodología es altamente versátil, ya que permite realizar operaciones matemáticas utilizando el sistema binario \cite{brown2000fundamentals}. En la figura \ref{fig:digital_siganl} se puede observar un ejemplo de señal digital para ilustrar.
+\noindent Por otro lado, las señales digitales, esenciales en el procesamiento de información, se caracterizan por su naturaleza discreta tanto en el tiempo como en la amplitud, en tanto que solo pueden adoptar dos estados, representados por los valores 1 y 0. Es de resaltar, que las señales analógicas tratadas anteriormente, son convertidas a digitales mediante un dispositivo denominado conversor análogo digital o ADC. Adicionalmente. a partir de una señal digital base con frecuencia constante, conocida como reloj, se puede codificar información en señales digitales mediante código binario y operaciones de conteo. Básicamente, se mide cuántos ciclos de reloj la señal permanece en un estado u otro. Esta metodología es altamente versátil, ya que permite realizar operaciones matemáticas utilizando el sistema binario \cite{brown2000fundamentals}. En la figura \ref{fig:digital_siganl} se puede observar un ejemplo de señal digital para ilustrar.
 
 \begin{figure}[h]
     \centering
@@ -100,7 +100,7 @@
 
 \section{Tratamiento y acondicionamiento de Señales}
 
-\noindent Próxima al sensor, se encuentra la etapa de tratamiento y acondicionamiento, que típicamente comprende electrónica analógica para la amplificación de la señal, shaping y digitalización. A continuación pueden encontrarse sistemas de más alto nivel como procesadores digitales y de adquisición de datos, que permiten transformar las señales y extraer la información necesaria para su posterior estudio. En la figura \ref{fig:generic_frontend} se observa un esquema genérico de la electrónica de front-end de un detector.\\
+\noindent Próxima al sensor, se encuentra la etapa de tratamiento y acondicionamiento, que típicamente comprende electrónica analógica para la amplificación de la señal, shaping y digitalización. A continuación pueden encontrarse sistemas de más alto nivel como procesadores digitales y de adquisición de datos, que permiten transformar las señales y extraer la información necesaria para su posterior estudio. En la figura \ref{fig:generic_frontend} se observa un esquema genérico de esta sección de la cadena de adquisición de datos.\\
 
 \begin{figure}[h]
     \centering
@@ -110,7 +110,7 @@
 
 \end{figure}
 
-\noindent Los sistemas involucrados en esta etapa, deben cumplir con tres características: (a) ser causales, (b) invariantes en el tiempo, y (c) lineales al menos en la primera etapa de amplificación. Un sistema se considera causal si, en cualquier momento, solo depende del valor de su entrada en ese instante. Es invariante en el tiempo si la relación entre la salida y la entrada, por ejemplo, el ratio $\text{señal}_{\text{entrada}}/\text{señal}_{\text{salida}}$ no varía con el tiempo \cite{kolanoski2020particle}. La linealidad del sistema implica que el pulso de salida (por ejemplo, $v_{out(t)}$) no depende del tamaño de la señal de entrada (por ejemplo, $i_{in(t)}$), esto es, 
+\noindent Los sistemas involucrados en esta etapa, deben cumplir con tres características: (a) ser causales, (b) invariantes en el tiempo, y (c) lineales al menos en la primera etapa de amplificación. Un sistema se considera causal si, en cualquier momento, solo depende del valor de su entrada en ese instante. Es invariante en el tiempo si la relación entre la salida y la entrada, por ejemplo, el ratio $\text{señal}_{\text{entrada}}/\text{señal}_{\text{salida}}$ no varía con el tiempo \cite{kolanoski2020particle}. La linealidad del sistema implica que la señal de salida (por ejemplo, $v_{out(t)}$) no depende del tamaño de la señal de entrada (por ejemplo, $i_{in(t)}$), esto es, 
 
 $$
 v_{\text {out }}\left(\alpha \times i_{\text {in }}(t)\right)=\alpha \times v_{\text {out }}\left(i_{\text {in }}(t)\right)
@@ -126,9 +126,15 @@ $$
     \item amplificador de carga: $Q \rightarrow V$ (o $I$).
 \end{itemize}
 
-\noindent Como expone \cite{knoll2010radiation}, La función principal del preamplificador es captar la señal del detector sin deteriorar notablemente la SNR inherente. Por ello, el preamplificador se ubica generalmente lo más cerca posible del detector para reducir la carga capacitiva $(C)$ sobre este. Por ejemplo, preamplificador de voltaje amplifica directamente la señal de voltaje $V_{\text{in}}$, manteniendo una alta impedancia de entrada $Z_{\text{in}}$ y una baja impedancia de salida $Z_{\text{out}}$ para asegurar una transferencia eficiente y reducir la influencia del ruido. En ambos casos, la linealidad del preamplificador es crucial para que la relación $V_{\text{out}}/ V_{\text{in}}$ se mantenga constante, lo cual es esencial para la precisión en la medición \cite{leo1994techniques}.\\
+\noindent Como expone \cite{knoll2010radiation}, La función principal del preamplificador es captar la señal del detector sin deteriorar notablemente la SNR inherente. Por ello, el preamplificador se ubica generalmente lo más cerca posible del detector para reducir la carga capacitiva $(C)$ sobre este. Por ejemplo, un preamplificador de voltaje amplifica directamente la señal de voltaje $V_{\text{in}}$, manteniendo una alta impedancia de entrada $Z_{\text{in}}$ y una baja impedancia de salida $Z_{\text{out}}$ para asegurar una transferencia eficiente y reducir la influencia del ruido. En ambos casos, la linealidad del preamplificador es crucial para que la relación $V_{\text{out}}/ V_{\text{in}}$ se mantenga constante, lo cual es esencial para la precisión en la medición \cite{leo1994techniques}.\\
 
-\noindent Por otro lado, un preamplificador de carga convierte una señal de carga $Q$ generada por el detector en un voltaje proporcional $V$, dada la relación: $$V = \frac{Q}{C}$$ La figura \ref{fig:preamp} ilustra su comportamiento típico sobre la señal del detector.\\
+\noindent Por otro lado, un preamplificador de carga convierte una señal de carga $Q$ generada por el detector en un voltaje proporcional $V$, dada la relación: 
+
+\begin{equation}
+    V = \frac{Q}{C}
+\end{equation}
+
+La figura \ref{fig:preamp} ilustra su comportamiento típico sobre la señal del detector.\\
 
 \begin{figure}[h]
     \centering
@@ -234,15 +240,9 @@ $$
 \noindent Aunque los distintos tipos de detectores generan señales eléctricas únicas, dependiendo de los procesos físicos que ocurren en su interior, es posible identificar características comunes que facilitan la comprensión de conceptos clave en el acondicionamiento y procesamiento de señales.
 
 %Particularmente en la medición de eventos propios de cor´pusculos, se presentan señales de tipo pulsado...
-\subsection{Características generales de un pulso}
-
-
-
 \section{Montaje Experimental}
 \section{Resultados}
 \section{Análisis y conclusiones}
-
-
 
 \bibliographystyle{ieeetr}
 \bibliography{references}
