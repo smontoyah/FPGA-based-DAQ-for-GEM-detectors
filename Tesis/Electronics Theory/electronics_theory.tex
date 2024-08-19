@@ -4,6 +4,8 @@
 \usepackage{amsmath}
 \usepackage{cite}
 \usepackage{hyperref}
+\usepackage{caption}
+
 
 
 \begin{document}
@@ -93,14 +95,14 @@
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.7\textwidth]{digital_signal.png}
-    \caption{Ejemplo de diagrama de tiempo de una señal digital. En la parte superior se muestra una señal típica de reloj y en la parte inferior una señal genérica.}
+    \caption{Ejemplo de diagrama de tiempo de una señal digital. En la parte superior se muestra una señal típica de reloj y en la parte inferior una señal genérica con información codificada en su estado (ampitud) o en su duración (ancho).}
     \label{fig:digital_siganl}
 
 \end{figure}
 
 \section{Tratamiento y acondicionamiento de Señales}
 
-\noindent Próxima al sensor, se encuentra la etapa de tratamiento y acondicionamiento, que típicamente comprende electrónica analógica para la amplificación de la señal, shaping y digitalización. A continuación pueden encontrarse sistemas de más alto nivel como procesadores digitales y de adquisición de datos, que permiten transformar las señales y extraer la información necesaria para su posterior estudio. En la figura \ref{fig:generic_frontend} se observa un esquema genérico de esta sección de la cadena de adquisición de datos.\\
+\noindent Próxima al sensor, se encuentra la etapa de tratamiento y acondicionamiento, que típicamente comprende electrónica analógica para la amplificación, shaping y digitalización de la señal. Esta etapa es esencial para filtrar y modular la señal, otorgándole las características adecuadas para ser transferida a las etapas de procesamiento digital posteriores. En la figura \ref{fig:generic_frontend} se observa un esquema genérico de esta sección de la cadena de adquisición de datos.\\
 
 \begin{figure}[h]
     \centering
@@ -116,7 +118,7 @@ $$
 v_{\text {out }}\left(\alpha \times i_{\text {in }}(t)\right)=\alpha \times v_{\text {out }}\left(i_{\text {in }}(t)\right)
 $$
 
-\noindent En muchos casos, la magnitud a la salida de un sensor puede ser muy pequeña, por lo que es necesario implementar etapas de preamplificación y amplificación, hasta lograr en la señal las características adecuadas para su digitalización y el subsecuente procesamiento. Para llevar a cabo tal función, es posible utilizar dintintos dispositivos, sin embargo, los más comunes son los amplificadores operacionales y transistores. Usualmente las señales de entrada provenients del sensor o detector al preamplificador son transformadas en señales de voltaje $(V)$ o de corriente $(I)$. Dependiento de los tipos de entrada y salida, es posible distinguir \cite{kolanoski2020particle}:
+\noindent En muchos casos, la magnitud a la salida de un sensor puede ser muy pequeña, por lo que es necesario implementar etapas de preamplificación y amplificación que aumenten la amplitud de la señal (ganancia) hasta que esta se encuentre en el rango de sensibilidad de las etapas posteriores. Para llevar a cabo tal función, es posible utilizar dintintos dispositivos, sin embargo, los más comunes son los amplificadores operacionales y transistores. Usualmente las señales de entrada provenients del sensor o detector al preamplificador son transformadas en señales de voltaje $(V)$ o de corriente $(I)$. Dependiento de los tipos de entrada y salida, es posible distinguir \cite{kolanoski2020particle}:
 
 \begin{itemize}
     \item amplificador de voltaje: $V \rightarrow V$,
@@ -153,9 +155,19 @@ $$
 
 \subsubsection{Signal Shaping}
 
-\noindent En la cadena de tratamiento de señales, la etapa de shaping es un circuito electrónico diseñado para modificar la forma de una señal para mejorar su calidad y adecuarla a las necesidades de procesamiento posterior. En particular, se implementa en sistemas de detección de partículas y se encarga de transformar las señales pulsadas, que pueden tener formas variadas, en pulsos uniformes y bien definidos. Esto es crucial para evitar la superposición de pulsos (pile-up) y reducir el ruido mediante filtrado de frecuencia \cite{leo1994techniques}.\\
+\noindent En la cadena de tratamiento de señales, la etapa de shaping es un circuito electrónico fundamental que modifica la forma de una señal para optimizar su calidad y adaptarla a los requisitos del procesamiento subsiguiente. Generalmente, esta etapa se integra en la fase de preamplificación o amplificación, y es especialmente relevante en sistemas de detección de partículas. Su función principal es transformar señales pulsadas, que pueden presentar formas diversas, en pulsos uniformes y bien definidos. Esta uniformidad es crucial para evitar la superposición de pulsos (pile-up) y disminuir el ruido mediante un filtrado de frecuencia eficiente \cite{leo1994techniques}.\\
 
-\noindent Los pulsos electrónicos generados por el preamplificador tienen tiempos de decaimiento típicos que varían entre unos pocos nanosegundos y varios microsegundos. Si llegan señales adicionales durante el tiempo de decaimiento, puede ocurrir pile-up a pesar de que el capacitor de retroalimentación del preamplificador se descargue. Para mitigar esto, se utilizan filtros pasa-altos y pasa-bajos, que permiten separar las señales superpuestas y moldear los pulsos de salida en formas más Gaussianas. Además, los filtros ayudan a reducir el ruido blanco que afecta a todas las frecuencias, mejorando así la SNR \cite{kolanoski2020particle}.\\
+\noindent Los pulsos electrónicos generados por el preamplificador tienen tiempos de decaimiento típicos que varían entre unos pocos nanosegundos y varios microsegundos. Si llegan señales adicionales durante el tiempo de decaimiento, puede ocurrir pile-up a pesar de que el capacitor de retroalimentación del preamplificador se descargue. Para mitigar esto, se utilizan filtros pasa-altos y pasa-bajos, que permiten separar las señales superpuestas y moldear los pulsos de salida en formas más Gaussianas. Además, los filtros ayudan a reducir el ruido blanco que afecta a todas las frecuencias, mejorando así la SNR \cite{kolanoski2020particle}. La figura \ref{fig:shaper} ilustra las formas de pulsos típicos en la salida del preamplificador que ingresan una configuración de shaping básica compuesta por un circuito CR-RC. Usualmente se observa una caída (undershoot) en la salida del shaper, la cual se corrige con la cancelación polo-cero\footnote{Técnica de diseño de circuitos que anula efectos indeseados al colocar un cero en la misma frecuencia que un polo, mejorando la respuesta del sistema.} \\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.0\textwidth]{shaper_chain.png}
+    \caption{Funcionamiento típico de un shaper. La resistencia $R_{\text{pz}}$ paralela al condensador del filtro de paso alto se utiliza para la corrección del undershooting. El amplificador (×1) entre las secciones del filtro de paso de banda sirve como un buffer, impidiendo que el filtro de paso bajo aplique una carga significativa al filtro de paso alto. Adaptado de \cite{kolanoski2020particle}.}
+    \label{fig:shaper}
+\end{figure}
+
+\noindent Es relevante destacar que el proceso de shaping también puede realizarse en la etapa de procesamiento digital, dependiendo de los requisitos específicos de la aplicación. Formas de pulso como las triangulares o trapezoidales, que son difíciles de obtener mediante electrónica analógica, pueden implementarse de manera más eficiente en el dominio digital \cite{radeka1968optimum}. En este contexto, estas formas se logran mediante la implementación de filtros FIR (Finite Impulse Response) con parámetros ajustados en plataformas configurables como las FPGA, un tema que se abordará con mayor detalle en la sección \ref{sec:digital_processing}.
+
 
 \subsubsection{Digitalización}
 
@@ -175,16 +187,16 @@ $$
 
 %incluir fotografía de la tarjeta
 
-\section{DAQ and Digital Processing}
+\section{Digital Processing}
+\label{sec:digital_processing}
 
-\noindent Si bien existen diversos tipos de hardware programable para el despliegue de sistemas embebidos como los microcontroladores y procesadores, en función de los requerimientos impuestos por un ADC de alta velocidad y la necesidad de contar con una plataforma flexible para la evolución de un sistema de detección experimental, es necesaria la implementación de un dispositivo basado en FPGA. En la figura \ref{fig:pulse_chain} se ilustra la ubicación típica de la plataforma digital de procesamiento en la cadena de lectura de un detector.
+\noindent Si bien existen diversos tipos de hardware programable para el despliegue de sistemas embebidos como los microcontroladores y procesadores, en función de los requerimientos impuestos por un ADC de alta velocidad y la necesidad de contar con una plataforma flexible para la evolución de un sistema de detección experimental, es necesaria la implementación de un dispositivo basado en FPGA. En la figura \ref{fig:digital_stage} se ilustra la ubicación típica de la plataforma digital de procesamiento en la cadena de lectura de un detector.
 %quitar la parte de acondicionamiento y dejar solo la digital
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{pulse_chain_generic.png}
-    \caption{Un esquema de la cadena de electrónica usualmente utilizado para la lectura de un
-    detector, que ilustra la etapa de adquisición y procesamiento digital a continuación de la etapa de front-end.}
-    \label{fig:pulse_chain}
+    \includegraphics[width=0.6\textwidth]{digital_stage.png}
+    \caption{Ilustración de la etapa de procesamiento digital. A la izquierda, los datos provenientes del ADC ingresan al sistema de procesamiento. A continuación, se muestra un ejemplo de plataforma de procesamiento (FPGA SoC), seguido de la información procesada que se dirige hacia las etapas posteriores de la cadena de información.}
+    \label{fig:digital_stage}
 
 \end{figure}
 
