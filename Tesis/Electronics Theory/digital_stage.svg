@@ -155,14 +155,14 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:6.61458302px;font-family:sans-serif;-inkscape-font-specification:sans-serif;text-align:center;text-anchor:middle;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       x="104.8053"
-       y="53.937843"
+       x="104.80531"
+       y="50.635757"
        id="text14846"><tspan
          sodipodi:role="line"
-         x="104.8053"
-         y="53.937843"
-         style="stroke-width:0"
-         id="tspan14848">FPGA SoC</tspan></text>
+         x="104.80531"
+         y="50.635757"
+         style="font-size:2.11666656px;stroke-width:0"
+         id="tspan14848">programmable/</tspan></text>
     <rect
        style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.16540265;stroke-miterlimit:4;stroke-dasharray:0.33080528, 0.16540264;stroke-dashoffset:0;stroke-opacity:1"
        id="rect15122-6"
@@ -353,5 +353,38 @@
          y="130.60112"
          style="stroke-width:0"
          id="tspan5815-5-0" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:6.61458349px;font-family:sans-serif;-inkscape-font-specification:sans-serif;text-align:center;text-anchor:middle;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="104.61782"
+       y="55.67189"
+       id="text14846-5"><tspan
+         sodipodi:role="line"
+         x="104.61782"
+         y="55.67189"
+         style="font-size:2.11666656px;stroke-width:0"
+         id="tspan14848-3">digital platform</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:6.61458349px;font-family:sans-serif;-inkscape-font-specification:sans-serif;text-align:center;text-anchor:middle;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="104.76138"
+       y="59.978958"
+       id="text14846-4"><tspan
+         sodipodi:role="line"
+         x="104.76138"
+         y="59.978958"
+         style="font-size:2.11666656px;stroke-width:0"
+         id="tspan14848-2">uc, CPU, FPGA, etc</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:6.61458349px;font-family:sans-serif;-inkscape-font-specification:sans-serif;text-align:center;text-anchor:middle;opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="104.76138"
+       y="53.08765"
+       id="text14846-8"><tspan
+         sodipodi:role="line"
+         x="104.76138"
+         y="53.08765"
+         style="font-size:2.11666656px;stroke-width:0"
+         id="tspan14848-9">configurable</tspan></text>
   </g>
 </svg>
