@@ -209,26 +209,52 @@ y a la entrada del amplificador se tiene el voltaje
 \section{Digital Signal Processing}
 \label{sec:digital_processing}
 
-\noindent El procesamiento digital de señales (DSP) implica la aplicación de operaciones matemáticas a datos digitales para analizar, modificar o transformar señales en diversos formatos. Este proceso se basa en algoritmos matemáticos que pueden ser implementados en diferentes plataformas de hardware, cada una con sus propias características y ventajas. Las plataformas comunes para el procesamiento digital de señales incluyen microcontroladores, CPUs, FPGAs, GPUs, y DSPs especializados. Cada una de estas plataformas ofrece distintas capacidades en términos de velocidad de procesamiento, latencia, consumo de energía y portabilidad, entre otros factores \cite{meyer2007digital}.
+\noindent El procesamiento digital de señales (DSP) implica la aplicación de operaciones matemáticas a datos digitales para analizar, modificar o transformar señales en diversos formatos. Este proceso se basa en algoritmos matemáticos que pueden ser implementados en diferentes plataformas de hardware, cada una con sus propias características y ventajas. En la figura \ref{fig:digital_stage} se ilustra un esquema genérico de la etapa de procesamiento digital de señales en un DAQ.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{digital_stage.png}
+    \caption{Ilustración de la etapa de procesamiento digital. A la izquierda, los datos provenientes del ADC ingresan al sistema de procesamiento. A continuación, son operados de acuerdo a los algoritmos implementados en el sistema embebido, seguido de la información procesada que se dirige hacia las etapas posteriores de la cadena de información.}
+    \label{fig:digital_stage}
+
+\end{figure}
+
+
+\noindent Las plataformas comunes para el procesamiento digital de señales incluyen varios tipos de sistemas embebidos como microcontroladores, CPUs, FPGAs, GPUs, y DSPs especializados. Cada una de estas plataformas ofrece distintas capacidades en términos de velocidad de procesamiento, latencia, consumo de energía y portabilidad, entre otros factores \cite{meyer2007digital}:
 
 \begin{itemize}
     \item  Microcontroladores: Generalmente utilizados para aplicaciones con requisitos de procesamiento relativamente bajos. Ofrecen una buena relación entre costo y funcionalidad, ideal para tareas de procesamiento en tiempo real con bajo consumo de energía.
     \item  CPUs: Adecuadas para aplicaciones que requieren procesamiento general y flexibilidad. Son versátiles y poderosas, pero pueden no ser las mejores para tareas que requieren alta velocidad de procesamiento o baja latencia.
     \item FPGAs: Ofrecen flexibilidad y alta velocidad de procesamiento al permitir la implementación de circuitos personalizados. Son útiles para aplicaciones que requieren procesamiento paralelo o que deben adaptarse a cambios en los requisitos de procesamiento.
     \item GPUs: Excelentes para el procesamiento paralelo de grandes volúmenes de datos, como en el procesamiento de imágenes o aprendizaje automático. Son capaces de manejar tareas complejas con alta eficiencia, aunque pueden consumir más energía y ser más costosas.
-    \item DSPs: Diseñados específicamente para el procesamiento de señales digitales, estos procesadores ofrecen optimizaciones y capacidades específicas para realizar operaciones matemáticas complejas de manera eficiente.
+    \item DSPs: Diseñados específicamente para el procesamiento de señales digitales, están optimizados para realizar operaciones matemáticas complejas de manera eficiente. Sin embargo, su producción suele ser costosa debido a su implementación en formato ASIC (Application-Specific Integrated Circuit), lo que puede incrementar el costo total del sistema.
 \end{itemize}
 
+\noindent Si bien existen diversos tipos de operaciones que se pueden ejecutar en el dominio digital, las más comunes son los filtros digitales. Estos filtros se utilizan para modificar o extraer información de una señal al atenuar, amplificar o modular ciertas características de la misma, como su amplitud, frecuencia y forma. Los filtros digitales pueden clasificarse en varias categorías, entre ellas \cite{proakis2007digital}:
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.6\textwidth]{digital_stage.png}
-    \caption{Ilustración de la etapa de procesamiento digital. A la izquierda, los datos provenientes del ADC ingresan al sistema de procesamiento. A continuación, se muestra un ejemplo de plataforma de procesamiento (FPGA SoC), seguido de la información procesada que se dirige hacia las etapas posteriores de la cadena de información.}
-    \label{fig:digital_stage}
+\begin{itemize}
+    \item Filtros FIR (Finite Impulse Response): Estos filtros tienen una respuesta al impulso finita y son conocidos por su estabilidad y capacidad para diseñar respuestas precisas. Son adecuados para aplicaciones donde se requiere un control exacto sobre la respuesta en frecuencia.
+    \item Filtros IIR (Infinite Impulse Response): A diferencia de los filtros FIR, los filtros IIR tienen una respuesta al impulso infinita. Estos filtros son generalmente más eficientes en términos de recursos computacionales, pero pueden ser más complejos de diseñar debido a la posibilidad de inestabilidad.
+    \item Filtros adaptativos: Estos filtros ajustan sus parámetros en tiempo real para adaptarse a las características cambiantes de la señal o del entorno. Son útiles en aplicaciones donde las condiciones de la señal varían, como en la cancelación de ruido y la ecualización de canales.
+    \item  Filtros de paso bajo, paso alto, paso banda y elimina banda: Cada uno de estos filtros está diseñado para permitir o bloquear rangos específicos de frecuencias en una señal. Los filtros de paso bajo permiten pasar frecuencias por debajo de un umbral, mientras que los filtros de paso alto permiten pasar frecuencias por encima de un umbral. Los filtros de paso banda permiten un rango específico de frecuencias y los filtros elimina banda bloquean un rango específico.
+\end{itemize}
 
-\end{figure}
+\noindent Por ejemplo, de acuerdo a \cite{proakis2007digital}, el filtro de media móvil es una técnica fundamental en el procesamiento digital de señales, utilizada para suavizar series temporales de datos. Su objetivo principal es reducir el ruido y las fluctuaciones, proporcionando una estimación más estable y continua de la señal subyacente. Al ser un filtro FIR, su salida es una combinación lineal de un número finito de muestras de entrada. El filtro de media móvil opera promediando los valores de la señal en una ventana de tiempo móvil. Dependiendo del tipo de media móvil utilizado, este proceso puede implicar el cálculo del promedio simple o ponderado de los valores dentro de la ventana. En este caso, la función de respuesta al impulso \( h[n] \) es una secuencia de valores constantes que suman a uno, específicamente:
 
-\noindent Si bien existen diversos tipos de hardware programable para el despliegue de sistemas embebidos como los microcontroladores y procesadores, en función de los requerimientos impuestos por un ADC de alta velocidad y la necesidad de contar con una plataforma flexible para la evolución de un sistema de detección experimental, es necesaria la implementación de un dispositivo basado en FPGA. En la figura \ref{fig:digital_stage} se ilustra la ubicación típica de la plataforma digital de procesamiento en la cadena de lectura de un detector.
+\begin{equation}
+    h[n] = \frac{1}{N} \cdot \text{rect}\left(\frac{n}{N}\right)
+\end{equation}
+
+\noindent donde \( \text{rect} \) es una función rectangular que es 1 dentro del intervalo de la ventana de tamaño \( N \) y 0 fuera de él. Esta respuesta al impulso tiene una longitud de \( N \), que determina el número de muestras de entrada utilizadas para calcular el promedio en cada punto de salida. La salida del filtro de media móvil en tiempo discreto se calcula mediante la convolución de la señal de entrada \( x[n] \) con la función de respuesta al impulso \( h[n] \):
+
+\begin{equation}
+    y[n] = (x * h)[n] = \sum_{k=0}^{N-1} x[n-k] \cdot \frac{1}{N}
+\end{equation}
+
+\noindent Debido a su respuesta al impulso finita y su implementación directa en términos de convolución, el filtro de media móvil se clasifica como un filtro FIR. Este tipo de filtro es ampliamente utilizado debido a su estabilidad y facilidad de implementación tanto en hardware digital como en software.
+
+
+hardware programable para el despliegue de sistemas embebidos como los microcontroladores y procesadores, en función de los requerimientos impuestos por un ADC de alta velocidad y la necesidad de contar con una plataforma flexible para la evolución de un sistema de detección experimental, es necesaria la implementación de un dispositivo basado en FPGA. En la figura \ref{fig:digital_stage} se ilustra la ubicación típica de la plataforma digital de procesamiento en la cadena de lectura de un detector.
 
 \subsubsection{FPGA}
 \noindent Una FPGA es un tipo de circuito integrado reconfigurable que permite a los usuarios personalizar su arquitectura interna para realizar tareas específicas, lo que las diferencia de los microprocesadores tradicionales que siguen un conjunto de instrucciones fijas. Estas matrices de puertas programables en campo son ampliamente utilizadas en aplicaciones que requieren procesamiento en paralelo y alta flexibilidad, como en sistemas de telecomunicaciones y procesamiento de señales digitales. \\
