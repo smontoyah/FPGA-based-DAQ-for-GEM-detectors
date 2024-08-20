@@ -6,45 +6,46 @@ The style file: ieeetr.bst
 Reallocating 'name_of_file' (item size: 1) to 11 items.
 Database file #1: references.bib
 Warning--can't use both volume and number fields in bortolotti2012infn
-You've used 22 entries,
+Warning--empty publisher in Rucci2018heterogeneos
+You've used 23 entries,
             1876 wiz_defined-function locations,
-            600 strings with 6796 characters,
-and the built_in function-call counts, 4347 in all, are:
-= -- 399
-> -- 201
+            604 strings with 6972 characters,
+and the built_in function-call counts, 4509 in all, are:
+= -- 413
+> -- 209
 < -- 0
-+ -- 78
-- -- 56
-* -- 250
-:= -- 646
-add.period$ -- 36
-call.type$ -- 22
++ -- 81
+- -- 58
+* -- 258
+:= -- 669
+add.period$ -- 38
+call.type$ -- 23
 change.case$ -- 9
 chr.to.int$ -- 0
-cite$ -- 23
-duplicate$ -- 233
-empty$ -- 466
-format.name$ -- 56
-if$ -- 1078
+cite$ -- 25
+duplicate$ -- 242
+empty$ -- 485
+format.name$ -- 58
+if$ -- 1118
 int.to.chr$ -- 0
-int.to.str$ -- 22
-missing$ -- 33
-newline$ -- 83
-num.names$ -- 22
-pop$ -- 108
+int.to.str$ -- 23
+missing$ -- 35
+newline$ -- 87
+num.names$ -- 23
+pop$ -- 115
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 103
+skip$ -- 105
 stack$ -- 0
 substring$ -- 92
-swap$ -- 65
+swap$ -- 66
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 1
-while$ -- 31
-width$ -- 24
-write$ -- 209
-(There was 1 warning)
+warning$ -- 2
+while$ -- 32
+width$ -- 25
+write$ -- 217
+(There were 2 warnings)

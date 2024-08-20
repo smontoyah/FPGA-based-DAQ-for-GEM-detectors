@@ -88,12 +88,17 @@ U.~Meyer-Baese and U.~Meyer-Baese, {\em Digital signal processing with field
 \newblock Springer, 2007.
 
 \bibitem{ramirez2024}
-M.~Ramirez, {\em low cost PHA for Mössbauer Spectroscopy}.
+L.~F. Ramirez and S.~Montoya, {\em low cost PHA for Mössbauer Spectroscopy}.
 \newblock Elsevier, 2024.
 
 \bibitem{bravo2020new}
 I.~Bravo-Mu{\~n}oz, A.~Gardel-Vicente, and J.~L. L{\'a}zaro-Galilea, ``New
   applications and architectures based on fpga/soc,'' 2020.
+
+\bibitem{Rucci2018heterogeneos}
+E.~Rucci, {\em Evaluación de rendimiento y eficiencia energética de sistemas
+  heterogéneos para bioinformática}.
+\newblock 2018.
 
 \bibitem{amd_zynq_7000}
 {AMD}, ``Zynq-7000 soc.''
