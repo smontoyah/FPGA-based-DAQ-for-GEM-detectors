@@ -7,45 +7,45 @@ Reallocating 'name_of_file' (item size: 1) to 11 items.
 Database file #1: references.bib
 Warning--can't use both volume and number fields in bortolotti2012infn
 Warning--empty publisher in Rucci2018heterogeneos
-You've used 23 entries,
+You've used 22 entries,
             1876 wiz_defined-function locations,
-            604 strings with 6972 characters,
-and the built_in function-call counts, 4509 in all, are:
-= -- 413
-> -- 209
+            600 strings with 6817 characters,
+and the built_in function-call counts, 4378 in all, are:
+= -- 402
+> -- 205
 < -- 0
-+ -- 81
-- -- 58
-* -- 258
-:= -- 669
-add.period$ -- 38
-call.type$ -- 23
-change.case$ -- 9
++ -- 79
+- -- 57
+* -- 251
+:= -- 647
+add.period$ -- 37
+call.type$ -- 22
+change.case$ -- 8
 chr.to.int$ -- 0
-cite$ -- 25
-duplicate$ -- 242
-empty$ -- 485
-format.name$ -- 58
-if$ -- 1118
+cite$ -- 24
+duplicate$ -- 233
+empty$ -- 468
+format.name$ -- 57
+if$ -- 1087
 int.to.chr$ -- 0
-int.to.str$ -- 23
-missing$ -- 35
-newline$ -- 87
-num.names$ -- 23
-pop$ -- 115
+int.to.str$ -- 22
+missing$ -- 34
+newline$ -- 84
+num.names$ -- 22
+pop$ -- 111
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 105
+skip$ -- 104
 stack$ -- 0
 substring$ -- 92
-swap$ -- 66
+swap$ -- 65
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 32
-width$ -- 25
-write$ -- 217
+while$ -- 31
+width$ -- 24
+write$ -- 209
 (There were 2 warnings)

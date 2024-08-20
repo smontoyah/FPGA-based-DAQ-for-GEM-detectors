@@ -277,7 +277,7 @@ se observa la aplicación del filtro a una señal con ruido.
 \subsubsection{FPGA}
 \noindent Una FPGA es un tipo de circuito integrado reconfigurable que permite a los usuarios personalizar su arquitectura interna para realizar tareas específicas, diferenciándose de los microprocesadores tradicionales, que operan con un conjunto de instrucciones fijas. Estas matrices de puertas programables en campo son ampliamente utilizadas en aplicaciones que requieren procesamiento en paralelo y alta flexibilidad, como en sistemas de telecomunicaciones y procesamiento de señales digitales. La capacidad de reprogramación de las FPGA les otorga una ventaja significativa en términos de adaptabilidad a nuevas necesidades sin requerir modificaciones físicas en el hardware. Para programar una FPGA, se utilizan lenguajes de descripción de hardware (HDL) como VHDL o Verilog, que permiten definir circuitos personalizados que se cargan directamente en el dispositivo, configurando su comportamiento según el diseño especificado \cite{brown2000fundamentals}.\\
 
-\noindent Como se ilustra en la figura \ref{fig:fpga_arch}, internamente una FPGA se compone de una matriz de bloques lógicos programables (CLBs), interconexiones configurables, y recursos adicionales como bloques de memoria (BRAM). Los CLBs contienen LUTs (Look-Up Tables) y flip-flops, que implementan funciones lógicas y almacenan estados. Las interconexiones programables permiten la comunicación entre los bloques lógicos a través de una red de enrutamiento configurable. Además, suelen incluir bloques dedicados para funciones específicas, como multiplexores ,controladores de entrada/salida, y DSPs, lo que proporciona una gran flexibilidad y capacidad de adaptación a distintas aplicaciones \cite{bravo2020new}.
+\noindent Como se ilustra en la figura \ref{fig:fpga_arch}, internamente una FPGA se compone de una matriz de bloques lógicos programables (CLBs), interconexiones configurables, y recursos adicionales como bloques de memoria (BRAM). Los CLBs contienen LUTs (Look-Up Tables) y flip-flops, que implementan funciones lógicas y almacenan estados. Las interconexiones programables permiten la comunicación entre los bloques lógicos a través de una red de enrutamiento configurable. Además, suelen incluir bloques dedicados para funciones específicas, como multiplexores y controladores de entrada/salida, lo que proporciona una gran flexibilidad y capacidad de adaptación a distintas aplicaciones \cite{bravo2020new}.\\
 
 \begin{figure}[h]
     \centering
@@ -292,8 +292,6 @@ se observa la aplicación del filtro a una señal con ruido.
 
 \noindent No obstante, como expone \cite{bravo2020new}, los avances en tecnología FPGA se han direccionado al desarrollo de sistemas híbridos como los SoC. De acuerdo a \cite{amd_zynq_7000}, Un FPGA SoC es un dispositivo que combina en un solo chip la flexibilidad programable de una FPGA, también denominado PL (Programmable Logic), con las capacidades de procesamiento de un procesador o PS (Processing System), típicamente basado en la arquitectura ARM. La figura \ref{fig:fpga_soc} ilustra la infraestructura típica de un SoC. \\ 
 
-\noindent Esta configuración permite aprovechar lo mejor de ambos mundos: la capacidad de realizar tareas complejas y variables mediante software y, al mismo tiempo, la ejecución de operaciones intensivas en paralelo y en tiempo real mediante la lógica programable de la FPGA. Además, esta integración incluye funcionalidades adicionales como procesamiento digital de señales (DSP), dispositivos de señal mixta, y la posibilidad de reemplazar otros componentes dedicados como los ASICs (Application-Specific Integrated Circuits) o ASSPs (Application-Specific Standard Products), todo en un solo dispositivo, optimizando así el rendimiento y la eficiencia energética para aplicaciones específicas.\\
-
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\textwidth]{FPGA_SoC.png}
@@ -302,35 +300,38 @@ se observa la aplicación del filtro a una señal con ruido.
 
 \end{figure}
 
-\subsection{Procesamiento Digital de Pulsos}
+\noindent Esta configuración permite aprovechar lo mejor de ambos mundos: la capacidad de realizar tareas complejas y variables mediante software y, al mismo tiempo, la ejecución de operaciones intensivas en paralelo y en tiempo real mediante la lógica programable de la FPGA. Además, esta integración incluye funcionalidades adicionales como procesamiento digital de señales (DSP), dispositivos de señal mixta, y la posibilidad de reemplazar otros componentes dedicados como los ASICs (Application-Specific Integrated Circuits) o ASSPs (Application-Specific Standard Products), todo en un solo dispositivo, optimizando así el rendimiento y la eficiencia energética para aplicaciones específicas.\\
+
+
+% \subsection{Procesamiento Digital de Pulsos}
  
-\noindent Como se explicó en el apartado de electrónica de front-end, los filtros analógicos suelen aplicar una combinación de diferenciaciones e integraciones de la forma de onda de voltaje para transformarla en una forma similar a la de una gaussiana, cuya amplitud es proporcional al voltaje $V$ y, por lo tanto, a la energía de la radiación. Sin embargo, de acuerdo a \cite{loudenuclearspectroscopy}, en el enfoque digital, tras la digitalización de la señal utilizando un ADC, se aplica un filtro matemático a esta serie de valores digitales para eliminar los componentes de ruido de alta frecuencia, mejorando así la SNR y determinando la amplitud de voltaje $V$.\\
+% \noindent Como se explicó en el apartado de electrónica de front-end, los filtros analógicos suelen aplicar una combinación de diferenciaciones e integraciones de la forma de onda de voltaje para transformarla en una forma similar a la de una gaussiana, cuya amplitud es proporcional al voltaje $V$ y, por lo tanto, a la energía de la radiación. Sin embargo, de acuerdo a \cite{loudenuclearspectroscopy}, en el enfoque digital, tras la digitalización de la señal utilizando un ADC, se aplica un filtro matemático a esta serie de valores digitales para eliminar los componentes de ruido de alta frecuencia, mejorando así la SNR y determinando la amplitud de voltaje $V$.\\
 
-\noindent Este enfoque presenta ventajas significativas en comparación con el procesamiento de señales analógicas tradicional, entre las cuales destacan \cite{radeka1968optimum}:
+% \noindent Este enfoque presenta ventajas significativas en comparación con el procesamiento de señales analógicas tradicional, entre las cuales destacan \cite{radeka1968optimum}:
 
-\begin{itemize}
-    \item Aplicación de análisis considerando diferencias pulso a pulso: Permite analizar cada pulso individualmente, teniendo en cuenta sus particularidades.
-    \item Análisis de señales de carga inducida transitoria: Facilita la interpretación de señales transitorias que pueden ser difíciles de captar con métodos analógicos.
-    \item  Mejora del parámetro de tiempo muerto: Reduce las limitaciones temporales que pueden afectar la adquisición continua de señales.
-    \item Captura fácil de señales, incluida la implementación de análisis complejos: Simplifica la adquisición de datos y permite realizar análisis detallados y sofisticados.
-    \item Procesamiento de señales con criterios basados en coincidencias (diferentes detectores o diferentes partes del mismo detector): Facilita la correlación de eventos entre múltiples detectores o áreas de un detector.
-    \item Aplicación efectiva de post-procesamiento de datos: Permite el pre-análisis de formas de onda, modelado de pulsos y verificación de algoritmos de deconvolución de superposición de pulsos (pulse pile-up).
+% \begin{itemize}
+%     \item Aplicación de análisis considerando diferencias pulso a pulso: Permite analizar cada pulso individualmente, teniendo en cuenta sus particularidades.
+%     \item Análisis de señales de carga inducida transitoria: Facilita la interpretación de señales transitorias que pueden ser difíciles de captar con métodos analógicos.
+%     \item  Mejora del parámetro de tiempo muerto: Reduce las limitaciones temporales que pueden afectar la adquisición continua de señales.
+%     \item Captura fácil de señales, incluida la implementación de análisis complejos: Simplifica la adquisición de datos y permite realizar análisis detallados y sofisticados.
+%     \item Procesamiento de señales con criterios basados en coincidencias (diferentes detectores o diferentes partes del mismo detector): Facilita la correlación de eventos entre múltiples detectores o áreas de un detector.
+%     \item Aplicación efectiva de post-procesamiento de datos: Permite el pre-análisis de formas de onda, modelado de pulsos y verificación de algoritmos de deconvolución de superposición de pulsos (pulse pile-up).
 
-\end{itemize}
+% \end{itemize}
 
-\noindent La implementación de procesadores digitales de pulsos (DPP) en FPGA, gracias a su riqueza en recursos lógicos digitales, les permite soportar múltiples modos de adquisición, como análisis de altura de pulso, escalado de canales múltiples, escalado de espectros múltiples y adquisición en modo de lista con marcas de tiempo. Además, ofrecen funcionalidades muy especializadas como discriminación y corrección de la forma del pulso, rechazo de superposición de pulsos (pulse pile-up), conteo sin pérdidas y otras características que respaldan la medición. Adicionalmente, múltiples DPP pueden operar de manera sincronizada para permitir la correlación temporal de eventos provenientes de múltiples fuentes de señal, como detectores separados o segmentos de un mismo detector. \\
+% \noindent La implementación de procesadores digitales de pulsos (DPP) en FPGA, gracias a su riqueza en recursos lógicos digitales, les permite soportar múltiples modos de adquisición, como análisis de altura de pulso, escalado de canales múltiples, escalado de espectros múltiples y adquisición en modo de lista con marcas de tiempo. Además, ofrecen funcionalidades muy especializadas como discriminación y corrección de la forma del pulso, rechazo de superposición de pulsos (pulse pile-up), conteo sin pérdidas y otras características que respaldan la medición. Adicionalmente, múltiples DPP pueden operar de manera sincronizada para permitir la correlación temporal de eventos provenientes de múltiples fuentes de señal, como detectores separados o segmentos de un mismo detector. \\
 
-\noindent En el capítulo System, se desarrolla la aplicación de los conceptos expuestos en este capítulo, en un sistema experimental de lectura y procesamiento para detectores GEM.
+% \noindent En el capítulo System, se desarrolla la aplicación de los conceptos expuestos en este capítulo, en un sistema experimental de lectura y procesamiento para detectores GEM.
 
-\noindent Como se expuso anteriormente, los electrones multiplicados son recogidos en los electrodos de salida del GEM, resultando una señal de corriente eléctrica que puede ser medida y analizada. Dependiendo de los objetivos del experimento, distintas etapas electrónicas pueden ser implementadas a continuación. Sin embargo, el objetivo de estas converge a preservar y transportar la información física de interés contenida en la señal, optmizando factores clave como \cite{knoll2010radiation}:
+% \noindent Como se expuso anteriormente, los electrones multiplicados son recogidos en los electrodos de salida del GEM, resultando una señal de corriente eléctrica que puede ser medida y analizada. Dependiendo de los objetivos del experimento, distintas etapas electrónicas pueden ser implementadas a continuación. Sin embargo, el objetivo de estas converge a preservar y transportar la información física de interés contenida en la señal, optmizando factores clave como \cite{knoll2010radiation}:
 
-\begin{itemize}
-    \item Supresión de ruido 
-    \item Reducción del tiempo muerto
-    \item Reducción del déficit balístico para mejorar la resolución y reducir la distorsión de los picos
-\end{itemize}
+% \begin{itemize}
+%     \item Supresión de ruido 
+%     \item Reducción del tiempo muerto
+%     \item Reducción del déficit balístico para mejorar la resolución y reducir la distorsión de los picos
+% \end{itemize}
 
-\noindent Aunque los distintos tipos de detectores generan señales eléctricas únicas, dependiendo de los procesos físicos que ocurren en su interior, es posible identificar características comunes que facilitan la comprensión de conceptos clave en el acondicionamiento y procesamiento de señales.
+% \noindent Aunque los distintos tipos de detectores generan señales eléctricas únicas, dependiendo de los procesos físicos que ocurren en su interior, es posible identificar características comunes que facilitan la comprensión de conceptos clave en el acondicionamiento y procesamiento de señales.
 
 %Particularmente en la medición de eventos propios de cor´pusculos, se presentan señales de tipo pulsado...
 \section{Montaje Experimental}
