@@ -178,7 +178,7 @@ y a la entrada del amplificador se tiene el voltaje
 
 \noindent En la cadena de tratamiento de señales, la etapa de shaping es un circuito electrónico fundamental que modifica la forma de una señal para optimizar su calidad y adaptarla a los requisitos del procesamiento subsiguiente. Generalmente, esta etapa se integra en la fase de preamplificación o amplificación, y es especialmente relevante en sistemas de detección de partículas. Su función principal es transformar señales pulsadas, que pueden presentar formas diversas, en pulsos uniformes y bien definidos. Esta uniformidad es crucial para evitar la superposición de pulsos (pile-up) y disminuir el ruido mediante un filtrado de frecuencia eficiente \cite{leo1994techniques}.\\
 
-\noindent Los pulsos electrónicos generados por el preamplificador tienen tiempos de decaimiento típicos que varían entre unos pocos nanosegundos y varios microsegundos. Si llegan señales adicionales durante el tiempo de decaimiento, puede ocurrir pile-up a pesar de que el capacitor de retroalimentación del preamplificador se descargue. Para mitigar esto, se utilizan filtros pasa-altos y pasa-bajos, que permiten separar las señales superpuestas y moldear los pulsos de salida en formas más Gaussianas. Además, los filtros ayudan a reducir el ruido blanco que afecta a todas las frecuencias, mejorando así la SNR \cite{kolanoski2020particle}. La figura \ref{fig:shaper} ilustra las formas de pulsos típicos en la salida del preamplificador que ingresan una configuración de shaping básica compuesta por un circuito CR-RC. Usualmente se observa una caída (undershoot) en la salida del shaper, la cual se corrige con la cancelación polo-cero\footnote{Técnica de diseño de circuitos que anula efectos indeseados al colocar un cero en la misma frecuencia que un polo, mejorando la respuesta del sistema.} \\
+\noindent Los pulsos electrónicos generados por el preamplificador tienen tiempos de decaimiento típicos que varían entre unos pocos nanosegundos y varios microsegundos. Si llegan señales adicionales durante el tiempo de decaimiento, puede ocurrir pile-up a pesar de que el capacitor de retroalimentación del preamplificador se descargue. Para mitigar esto, se utilizan filtros pasa-altos y pasa-bajos, que permiten separar las señales superpuestas y moldear los pulsos de salida en formas más Gaussianas. Además, los filtros ayudan a reducir el ruido blanco que afecta a todas las frecuencias, mejorando así la SNR \cite{kolanoski2020particle}. La figura \ref{fig:shaper} ilustra las formas de pulsos típicos en la salida del preamplificador que ingresan una configuración de shaping básica compuesta por un circuito CR-RC. Usualmente se observa una caída (undershoot) en la salida del shaper, la cual se corrige con la cancelación polo-cero.\footnote{Técnica de diseño de circuitos que anula efectos indeseados al colocar un cero en la misma frecuencia que un polo, mejorando la respuesta del sistema.} \\
 
 \begin{figure}[h]
     \centering
@@ -187,16 +187,22 @@ y a la entrada del amplificador se tiene el voltaje
     \label{fig:shaper}
 \end{figure}
 
-\noindent Es importante destacar que el proceso de shaping puede realizarse en la etapa de procesamiento digital, según los requisitos específicos de la aplicación. Formas de pulso, como la trapezoidal, que son difíciles de generar mediante electrónica analógica, pueden implementarse de manera más eficiente en el dominio digital mediante filtros con parámetros ajustados en plataformas configurables como las FPGA \cite{radeka1968optimum}. Este enfoque se explorará con mayor detalle en la sección \ref{sec:digital_processing}.\\
-
+\noindent Es importante señalar que el proceso de shaping puede realizarse en la etapa de procesamiento digital, adaptándose a las necesidades específicas de la aplicación. Formas de pulso, como la trapezoidal, que resultan complejas de generar mediante electrónica analógica, pueden implementarse de manera más eficiente en el dominio digital utilizando filtros con parámetros ajustables en plataformas configurables como las FPGA \cite{radeka1968optimum}. Este enfoque se explorará en mayor detalle en la sección \ref{sec:digital_processing}. Asimismo, dependiendo de los requisitos del usuario, otros subsistemas, como los discriminadores de señales y los circuitos de trigger, pueden implementarse tanto mediante comparadores analógicos como a través de algoritmos de comparación en la etapa de procesamiento digital.
 
 \subsubsection{Digitalización}
-
 \noindent De acuerdo con \cite{meyer2007digital}, la digitalización de las señales provenientes de sensores es crucial debido a la precisión y flexibilidad que ofrece frente a los métodos analógicos tradicionales. Con el avance de los convertidores analógico-digitales (ADC) de alta velocidad y buena resolución desde los años 90, la posibilidad de procesar digitalmente las señales de los sensores se ha consolidado.\\
 
 \noindent Las ventajas de este enfoque incluyen una flexibilidad ilimitada en la elección de parámetros de procesamiento, mayor estabilidad al eliminar el riesgo de derivas debido a cambios de temperatura o voltaje, y la capacidad de realizar análisis más detallados con múltiples salidas de un mismo sensor. Además, la manipulación digital no introduce ruido adicional y permite la implementación precisa de formas de señal que serían difíciles o imposibles de lograr en circuitos analógicos. Sin embargo, una desventaja potencial es la limitación en la precisión temporal, ya que los sistemas digitales están restringidos a la frecuencia de muestreo más cercana, lo que puede ser menos exacto que los métodos analógicos en aplicaciones que requieren una temporización muy rápida.\\
 
-\noindent La función principal de un ADC es generar un código digital o número en su salida, que sea proporcional a la tensión analógica suministrada a su entrada, realizando las conversiones de forma continua a una frecuencia de reloj fija. Por ejemplo, un reloj de 500 MHz producirá 500 MSPS (Megasamples per Second), lo que equivale a una muestra cada 2 ns. \\
+\noindent La función principal de un ADC (Convertidor Analógico-Digital) es transformar una señal de tensión analógica en un código digital proporcional, manteniendo esta conversión de manera continua a una frecuencia determinada por el reloj del sistema. Por ejemplo, un reloj operando a 500 MHz permite una velocidad de muestreo de 500 MSPS (Megamuestras por segundo), lo que corresponde a una muestra cada 2 ns. En la figura \ref{fig:adc_out} se muestra la simulación de una señal senoidal proveniente de un sensor, digitalizada mediante un ADC con estas características.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.0\textwidth]{adc_out.png}
+    \caption{Ilustración de la digitalización a 500 MSPS de una señal proveniente de un sensor.}
+    \label{fig:adc_out}
+
+\end{figure}
 
 \noindent La resolución del ADC, que se determina por el número de bits del convertidor, afecta directamente a la precisión de estas conversiones. Un número binario con $n$ bits puede representar $2^{n}$ valores. Durante la digitalización, el rango de voltaje desde $V_{\text{min}}$ (usualmente $V_{\text{min}} = 0$) hasta $V_{\text{max}}$ se subdivide en $2^{n} - 1$ intervalos, a cada uno de los cuales se le asigna un valor binario. Si la conversión es lineal, el rango se divide en intervalos de tamaño igual, donde el paso de voltaje más pequeño corresponde al bit menos significativo (LSB, por sus siglas en inglés), que se encuentra más a la derecha en un número binario. En un convertidor analógico-digital (ADC) de $n$ bits, un LSB corresponde a un paso de voltaje de:
 
@@ -206,10 +212,11 @@ y a la entrada del amplificador se tiene el voltaje
 
 \noindent En un ADC ideal, cada conversión de voltaje de entrada a código de salida es independiente, perfectamente lineal y ocurre instantáneamente. Sin embargo, las imperfecciones en los ADCs reales limitan tanto la frecuencia máxima de muestreo como la linealidad y la precisión de la conversión \cite{kolanoski2020particle}.
 
+
 \section{Digital Signal Processing}
 \label{sec:digital_processing}
 
-\noindent El procesamiento digital de señales (DSP) implica la aplicación de operaciones matemáticas a datos digitales, es decir, números en representación binaria, para analizar, modificar o transformar señales en diversos formatos. Este proceso se basa en algoritmos matemáticos que pueden ser implementados en diferentes plataformas de hardware, cada una con sus propias características y ventajas. En la figura \ref{fig:digital_stage} se ilustra un esquema genérico de la etapa de procesamiento digital de señales en un DAQ.
+\noindent El procesamiento digital de señales (DSP) implica la aplicación de operaciones matemáticas a datos digitales, es decir, números en representación binaria, para analizar, modificar o transformar señales en diversos formatos. Este proceso se basa en algoritmos matemáticos que pueden ser implementados en diferentes plataformas de hardware, cada una con sus propias características y ventajas \cite{proakis2007digital}. En la figura \ref{fig:digital_stage} se ilustra un esquema genérico de la etapa de procesamiento digital de señales en un DAQ.
 
 \begin{figure}[h]
     \centering
@@ -220,7 +227,7 @@ y a la entrada del amplificador se tiene el voltaje
 \end{figure}
 
 
-\noindent Las plataformas comunes para el procesamiento digital de señales incluyen varios tipos de sistemas embebidos como microcontroladores, CPUs, FPGAs, GPUs, y DSPs especializados. Cada una de estas plataformas ofrece distintas capacidades en términos de velocidad de procesamiento, latencia, consumo de energía y portabilidad, entre otros factores \cite{meyer2007digital}:
+\noindent Las plataformas comunes para el procesamiento digital de señales incluyen varios tipos de sistemas embebidos como microcontroladores ($\mu$Cs), CPUs, FPGAs, GPUs, y DSPs especializados. Cada una de estas plataformas ofrece distintas capacidades en términos de velocidad de procesamiento, latencia, consumo de energía y portabilidad, entre otros factores \cite{meyer2007digital}:
 
 \begin{itemize}
     \item  Microcontroladores: Generalmente utilizados para aplicaciones con requisitos de procesamiento relativamente bajos. Ofrecen una buena relación entre costo y funcionalidad, ideal para tareas de procesamiento en tiempo real con bajo consumo de energía.
@@ -230,7 +237,7 @@ y a la entrada del amplificador se tiene el voltaje
     \item DSPs: Diseñados específicamente para el procesamiento de señales digitales, están optimizados para realizar operaciones matemáticas complejas de manera eficiente. Sin embargo, su producción suele ser costosa debido a su implementación en formato ASIC (Application-Specific Integrated Circuit), lo que puede incrementar el costo total del sistema.
 \end{itemize}
 
-\noindent Si bien existen diversos tipos de operaciones que se pueden ejecutar en el dominio digital, las más comunes son los filtros digitales. Estos filtros se utilizan para modificar o extraer información de una señal al atenuar, amplificar o modular ciertas características de la misma, como su amplitud, frecuencia y forma. Los filtros digitales pueden clasificarse en varias categorías, entre ellas \cite{proakis2007digital}:
+\noindent Si bien existen diversos tipos de operaciones que se pueden ejecutar en el dominio digital, en el contexto de las señales, las más comunes son los filtros digitales. Estos filtros se utilizan para modificar o extraer información de una señal al atenuar, amplificar o modular ciertas características de la misma, como su amplitud, frecuencia y forma. Los filtros digitales pueden clasificarse en varias categorías, entre ellas \cite{proakis2007digital}:
 
 \begin{itemize}
     \item Filtros FIR (Finite Impulse Response): Estos filtros tienen una respuesta al impulso finita y son conocidos por su estabilidad y capacidad para diseñar respuestas precisas. Son adecuados para aplicaciones donde se requiere un control exacto sobre la respuesta en frecuencia.
@@ -251,8 +258,11 @@ y a la entrada del amplificador se tiene el voltaje
     y[n] = (x * h)[n] = \sum_{k=0}^{N-1} x[n-k] \cdot \frac{1}{N}
 \end{equation}
 
-\noindent Debido a su respuesta al impulso finita y su implementación directa en términos de convolución, el filtro de media móvil se clasifica como un filtro FIR. Este tipo de filtro es ampliamente utilizado debido a su estabilidad y facilidad de implementación tanto en hardware digital como en software.
+\noindent Debido a su respuesta al impulso finita y su implementación directa en términos de convolución, el filtro de media móvil se clasifica como un filtro FIR. Este tipo de filtro es ampliamente utilizado debido a su estabilidad y facilidad de implementación tanto en hardware digital como en software.\\
 
+\noindent Además de los filtros para señales, otros subsistemas de procesamiento pueden implementarse en la etapa de procesamiento digital. Ejemplos de estos incluyen los sistemas de trigger, cuya función es generar una señal digital en respuesta a eventos específicos, desencadenando acciones en otras etapas del sistema de adquisición o en sistemas de adquisición conectados. Un caso particular en el contexto de la espectroscopía nuclear es el de los analizadores multicanal (MCA), sistemas digitales que clasifican los pulsos provenientes de un detector de radiación en función de su amplitud, almacenándolos en memoria para generar un histograma que permita extraer el espectro de energía de la fuente radiactiva \cite{knoll2010radiation}.\\
+
+\noindent Como se ha mencionado anteriormente, diversas plataformas de hardware pueden utilizarse para aplicaciones de procesamiento digital, incluidos los ejemplos presentados. Sin embargo, es fundamental identificar los requerimientos específicos de cada aplicación para lograr una implementación eficiente. Por ejemplo, un microcontrolador de bajo costo como el ESP32 puede emplearse para desarrollar un sistema de análisis de altura de pulsos con funcionalidades similares a las de un MCA, como el descrito por \cite{ramirez2024}. No obstante, esta implementación enfrenta limitaciones inherentes a la lógica secuencial de los microcontroladores, lo que implica que la lectura de los canales de altura se realice de manera secuencial. Esto puede resultar en la pérdida de eventos en los canales que no se están leyendo en un momento dado, especialmente si la frecuencia de generación de eventos es alta en comparación con el tiempo de muestreo. Esta situación pone de manifiesto la necesidad de realizar la lectura de los canales de altura de forma simultánea, lo que requiere un sistema de procesamiento con capacidad de paralelización y, en consecuencia, la necesidad de utilizar plataformas de hardware más avanzadas.\\
 
 hardware programable para el despliegue de sistemas embebidos como los microcontroladores y procesadores, en función de los requerimientos impuestos por un ADC de alta velocidad y la necesidad de contar con una plataforma flexible para la evolución de un sistema de detección experimental, es necesaria la implementación de un dispositivo basado en FPGA. En la figura \ref{fig:digital_stage} se ilustra la ubicación típica de la plataforma digital de procesamiento en la cadena de lectura de un detector.
 
