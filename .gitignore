@@ -8,3 +8,6 @@
 *.svg
 *.tex
 *.PNG
+*.bbl
+*.blg
+*.out
