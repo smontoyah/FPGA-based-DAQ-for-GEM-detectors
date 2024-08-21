@@ -114,4 +114,10 @@ G.~Bortolotti, A.~Cavalli, L.~Chiarelli, A.~Chierici, S.~Dal~Pra,
 {EEE Guide}, ``Serial communication interface 8251,'' 2024.
 \newblock Accessed: 2024-08-20.
 
+\bibitem{ictp_smr3765}
+{ICTP Multidisciplinary Laboratory}, ``Smr3765 repository.''
+  \url{https://gitlab.com/ictp-mlab/smr3765/-/wikis/uploads/d6f86235c15669356a9567b2aa0363c4/image.png},
+  2022.
+\newblock Último acceso: 13 de agosto de 2024.
+
 \end{thebibliography}
