@@ -4,3 +4,9 @@
 *.log
 *.gz
 *.bib
+*.svg
+*.png
+*.out
+*.bbl
+*.PNG
+*.py
