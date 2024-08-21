@@ -100,7 +100,7 @@
 
 \end{figure}
 
-\section{Tratamiento y acondicionamiento de Señales}
+\subsection{Tratamiento y acondicionamiento de Señales}
 
 \noindent Próxima al sensor, se encuentra la etapa de tratamiento y acondicionamiento, que típicamente comprende electrónica analógica para la amplificación, shaping y digitalización de la señal. Esta etapa es esencial para filtrar y modular la señal, otorgándole las características adecuadas para ser transferida a las etapas de procesamiento digital posteriores. En la figura \ref{fig:generic_frontend} se observa un esquema genérico de esta sección de la cadena de adquisición de datos.\\
 
@@ -221,7 +221,7 @@ y a la entrada del amplificador se tiene el voltaje
 \noindent En un ADC ideal, cada conversión de voltaje de entrada a código de salida es independiente, perfectamente lineal y ocurre instantáneamente. Sin embargo, las imperfecciones en los ADCs reales limitan tanto la frecuencia máxima de muestreo como la linealidad y la precisión de la conversión \cite{kolanoski2020particle}.
 
 
-\section{Digital Signal Processing}
+\subsection{Digital Signal Processing}
 \label{sec:digital_processing}
 
 \noindent El procesamiento digital de señales (DSP) implica la aplicación de operaciones matemáticas a datos digitales, es decir, números en representación binaria, para analizar, modificar o transformar señales. Este proceso se basa en algoritmos matemáticos que pueden ser implementados en diferentes plataformas de hardware, cada una con sus propias características y ventajas \cite{proakis2007digital}. En la figura \ref{fig:digital_stage} se ilustra un esquema genérico de la etapa de procesamiento digital de señales en un DAQ.
@@ -310,7 +310,7 @@ se observa la aplicación del filtro a una señal con ruido.
 
 \noindent Esta configuración permite aprovechar lo mejor de ambos mundos: la capacidad de realizar tareas complejas y variables mediante software y, al mismo tiempo, la ejecución de operaciones intensivas en paralelo y en tiempo real mediante la lógica programable de la FPGA. Además, esta integración incluye funcionalidades adicionales como procesamiento digital de señales (DSP), dispositivos de señal mixta, y la posibilidad de reemplazar otros componentes dedicados como los ASICs (Application-Specific Integrated Circuits) o ASSPs (Application-Specific Standard Products), todo en un solo dispositivo, optimizando así el rendimiento y la eficiencia energética para aplicaciones específicas.\\
 
-\section{Communication Interface}
+\subsection{Communication Interface}
 \label{sec:communication_interface}
 
 \noindent Si bien las plataformas mencionadas pueden realizar operaciones en línea, procesando las señales a medida que ingresan al sistema, es esencial enviar la información a etapas externas del sistema de adquisición de datos (DAQ) para realizar actividades adicionales, como almacenamiento, posprocesamiento, interacción con otros sistemas de detección (como triggers) y transferencia a interfaces de alto nivel de abstracción, como computadoras de escritorio, para que el usuario pueda acceder a los datos. La etapa encargada de dicha transferencia es la interfaz de comunicación. \\
