@@ -5,47 +5,47 @@ Reallocating 'name_of_file' (item size: 1) to 7 items.
 The style file: ieeetr.bst
 Reallocating 'name_of_file' (item size: 1) to 11 items.
 Database file #1: references.bib
-Warning--can't use both volume and number fields in bortolotti2012infn
 Warning--empty publisher in Rucci2018heterogeneos
-You've used 22 entries,
+Warning--can't use both volume and number fields in bortolotti2012infn
+You've used 24 entries,
             1876 wiz_defined-function locations,
-            600 strings with 6817 characters,
-and the built_in function-call counts, 4378 in all, are:
-= -- 402
-> -- 205
+            608 strings with 7003 characters,
+and the built_in function-call counts, 4656 in all, are:
+= -- 429
+> -- 213
 < -- 0
-+ -- 79
-- -- 57
-* -- 251
-:= -- 647
-add.period$ -- 37
-call.type$ -- 22
-change.case$ -- 8
++ -- 83
+- -- 59
+* -- 260
+:= -- 687
+add.period$ -- 41
+call.type$ -- 24
+change.case$ -- 9
 chr.to.int$ -- 0
-cite$ -- 24
-duplicate$ -- 233
-empty$ -- 468
-format.name$ -- 57
-if$ -- 1087
+cite$ -- 26
+duplicate$ -- 246
+empty$ -- 506
+format.name$ -- 59
+if$ -- 1159
 int.to.chr$ -- 0
-int.to.str$ -- 22
-missing$ -- 34
-newline$ -- 84
-num.names$ -- 22
-pop$ -- 111
+int.to.str$ -- 24
+missing$ -- 36
+newline$ -- 92
+num.names$ -- 24
+pop$ -- 124
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 104
+skip$ -- 108
 stack$ -- 0
 substring$ -- 92
-swap$ -- 65
+swap$ -- 66
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 31
-width$ -- 24
-write$ -- 209
+while$ -- 33
+width$ -- 26
+write$ -- 227
 (There were 2 warnings)

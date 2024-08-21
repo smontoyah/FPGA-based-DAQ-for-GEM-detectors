@@ -37,15 +37,9 @@ J.~G. Proakis, {\em Digital signal processing: principles, algorithms, and
   applications, 4/E}.
 \newblock Pearson Education India, 2007.
 
-\bibitem{zurawski2014industrial}
-R.~Zurawski, {\em Industrial communication technology handbook}.
-\newblock CRC press, 2014.
-
-\bibitem{bortolotti2012infn}
-G.~Bortolotti, A.~Cavalli, L.~Chiarelli, A.~Chierici, S.~Dal~Pra,
-  L.~Dell'Agnello, D.~De~Girolamo, M.~Donatelli, A.~Ferraro, D.~Gregori, {\em
-  et~al.}, ``The infn tier-1,'' in {\em Journal of Physics: Conference Series},
-  vol.~396, p.~042016, IOP Publishing, 2012.
+\bibitem{austerlitz2014data}
+H.~Austerlitz, {\em Data Acquisition Techniques Using PC}.
+\newblock Academic Press, 2014.
 
 \bibitem{crespo2021remote}
 M.~L. Crespo, F.~Foulon, A.~Cicuttin, M.~Bogovac, C.~Onime, C.~Sisterna,
@@ -105,5 +99,19 @@ E.~Rucci, {\em Evaluación de rendimiento y eficiencia energética de sistemas
   \url{https://www.amd.com/en/products/adaptive-socs-and-fpgas/soc/zynq-7000.html},
   2024.
 \newblock Último acceso: 13 de agosto de 2024.
+
+\bibitem{zurawski2014industrial}
+R.~Zurawski, {\em Industrial communication technology handbook}.
+\newblock CRC press, 2014.
+
+\bibitem{bortolotti2012infn}
+G.~Bortolotti, A.~Cavalli, L.~Chiarelli, A.~Chierici, S.~Dal~Pra,
+  L.~Dell'Agnello, D.~De~Girolamo, M.~Donatelli, A.~Ferraro, D.~Gregori, {\em
+  et~al.}, ``The infn tier-1,'' in {\em Journal of Physics: Conference Series},
+  vol.~396, p.~042016, IOP Publishing, 2012.
+
+\bibitem{eeeguide_serial_communication_8251}
+{EEE Guide}, ``Serial communication interface 8251,'' 2024.
+\newblock Accessed: 2024-08-20.
 
 \end{thebibliography}
