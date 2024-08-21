@@ -4,9 +4,19 @@
 *.log
 *.gz
 *.bib
+<<<<<<< HEAD
 *.svg
 *.png
 *.out
 *.bbl
 *.PNG
 *.py
+=======
+*.png
+*.svg
+*.tex
+*.PNG
+*.bbl
+*.blg
+*.out
+>>>>>>> c3702c5bbe7a3f8316e0413e55b2e3464bd44d17
