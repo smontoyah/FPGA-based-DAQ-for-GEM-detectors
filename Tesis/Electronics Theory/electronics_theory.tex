@@ -63,7 +63,7 @@
 
 \end{figure}
 
-\noindent Un caso de particular interés son las señales producidas por los detectores de partículas, que en general son de naturaleza pulsada. En este contexto, se puede asociar la detección de un evento con una perturbación, denominada pulso, que se define sobre la línea base de la señal de salida. La figura \ref{fig:pulse} muestra un ejemplo genérico de un pulso individual, utilizado para ilustrar algunas de sus características principales.
+\noindent Un caso de particular interés son las señales producidas por los detectores de partículas, que en general son de naturaleza pulsada. En este contexto, se puede asociar la detección de un evento con una perturbación localizada, denominada pulso, que se define sobre la línea base de la señal de salida. La figura \ref{fig:pulse} muestra un ejemplo genérico de un pulso individual, utilizado para ilustrar algunas de sus características principales.
 
 \begin{figure}[h]
     \centering
@@ -193,7 +193,16 @@ y a la entrada del amplificador se tiene el voltaje
 
 \noindent Las ventajas de este enfoque incluyen una flexibilidad ilimitada en la elección de parámetros de procesamiento, mayor estabilidad al eliminar el riesgo de derivas debido a cambios de temperatura o voltaje, y la capacidad de realizar análisis más detallados con múltiples salidas de un mismo sensor. Además, la manipulación digital no introduce ruido adicional y permite la implementación precisa de formas de señal que serían difíciles o imposibles de lograr en circuitos analógicos. Sin embargo, una desventaja potencial es la limitación en la precisión temporal, ya que los sistemas digitales están restringidos a la frecuencia de muestreo más cercana, lo que puede ser menos exacto que los métodos analógicos en aplicaciones que requieren una temporización muy rápida.\\
 
-\noindent La función principal de un ADC (Convertidor Analógico-Digital) es transformar una señal de tensión analógica en un código digital proporcional, manteniendo esta conversión de manera continua a una frecuencia determinada por el reloj del sistema. Por ejemplo, un reloj operando a 500 MHz permite una velocidad de muestreo de 500 MSPS (Megamuestras por segundo), lo que corresponde a una muestra cada 2 ns. En la figura \ref{fig:adc_out} se muestra la simulación de una señal senoidal proveniente de un sensor, digitalizada mediante un ADC con estas características.
+\noindent La función principal de un ADC (Convertidor Analógico-Digital) es transformar una señal de tensión analógica en un código digital proporcional, manteniendo esta conversión de manera continua a una frecuencia determinada por el reloj del sistema. Una ilustración genérica de su principio de funcionamiento se observa en la figura \ref{fig:adc_basic}. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{adc_basic.png}
+    \caption{Ilustración del principio de funcionamiento de un ADC.}
+    \label{fig:adc_basic}
+\end{figure}
+
+\noindent Por ejemplo, un reloj operando a 500 MHz permite una velocidad de muestreo de 500 MSPS (Megamuestras por segundo), lo que corresponde a una muestra cada 2 ns. En la figura \ref{fig:adc_out} se muestra la simulación de una señal senoidal proveniente de un sensor, digitalizada mediante un ADC con estas características.
 
 \begin{figure}[h]
     \centering
