@@ -4,3 +4,7 @@
 *.log
 *.gz
 *.bib
+*.png
+*.svg
+*.tex
+*.PNG
