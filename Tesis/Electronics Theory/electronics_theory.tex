@@ -375,6 +375,19 @@ se observa la aplicación del filtro a una señal con ruido.
 \noindent En este trabajo se presenta la implementación de un sistema de adquisición de datos (DAQ) monocanal de altas prestaciones, que incluye una etapa de digitalización, un sistema de procesamiento digital basado en FPGA SoC y una interfaz de comunicación de alta velocidad. Esta arquitectura permite una adquisición efectiva de señales provenientes de diversos sistemas de sensado con su respectiva electrónica de acondicionamiento, cubriendo posibles aplicaciones que van desde el ámbito biomédico hasta la detección de partículas, entre otros. Tanto el hardware utilizado como la metodología de trabajo se fundamentan en los resultados obtenidos en la escuela conjunta ICTP-IAEA sobre aplicaciones de instrumentación científica y nuclear basadas en FPGA SoC \cite{ictp_smr3765}.
 
 \subsection{Digitalization Hardware - ADC500}
+
+\noindent En este trabajo, se utilizó la tarjeta ICTP-INFN ADC500 como plataforma de digitalización, en adelante referida como ADC500 (fig \ref{fig:adc500}). Esta tarjeta está basada en un chip Texas Instruments ADC08500 \cite{ti_adc08500} de alta velocidad, con una frecuencia de muestreo de 500 MHz y 8 bits de resolución. Cumple con las especificaciones ANSI/VITA 57.1 y está equipada con un conector de tarjeta mezzanine FPGA (FMC) de bajo número de pines (LPC) \cite{crespo2021remote}.\\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{ADC500.png}
+    \caption{Plataforma de digitalización de señales ICTP-INFN ADC500. Tomada de \cite{ictp_smr3765}.}
+    \label{fig:adc500}
+
+\end{figure}
+
+\noindent Según el fabricante, el ADC cuenta con un demultiplexor 1:2 que alimenta dos buses de salida LVDS (Low-Voltage Differential Signaling). Los datos de estos buses se entregan a una tasa de palabras de salida en cada bus equivalente a la mitad de la tasa de muestreo del ADC, y deben ser intercalados por el usuario para proporcionar palabras de salida a la tasa de conversión completa. Esto implica que, una vez digitalizada la señal, esta es enviada mediante el protocolo LVDS a través del conector FMC hacia una plataforma digital compatible con las capacidades técnicas para realizar procesamiento paralelizado en tiempo real y a alta frecuencia. Para este fin,en este trabajo se propone el uso de la tarjeta de desarrollo Avnet Digilent Zedboard, que se basa en un SoC (System on Chip) Xilinx Zynq-7000, compuesto por una FPGA Artix-7 y un procesador ARM Cortex-A9 [6].
+
 \subsection{Digital Processing Platform based on FPGA SoC}
 \subsection{PS-PL Intercommunication Subsystem - Comblock}
 \subsection{Communication Interface - UDMA}
