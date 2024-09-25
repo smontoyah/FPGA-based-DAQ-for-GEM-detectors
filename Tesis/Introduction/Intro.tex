@@ -1,46 +1,189 @@
-\documentclass[]{book}
+\documentclass{article}
+
+\title{\textbf{Introduction to GEM detectors}}
+\author{Sebastián Montoya Hernández}
+
+
+
 \usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{cite}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{listings}
+
 \begin{document}
 
+\maketitle 
+\setcounter{section}{0}
 
-\chapter{Introducción}
+\noindent Desde tiempos inmemoriales, el ser humano ha utilizado sus sentidos para interpretar el entorno, siendo la visión uno de los más fundamentales. La percepción visual se basa en la interacción de la luz, o de forma más general, la radiación electromagnética, con la materia. La luz se dispersa al incidir sobre los objetos, es absorbida por el ojo y transformada en señales neuronales que el cerebro procesa para generar la imagen percibida. De manera análoga, la detección de partículas elementales, núcleos y radiación electromagnética de alta energía, comúnmente denominadas "partículas", también depende de su interacción con la materia. \\
 
-\subsection{Motivación}
+\noindent El estudio de partículas subatómicas comenzó a principios del siglo XX, cuando científicos como J.J. Thomson y Ernest Rutherford realizaron experimentos pioneros que revelaron la estructura interna del átomo. Thomson, con su descubrimiento del electrón a través de la manipulación de los rayos catódicos, y Rutherford, al desentrañar la estructura nuclear mediante la dispersión de partículas alfa, sentaron las bases de la física atómica moderna. Estos experimentos fueron posibles gracias al uso de sistemas de detección que permitieron observar indirectamente los efectos de las partículas sobre la materia. La creación de estos montajes experimentales, que incluían detectores rudimentarios pero eficaces, supuso un avance crucial para la ciencia, ya que facilitó la interacción controlada con partículas incidentes, proporcionando información valiosa sobre la estructura de la materia. \\
 
-Desde los inicios de la humanidad, el conocimiento sobre el mundo ha surgido de la observación del entorno. Durante milenios, el ser humano ha utilizado sus sentidos para obtener información sobre las características de su alimento, el clima, sus depredadores y muchos otros aspectos fundamentales para su supervivencia. Sin embargo, con el desarrollo de sus habilidades cognitivas, esta capacidad de observación evolucionó hacia preguntas sobre la naturaleza de las cosas, su composición y origen, dando lugar a la actividad científica.\\ Llenas estos espacios con información importante para hacer más suave la transición.
+\noindent A medida que avanzaba el siglo XX, la necesidad de detectar partículas subatómicas de manera más precisa y en entornos más complejos se hizo cada vez más urgente. A diferencia de la luz visible, las partículas no son perceptibles directamente por nuestros órganos sensoriales, lo que llevó al desarrollo de dispositivos especializados llamados detectores, en los cuales las partículas interactúan con la materia, generando señales que los científicos pueden analizar. Estos detectores explotan principalmente la interacción electromagnética para registrar la presencia de partículas. Por ejemplo, las partículas cargadas producen ionización a lo largo de su trayectoria, mientras que los fotones y electrones generan cascadas electromagnéticas que permiten medir su energía. Incluso otras interacciones, como la fuerte y la débil, son aprovechadas para detectar neutrones y neutrinos, respectivamente. \\
 
-% \noindent El entendimiento de la visión, en particular, como el fenómeno por el cual la luz reflejada por los objetos es captada por el ojo, proporcionó una noción fundamental: es necesaria una interacción con el objeto para poder observarlo. Sin embargo, al explorar la estructura básica de la materia, la limitada capacidad de visión no permitía discernir sus componentes, incluso con los avances en tecnología óptica.\\
+\noindent El desarrollo de detectores y métodos de detección ha sido impulsado en gran medida por la necesidad de aplicaciones en la física de partículas y nuclear. Estos campos dependen de la capacidad para medir no solo la presencia de partículas, sino también sus propiedades cinemáticas como la dirección, el momento y la energía, así como determinar su identidad. Los primeros dispositivos, como las cámaras de niebla de C.T.R. Wilson o las cámaras de burbujas de Donald Glaser, revolucionaron la forma en que los científicos podían observar eventos a nivel subatómico. A lo largo del tiempo, estas tecnologías se fueron perfeccionando, lo que permitió detectar partículas con mayor precisión y en un rango más amplio de energías.\\
 
-\noindent A principios del siglo XX, la idea del átomo como unidad estructural de la materia llevó a científicos como Thomson y Rutherford a interactuar con nuevos tipos de radiación descubiertos, como los rayos catódicos y las partículas alfa, revelando la naturaleza eléctrica y la distribución interna del átomo, respectivamente. Estos avances fueron posibles gracias a montajes experimentales basados en sistemas de detección especializados, diseñados sistemáticamente para interactuar con las partículas incidentes y proporcionar información sobre la respuesta del objeto bajo inspección. \\
+\noindent Con el tiempo, surgieron diferentes tipos de detectores, cada uno aprovechando distintos fenómenos físicos. Los detectores de estado sólido, por ejemplo, son muy utilizados por su alta resolución espacial y energética, mientras que los detectores de centelleo, basados en cristales como el NaI o CsI, convierten la energía de la radiación en luz que luego puede ser medida. Además, los detectores líquidos, como los de argón líquido, ofrecen una excelente resolución en la detección de neutrinos y partículas cargadas en grandes volúmenes. Existen también sistemas híbridos que combinan múltiples tecnologías para explotar diversos mecanismos de interacción de partículas, como la ionización y la emisión de radiación secundaria. Dentro de esta amplia gama, los detectores gaseosos han desempeñado un papel clave debido a su capacidad para cubrir grandes áreas con una cantidad mínima de material y aprovechar la ionización de partículas en el gas para generar señales medibles. \\
+
+\noindent Un ejemplo destacado de esta evolución en los detectores gaseosos es la tecnología de los Gas Electron Multipliers (GEMs), basada en láminas perforadas que amplifican las señales resultantes de la ionización del gas. Esta tecnología ofrece una mayor sensibilidad y capacidad para manejar altas tasas de conteo, haciéndola ideal para experimentos de alta precisión. Además, los GEMs son especialmente eficaces en entornos con campos magnéticos, ya que permiten rastrear con precisión las trayectorias de partículas cargadas. En comparación con los detectores de semiconductores, los GEMs son más económicos y ligeros, lo que los convierte en una opción preferida cuando es necesario cubrir grandes volúmenes.\\
+
+\noindent En este capítulo se examinan los principios fundamentales de la física que gobiernan el funcionamiento e interacción de los detectores gaseosos, revisando conceptos clave como la ionización, recombinación, poder de frenado y amplificación. Además, se estudian diferentes tipos de detectores gaseosos, desde los contadores de eventos basados en placas paralelas hasta las cámaras de múltiples hilos (MWPCs), culminando en los GEMs. También se explican las señales típicas que estos detectores generan y la instrumentación necesaria para su acondicionamiento y adquisición, que constituyen el objeto central de este trabajo.
+
+\section{Principle of operation of gaseous detectors}
+
+\noindent El proceso de detección de una partícula cargada se basa en la transferencia de una fracción o la totalidad de su energía al medio con el que interactúa. Aunque fenómenos como la luminiscencia, el centelleo o la ionización pueden observarse como resultado de estas interacciones, en sistemas de baja densidad, la ionización del medio es el fenómeno predominante que puede ser explotado para extraer una señal medible. La ionización, en particular, es un proceso clave en detectores gaseosos, donde las partículas cargadas ionizan los átomos del gas a lo largo de su trayectoria (fig. \ref{fig:ionization_chamber} ).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{ionization_chamber.PNG}
+    \caption{Diagrama que describe el funcionamiento básico de un detector gaseoso. El medio sensible del detector, en este caso un gas, se encuentra entre dos electrodos con un voltaje aplicado. Cuando una partícula cargada atraviesa el gas, se liberan cargas que se desplazan hacia los electrodos impulsadas por el campo eléctrico. Estas cargas en movimiento generan una señal de corriente en los electrodos. En esencia, el detector actúa como un condensador que se descarga cuando el medio es ionizado. Desde el punto de vista eléctrico, se comporta como una fuente de corriente.}
+    \label{fig:ionization_chamber}
+
+\end{figure}
+
+\noindent En este tipo de detectores, como las cámaras de ionización, las partículas cargadas atraviesan un gas en presencia de un campo eléctrico entre los electrodos de un condensador. La ionización del gas genera electrones e iones que, al ser separados por el campo eléctrico, provocan una corriente detectable entre los electrodos. Este mecanismo es eficaz para medir flujos de radiación con un gran número de partículas, pero para la detección de partículas individuales, la señal de corriente resultante es demasiado débil y se confunde con el ruido electrónico. Para solucionar esto, se emplea la amplificación de gas. En esta técnica, un campo eléctrico muy intenso en las proximidades del ánodo provoca una ionización secundaria que desencadena avalanchas de carga, amplificando considerablemente la señal y haciéndola detectable.\\
+
+\noindent Para obtener una lectura precisa de la señal, se puede integrar la corriente a lo largo del tiempo, lo que permite calcular la carga total generada en el detector. La variación del voltaje registrada en el detector está relacionada con su capacitancia, y una resistencia externa se utiliza para asegurar que la carga se integre correctamente y la señal se lea con precisión. Aunque las cargas inducidas no dependen de las cargas de polarización del material, la capacitancia del sistema juega un papel crucial en la interpretación correcta de la señal medida.\\
+
+\noindent Para asegurar una eficiente formación de señal, es crucial que estas cargas no se pierdan por recombinación o por unión a otras moléculas mientras se mueven hacia los electrodos. La base para la detección de partículas en los detectores gaseosos es la creación de cargas mediante ionización, no obstante, es posible describir dos tipos: la primaria y la secundaria.
+\begin{itemize}
+    \item \textbf{Ionización primaria:} Las partículas que atraviesan el detector ionizan el gas a lo largo de sus trayectorias. La pérdida de energía cinética de la partícula en el detector, conocida como "poder de frenado" o "fórmula de Bethe-Bloch", describe la energía transferida por la partícula al medio a medida que lo atraviesa. Esta energía se distribuye de dos maneras: una parte se emplea en la excitación de los átomos del gas, mientras que otra se convierte en energía cinética para los electrones liberados, generando pares electrón-ion.
+    \item \textbf{Ionización secundaria:} Algunos de los electrones tienen suficiente energía para generar más iones, lo que se traduce en un número total de pares electrón-ion generados por unidad de distancia que puede ser varias veces mayor que el número de pares primarios. Mientras que las ionizaciones primarias se distribuyen de manera aleatoria a lo largo de la trayectoria de la partícula, la ionización secundaria genera "clústeres" de carga con una distribución específica del gas, lo que influye en la formación de la señal.  
+\end{itemize}
+
+\section{Modos de operación y detectores precursores de los GEMs}
+
+\noindent Es posible generar campos eléctricos de gran magnitud al implementar estructuras de electrodos entre las placas paralelas como un alambre (contador proporcional o Geiger-Müller) o arreglos de alambres (MWPC). En la proximidad del ánodo de un contador proporcional (fig. \ref{fig:counter}), los electrones en deriva pueden ser acelerados a tal punto que pueden iniciar ionizaciones secundarias. Esto da lugar al desarrollo de una avalancha, amplificando así la carga de ionización con factores de amplificación típicos que oscilan entre \(10^4\) y \(10^6\). A partir de intensidades de campo de aproximadamente \(10-50\) kV/cm, la energía ganada entre colisiones se vuelve suficiente para causar la ionización del gas.\\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{counter.png}
+    \caption{Diagrama de un contador proporcional donde se describe sus partes principales: cámara de gas, electrodos para generación de campo eléctrico y electrónica de lectura.}
+    \label{fig:counter}
+\end{figure}
+%     @article{article,
+% author = {Winkler, Alexander and Karadzhinova, Aneliya and Hilden, T. and Garcia, Francisco and Fedi, Giacomo and Devoto, Francesco and Brücken, Erik},
+% year = {2015},
+% month = {09},
+% pages = {},
+% title = {A gaseous proportional counter built from a conventional aluminum beverage can},
+% volume = {83},
+% journal = {American Journal of Physics},
+% doi = {10.1119/1.4923022}
+% }
+
+\noindent La cantidad de iones generados por unidad de longitud se denomina primer coeficiente de Townsend. Este coeficiente se relaciona con la sección transversal para la ionización y la longitud libre media entre ionizaciones. Es más informativo graficar un coeficiente efectivo de Townsend en función de la intensidad del campo eléctrico, en lugar de la energía de los electrones.\\
+
+\noindent El aumento en el número de pares electrón-ion a lo largo de una longitud de camino es proporcional a la cantidad inicial de electrones. La relación entre la cantidad de electrones amplificados que llegan al ánodo y la cantidad original define la amplificación del gas. Esta amplificación puede calcularse numéricamente, ya que el coeficiente de Townsend es dependiente de la energía y varía con el campo eléctrico.\\
+
+\noindent En la práctica, el régimen de amplificación se encuentra entre \(10^3\) y \(10^6\), y se puede estimar que el número de colisiones necesarias para lograr tal amplificación es de aproximadamente 13 a 20. La mayoría de los electrones tienen una trayectoria de deriva muy corta hacia el ánodo, mientras que los iones deben recorrer una distancia mayor hasta el cátodo. Esto es crucial en la formación de señales en el ánodo.\\
+
+\noindent Sin embargo, la amplificación del gas no puede volverse arbitrariamente grande, ya que las cargas espaciales tienden a apantallar el campo cerca del ánodo, lo que se conoce como el límite de Raether. Se ha observado empíricamente que el desarrollo de la avalancha alcanza una saturación en la amplificación del número de electrones primarios, en torno a \(10^8\). En este punto, el pulso de corriente en el electrodo se vuelve independiente de la ionización primaria. Contadores como el contador Geiger operan en este modo, y un aumento adicional en el voltaje puede resultar en descargas.\\
+
+\noindent La figura \ref{fig:amplification} muestra la dependencia principal de la amplificación de gas en función del voltaje entre ánodo y cátodo para un tubo de conteo con un alambre delgado. 
+
+% [715] MONTGOMERY, C.G.; MONTGOMERY, D.D.: Geiger–Mueller counters. In:
+% J. of the Franklin Inst. 231 (1941), p. 447. doi: 10.1016/S0016-0032(41)90498-2
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{amplification.PNG}
+    \caption{Representación esquemática de la dependencia de la
+    señal de salida de un tubo contador en función de la tensión ánodo-cátodo. Los valores numéricos de amplificación y tensión se utilizan a modo de ejemplo; en casos concretos dependen en gran medida de la disposición de los electrodos y del gas utilizado. }
+    \label{fig:amplification}
+\end{figure}
+
+\noindent En los detectores gasesos, la elección del modo de operación depende de la aplicación prevista y diversas restricciones, como consideraciones técnicas o de seguridad. Se pueden distinguir los siguientes regímenes de amplificación: 
+
+\begin{itemize}
+    \item \textbf{Región de recombinación, \(G < 1\):} En regiones de bajos campos eléctricos, los electrones primarios e iones tienden a recombinarse.
+    \item \textbf{Región de cámara de ionización, \(G \approx 1\):} La señal de salida se satura sin amplificación, lo que la hace adecuada para mediciones de flujos de partículas, pero no para la detección de partículas individuales.
+    \item \textbf{Región proporcional, \(G \approx 10^3 - 10^5\):} Aquí, los electrones ganan suficiente energía para producir electrones secundarios, y la carga amplificada permanece proporcional a la carga primaria en un amplio rango de voltajes.
+    \item \textbf{Región proporcional, \(G \approx 10^3 - 10^5\):} Aquí, los electrones ganan suficiente energía para producir electrones secundarios, y la carga amplificada permanece proporcional a la carga primaria en un amplio rango de voltajes.
+    \item \textbf{Región de proporcionalidad limitada, \(G \approx 10^5 - 10^8\):} A voltajes altos, la proporcionalidad se ve limitada por efectos de carga espacial, lo que lleva a la formación de nubes de iones cerca del ánodo.
+    \item \textbf{Región de saturación y Geiger, \(G \geq 10^8\):} La señal de salida se vuelve independiente de la ionización primaria. En este modo, se "cuentan" partículas ionizantes independientemente de su tipo. La recombinación en la avalancha puede generar fotones que inician nuevas avalanchas. Sin embargo, hay un tiempo muerto significativo entre pulsos, limitando la tasa de conteo.
+    \item \textbf{Región de descarga, \(G \geq 10^8 - 10^9\):} A voltajes muy altos, ocurren descargas auto-sostenidas. Es importante contar con mecanismos para la terminación controlada de estas descargas, ya que se pueden interrumpir aumentando la carga espacial o aplicando pulsos de voltaje.
+\end{itemize}
+
+\noindent Estos regímenes de operación y sus mecanismos asociados son cruciales para el funcionamiento eficiente de los detectores de gas.\\
+
+\noindent Un tipo de detector gaseoso de gran importancia como precursos de los detectores de miropatrones, que incluyen a los GEMs, es la MWPC, \textit{Cámara Proporcional Multi-hilos} (del inglés \textit{Multiwire Proportional Chamber}, MWPC). Se trata de un tipo de detector que funciona de manera similar a los tubos contadores proporcionales, pero en lugar de tener un solo tubo, tiene múltiples hilos (alambres) dispuestos uno al lado del otro en un plano (fig. \ref{fig:MWPC}). Estos hilos funcionan como ánodos, y el espacio entre ellos permite obtener resolución espacial para las partículas cargadas que atraviesan el plano de hilos.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{MWPC.png}
+    \caption{Diagrama básico de una Cámara proporcional multi-hilos o MWPC.}
+    \label{fig:MWPC}
+\end{figure}
+
+% @article{article,
+% author = {Hamid, Mounir and Bri, Seddik},
+% year = {2013},
+% month = {01},
+% pages = {},
+% title = {Micromegas Detector Using 55 Fe X-ray Source},
+% volume = {1},
+% journal = {International Journal of Advanced Research}
+% }
+
+\noindent El concepto clave de una MWPC es que, cuando una partícula cargada pasa cerca de los hilos, ioniza el gas dentro de la cámara, lo que provoca una cascada de electrones que son atraídos hacia los hilos ánodos. Esto genera una señal electrónica que se puede registrar. Cada hilo actúa como un detector individual, lo que permite registrar la trayectoria de las partículas al combinar las señales de varios hilos en planos sucesivos.\\
+
+\noindent En experimentos con altos flujos de partículas, como en el LHC, se debe cuidar que la tasa de impactos por canal de lectura no sea demasiado alta. La ocupación, definida como la probabilidad promedio de registrar un impacto en un canal durante la ventana de lectura, aumenta con la tasa de impactos y reduce la información útil de cada impacto. En los detectores gaseosos, el área sensible no puede reducirse arbitrariamente debido a las limitaciones físicas en la longitud de los hilos y la necesidad de una trayectoria suficiente para la ionización.\\
+
+\noindent Por esto, se han desarrollado detectores gaseosos con planos de lectura microestructurados, conocidos como detectores de gas de micropatrones (MPGDs), que pueden manejar altos flujos de partículas, manteniendo ventajas como el bajo costo. Estos detectores, que utilizan microtiras en lugar de hilos, pueden alcanzar tasas de partículas de hasta 2.3 MHz $/cm^{2}$ y se benefician de tecnologías tomadas de los detectores de microtiras de silicio. Además, los MPGDs son útiles no solo como detectores de partículas cargadas, sino también para medir el desplazamiento de electrones en cámaras de proyección temporal.\\
+
+\noindent Los detectores de gas microestructurados, como la cámara de gas de microtiras (MSGC), representan una mejora significativa frente a las Cámaras Proporcionales Multi-hilos (MWPC) debido a su capacidad para manejar tasas de partículas mucho más altas y ofrecer una mejor resolución espacial. Las MSGC utilizan microtiras en lugar de hilos, aplicadas mediante fotolitografía en un sustrato aislante, lo que permite una mayor densidad de partículas en el detector y minimiza las cargas espaciales que pueden alterar los campos eléctricos.\\
+
+\noindent Entre sus ventajas, las MSGC pueden soportar tasas de partículas hasta dos órdenes de magnitud superiores a las MWPCs y alcanzar resoluciones de posición de aproximadamente 30 micrómetros, unas 10-20 veces mejor que las MWPC convencionales. También permiten la implementación modular para cubrir grandes áreas de detección sin zonas muertas y reducir la capacitancia, lo que disminuye el ruido electrónico y prolonga la vida útil del detector.\\
+
+\noindent Sin embargo, las MSGC enfrentan desafíos como las descargas incontrolables que pueden dañar los electrodos, especialmente en experimentos de alta radiación. A pesar de intentos para mitigar estos problemas, como el uso de materiales con resistencia controlada o recubrimientos especiales, su aplicación en experimentos de altas tasas de partículas ha sido limitada.\\
+
+
+\section{GEM detectors}
+
+\subsection*{References}
+\begin{enumerate}
+    \item Sauli, F. (2015). Gaseous radiation detectors: fundamentals and applications (p. 497). Cambridge University Press.
+    \item Giovani Mocellin. “Performance of the GE1/1 detectors for the upgrade of the
+    CMS Muon Forward system”. PhD thesis. Rheinish-Westf¨alische Technische
+    Hochschule Aachen University, 2021. url: https://cds.cern.ch/record/
+    2809098.
+    \item K Nakamura and (Particle Data Group) 2010 J. Phys. G: Nucl. Part. Phys. 37 075021. DOI 10.1088/0954-3899/37/7A/075021
+\end{enumerate}
+
+
 
 % Así, la física de las interacciones entre partículas se utiliza como medio para desarrollar métodos y dispositivos de detección, los cuales a su vez tienen aplicaciones de importancia, desde mejorar la comprensión de la naturaleza fundamental de la materia, hasta dispositivos médicos de diagnóstico y variedad de bienes de consumo [Knoll].\\
 
 % \noindent Es importante resaltar que las partículas de interés guían el diseño de un detector. No obstante, el principio básico de funcionamiento de diversos tipos, como los detectores gaseosos, líquidos o de estado sólido, se rige por la interacción electromagnética, ya que todas las partículas, a excepción de los neutrones y los neutrinos, se ven afectadas por ella. Incluso en el caso específico de estas partículas neutras, se aprovechan otras interacciones físicas como las nucleares, que resultan en fenómenos electromagnéticos, permitiendo el uso de los dispositivos mencionados. Esta característica hace que la mayoría los sistemas de detección modernos cuenten con una etapa que transforma la información física de interés, producto de la detección, en señales eléctricas. Adicionalmente, gracias al amplio desarrollo y uso de dispositivos electrónicos, estas señales se modulan, transportan, procesan y almacenan con alta precisión.\\
 
-\noindent A grandes rasgos, un sistema de detección de partículas está compuesto por un detector que utiliza una o varias interacciones de la partícula objetivo para generar un evento de detección en forma de señal eléctrica. En segundo lugar, la electrónica de lectura, que se puede dividir en una etapa analógica denominada electrónica de front-end para el acondicionamiento de la señal y en una etapa digital que compone al sistema de adquisición (DAQ) y procesamiento de datos. Finalmente, se dispone de una infraestructura para la transmisión de señales eléctricas, ópticas o híbridas hacia subsecuentes sistemas de procesamiento o almacenamiento [Kolanoski].\\
+% \noindent A grandes rasgos, un sistema de detección de partículas está compuesto por un detector que utiliza una o varias interacciones de la partícula objetivo para generar un evento de detección en forma de señal eléctrica. En segundo lugar, la electrónica de lectura, que se puede dividir en una etapa analógica denominada electrónica de front-end para el acondicionamiento de la señal y en una etapa digital que compone al sistema de adquisición (DAQ) y procesamiento de datos. Finalmente, se dispone de una infraestructura para la transmisión de señales eléctricas, ópticas o híbridas hacia subsecuentes sistemas de procesamiento o almacenamiento [Kolanoski].\\
 
 % \noindent En particular, los detectores GEM (Gas Electron Multiplier), que son el foco de este estudio, consisten en una cámara llena de gas cuyas moléculas pueden ser ionizadas por partículas cargadas que la atraviesan. Dentro de esta cavidad, se encuentra una estructura compuesta por láminas de material dieléctrico perforadas con agujeros micrométricos dispuestos en patrones específicos y recubiertas de material conductor en ambas caras. Al aplicar una diferencia de potencial eléctrico a estas láminas, actúan como etapas multiplicadoras de los electrones generados por la ionización del gas, permitiendo que la carga sea colectada por electrodos conectados a la electrónica de lectura [Estrada].\\
 
-\noindent Sin embargo, la electrónica comercial dedicada a la lectura de detectores suele ser costosa, voluminosa y de capacidades limitadas. Por ello, este trabajo se centra en la implementación y prueba de un sistema de detección para un detector GEM (Gas Electron Multiplier), con un enfoque en la adquisición, procesamiento digital y comunicación de señales, empleando tecnología SoC (System on Chip) con hardware configurable en FPGA (Field Programmable Gate Array) y un procesador embebido. El objetivo es desarrollar una plataforma accesible y flexible para la experimentación en física nuclear y de partículas.
 
 % sistema de adquisición de datos al montaje experimental que incluye las etapas de acondicionamiento de señales y procesamiento digital, las cuales permiten la lectura de las señales eléctricas resultantes de las avalanchas de electrones generadas en el detector. Utilizando electrónica analógica para la preamplificación y amplificación, un conversor análogo a digital (ADC) de alto rendimiento de un canal, una plataforma de hardware configurable para procesamiento digital tipo SoC (que incluye una FPGA y un procesador), y una interfaz de comunicación de alta velocidad con la computadora, se adquirirán, procesarán y visualizarán las señales provenientes de un detector GEM en varias configuraciones.
 
 
 
-\subsection{Estructura de la tesis}
+% \subsection{Estructura de la tesis}
 
-\noindent Este trabajo se divide en capítulos. Inicialmente, en el capítulo de teoría, se abordan tanto los principales conceptos de la física de los detectores GEM, como una revisión general de la electrónica involucrada en un DAQ en el contexto de la instrumentación para detectores. En segundo lugar, en el capítulo de sistema, se realiza una descripción y caracterización de los dispositivos utilizados en la cadena de lectura de señales, así como de su integración en el sistema completo de detección. A continuación, se presentan los resultados experimentales que incluyen la calibración del DAQ y su respectivo análisis. Finalmente, se exponen las conclusiones y perspectivas del trabajo.
+% \noindent Este trabajo se divide en capítulos. Inicialmente, en el capítulo de teoría, se abordan tanto los principales conceptos de la física de los detectores GEM, como una revisión general de la electrónica involucrada en un DAQ en el contexto de la instrumentación para detectores. En segundo lugar, en el capítulo de sistema, se realiza una descripción y caracterización de los dispositivos utilizados en la cadena de lectura de señales, así como de su integración en el sistema completo de detección. A continuación, se presentan los resultados experimentales que incluyen la calibración del DAQ y su respectivo análisis. Finalmente, se exponen las conclusiones y perspectivas del trabajo.
 
-\subsection{Objetivos}
-\noindent Como meta principal se propone diseñar y desarrollar un sistema de adquisición de datos basado en FPGA para detectores GEM. Para lograr esto, se plantean los siguientes objetivos específicos:
+% \subsection{Objetivos}
+% \noindent Como meta principal se propone diseñar y desarrollar un sistema de adquisición de datos basado en FPGA para detectores GEM. Para lograr esto, se plantean los siguientes objetivos específicos:
 
-\begin{itemize}
-    \item Caracterizar los requerimientos técnicos del sistema de adquisición de datos (DAQ) en función del sistema de detección
-    \item Seleccionar el hardware adecuado para cumplir con los requerimientos del DAQ
-    \item Programar el hardware, firmware y software para la adquisición y procesamiento de datos de acuerdo a las necesidades del experimento 
-    \item Implementar la comunicación entre las distintas etapas del DAQ 
-    \item Diseñar y programar una interfaz de usuario acorde a las necesidades del experimento para la interacción con el DAQ
+% \begin{itemize}
+%     \item Caracterizar los requerimientos técnicos del sistema de adquisición de datos (DAQ) en función del sistema de detección
+%     \item Seleccionar el hardware adecuado para cumplir con los requerimientos del DAQ
+%     \item Programar el hardware, firmware y software para la adquisición y procesamiento de datos de acuerdo a las necesidades del experimento 
+%     \item Implementar la comunicación entre las distintas etapas del DAQ 
+%     \item Diseñar y programar una interfaz de usuario acorde a las necesidades del experimento para la interacción con el DAQ
     
-\end{itemize}
+
 
 \end{document}
