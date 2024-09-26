@@ -64,6 +64,186 @@ donde $\beta$ es la velocidad de la partícula, $m$ y $e$ son la masa y la carga
 
 \section{GEM detectors}
 
+section{Principle of operation of gaseous detectors}
+
+\noindent El proceso de detección de una partícula cargada se basa en la transferencia de una fracción o la totalidad de su energía al medio con el que interactúa. Aunque fenómenos como la luminiscencia, el centelleo o la ionización pueden observarse como resultado de estas interacciones, en sistemas de baja densidad, la ionización del medio es el fenómeno predominante que puede ser explotado para extraer una señal medible. La ionización, en particular, es un proceso clave en detectores gaseosos, donde las partículas cargadas ionizan los átomos del gas a lo largo de su trayectoria (fig. \ref{fig:ionization_chamber} ).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{ionization_chamber.PNG}
+    \caption{Diagrama que describe el funcionamiento básico de un detector gaseoso. El medio sensible del detector, en este caso un gas, se encuentra entre dos electrodos con un voltaje aplicado. Cuando una partícula cargada atraviesa el gas, se liberan cargas que se desplazan hacia los electrodos impulsadas por el campo eléctrico. Estas cargas en movimiento generan una señal de corriente en los electrodos. En esencia, el detector actúa como un condensador que se descarga cuando el medio es ionizado. Desde el punto de vista eléctrico, se comporta como una fuente de corriente.}
+    \label{fig:ionization_chamber}
+\end{figure}
+
+\noindent En detectores como las cámaras de ionización, las partículas cargadas atraviesan un gas en presencia de un campo eléctrico entre los electrodos de un condensador, que en su forma más simple puede modelarse como un arreglo de placas paralelas. La ionización del gas genera electrones e iones que, al ser separados por el campo eléctrico, provocan una corriente detectable entre los electrodos. Este mecanismo es eficaz para medir flujos de radiación con un gran número de partículas, pero para la detección de partículas individuales, la señal de corriente resultante es demasiado débil y se confunde con el ruido electrónico. Para solucionar esto, se emplea la amplificación de gas, una técnica en la cual un campo eléctrico muy intenso en las proximidades del ánodo provoca una ionización secundaria que desencadena avalanchas de carga, amplificando considerablemente la señal y haciéndola detectable.\\
+
+\noindent Para obtener una lectura precisa de la señal, se puede integrar la corriente a lo largo del tiempo, lo que permite calcular la carga total generada en el detector. La variación del voltaje registrada está relacionada con su capacitancia, y una resistencia externa se utiliza para asegurar que la carga se integre correctamente y la señal se lea con precisión. Aunque las cargas inducidas no dependen de las cargas de polarización del material, la capacitancia del sistema juega un papel crucial en la interpretación correcta de la señal medida.\\
+
+\noindent La corriente inducida por estos electrones en avalancha aumenta con el tiempo y depende de la velocidad de deriva de los electrones y el coeficiente de Townsend. La señal rápida resultante en un contador de avalancha es una fracción de la carga total generada, destacando que al final del proceso de recolección la carga inducida total es proporcional a la carga inicial multiplicada por un factor exponencial. En la figura \ref{fig:avalanche_signal} se observan las corrientes inducidas por la contribución de los electrones e iones en la avalancha para una configuración con parámetros típicos (page 174).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{avalanche_signal.png}
+    \caption{Corriente inducida por avalancha en cátodos por electrones e iones.}
+    \label{fig:avalanche_signal}
+\end{figure}
+
+\noindent No obstante, en el caso de una distribución extendida de carga dentro del espacio entre los electrodos, como la que genera una partícula cargada al atravesar la cámara, cada electrón experimenta una multiplicación por avalancha con un factor \( e^{\alpha s} \), donde \( s \) es la distancia al ánodo. La señal resultante depende de la densidad y distribución espacial de las cargas liberadas en el gas. En el caso particular de una ionización uniforme entre ánodo y cátodo, con una densidad \( \rho \), siendo $T$ el tiempo total de colección para los electrones en la avalanch y $w^-$ la velocidad de deriva de los electrones en avalancha, la corriente inducida por los electrones en la avalancha puede expresarse como:
+
+\begin{equation}
+i(t) = \frac{e \rho s_0}{T} \left( e^{\alpha w^- t} - \frac{t}{T} \right), \quad 0 \leq t \leq T
+\end{equation}
+
+El máximo de la señal se obtiene en un tiempo 
+\begin{equation}
+t_{\text{max}} = T \left( 1 - \frac{1}{\alpha s_0} \right)
+\end{equation}
+y tiene un valor de 
+\begin{equation}
+i_{\text{max}} = \frac{e \rho}{\alpha s_0} \left( e^{\alpha s_0} - 1 \right)
+\end{equation}
+
+\noindent como se muestra en la figura \ref{fig:current_avalancha}. Dado que el desarrollo de la avalancha es mucho más rápido que el tiempo de colección de los iones, la señal inducida por los iones tiene una forma muy similar (aunque no en amplitud) a la descrita previamente.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{current_avalancha.PNG}
+    \caption{Señal de corriente inducida en los cátodos por una trayectoria extendida bajo multiplicación de avalancha.}
+    \label{fig:current_avalancha}
+\end{figure}
+
+\section{Modos de operación y detectores precursores de los GEMs}
+
+\noindent Es posible generar campos eléctricos de gran magnitud al implementar estructuras de electrodos entre las placas paralelas como un alambre (contador proporcional o Geiger-Müller) o arreglos de alambres (MWPC). En la proximidad del ánodo de un contador proporcional (fig. \ref{fig:counter}), los electrones en deriva pueden ser acelerados a tal punto que pueden iniciar ionizaciones secundarias. Esto da lugar al desarrollo de una avalancha, amplificando así la carga de ionización con factores de amplificación típicos que oscilan entre \(10^4\) y \(10^6\). A partir de intensidades de campo de aproximadamente \(10-50\) kV/cm, la energía ganada entre colisiones se vuelve suficiente para causar la ionización del gas.\\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{counter.png}
+    \caption{Diagrama de un contador proporcional donde se describe sus partes principales: cámara de gas, electrodos para generación de campo eléctrico y electrónica de lectura.}
+    \label{fig:counter}
+\end{figure}
+%     @article{article,
+% author = {Winkler, Alexander and Karadzhinova, Aneliya and Hilden, T. and Garcia, Francisco and Fedi, Giacomo and Devoto, Francesco and Brücken, Erik},
+% year = {2015},
+% month = {09},
+% pages = {},
+% title = {A gaseous proportional counter built from a conventional aluminum beverage can},
+% volume = {83},
+% journal = {American Journal of Physics},
+% doi = {10.1119/1.4923022}
+% }
+
+\noindent La cantidad de iones generados por unidad de longitud se denomina primer coeficiente de Townsend. Este coeficiente se relaciona con la sección transversal para la ionización y la longitud libre media entre ionizaciones. El aumento en el número de pares electrón-ion a lo largo de una longitud de camino es proporcional a la cantidad inicial de electrones y la relación entre la cantidad de electrones amplificados que llegan al ánodo y la cantidad original define la amplificación del gas. Esta amplificación puede calcularse numéricamente, ya que el coeficiente de Townsend es dependiente de la energía y varía con el campo eléctrico.\\
+
+\noindent En la práctica, el régimen de amplificación se encuentra entre \(10^3\) y \(10^6\), y se puede estimar que el número de colisiones necesarias para lograr tal amplificación es de aproximadamente 13 a 20. La mayoría de los electrones tienen una trayectoria de deriva muy corta hacia el ánodo, mientras que los iones deben recorrer una distancia mayor hasta el cátodo. Esto es crucial en la formación de señales en el ánodo.\\
+
+\noindent Sin embargo, la amplificación del gas no puede volverse arbitrariamente grande, ya que las cargas espaciales tienden a apantallar el campo cerca del ánodo, lo que se conoce como el límite de Raether. Se ha observado empíricamente que el desarrollo de la avalancha alcanza una saturación en la amplificación del número de electrones primarios, en torno a \(10^8\). En este punto, el pulso de corriente en el electrodo se vuelve independiente de la ionización primaria. Contadores como el contador Geiger operan en este modo, y un aumento adicional en el voltaje puede resultar en descargas.\\
+
+\noindent La figura \ref{fig:amplification} muestra la dependencia principal de la amplificación de gas en función del voltaje entre ánodo y cátodo para un tubo de conteo con un alambre delgado. 
+
+% [715] MONTGOMERY, C.G.; MONTGOMERY, D.D.: Geiger–Mueller counters. In:
+% J. of the Franklin Inst. 231 (1941), p. 447. doi: 10.1016/S0016-0032(41)90498-2
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{amplification.PNG}
+    \caption{Representación esquemática de la dependencia de la
+    señal de salida de un tubo contador en función de la tensión ánodo-cátodo. Los valores numéricos de amplificación y tensión se utilizan a modo de ejemplo; en casos concretos dependen en gran medida de la disposición de los electrodos y del gas utilizado. }
+    \label{fig:amplification}
+\end{figure}
+
+\noindent En los detectores gasesos, la elección del modo de operación depende de la aplicación prevista y diversas restricciones, como consideraciones técnicas o de seguridad. Se pueden distinguir los siguientes regímenes de amplificación: 
+
+\begin{itemize}
+    \item \textbf{Región de recombinación, \(G < 1\):} En regiones de bajos campos eléctricos, los electrones primarios e iones tienden a recombinarse.
+    \item \textbf{Región de cámara de ionización, \(G \approx 1\):} La señal de salida se satura sin amplificación, lo que la hace adecuada para mediciones de flujos de partículas, pero no para la detección de partículas individuales.
+    \item \textbf{Región proporcional, \(G \approx 10^3 - 10^5\):} Aquí, los electrones ganan suficiente energía para producir electrones secundarios, y la carga amplificada permanece proporcional a la carga primaria en un amplio rango de voltajes.
+    \item \textbf{Región proporcional, \(G \approx 10^3 - 10^5\):} Aquí, los electrones ganan suficiente energía para producir electrones secundarios, y la carga amplificada permanece proporcional a la carga primaria en un amplio rango de voltajes.
+    \item \textbf{Región de proporcionalidad limitada, \(G \approx 10^5 - 10^8\):} A voltajes altos, la proporcionalidad se ve limitada por efectos de carga espacial, lo que lleva a la formación de nubes de iones cerca del ánodo.
+    \item \textbf{Región de saturación y Geiger, \(G \geq 10^8\):} La señal de salida se vuelve independiente de la ionización primaria. En este modo, se "cuentan" partículas ionizantes independientemente de su tipo. La recombinación en la avalancha puede generar fotones que inician nuevas avalanchas. Sin embargo, hay un tiempo muerto significativo entre pulsos, limitando la tasa de conteo.
+    \item \textbf{Región de descarga, \(G \geq 10^8 - 10^9\):} A voltajes muy altos, ocurren descargas auto-sostenidas. Es importante contar con mecanismos para la terminación controlada de estas descargas, ya que se pueden interrumpir aumentando la carga espacial o aplicando pulsos de voltaje.
+\end{itemize}
+
+\noindent Estos regímenes de operación y sus mecanismos asociados son cruciales para el funcionamiento eficiente de los detectores de gas.\\
+
+\noindent Un tipo de detector gaseoso de gran importancia como precursor de los detectores de micropatrones, que incluyen a los GEMs, es la \textit{Cámara Proporcional Multi-hilos} (del inglés \textit{Multiwire Proportional Chamber} o MWPC). Se trata de un tipo de detector que funciona de manera similar a los tubos contadores proporcionales, pero en lugar de tener un solo tubo, tiene múltiples hilos (alambres) dispuestos uno al lado del otro en un plano (fig. \ref{fig:MWPC}). Estos hilos funcionan como ánodos, y el espacio entre ellos permite obtener resolución espacial para las partículas cargadas que atraviesan el plano de hilos.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{MWPC.png}
+    \caption{Diagrama básico de una Cámara proporcional multi-hilos o MWPC.}
+    \label{fig:MWPC}
+\end{figure}
+
+% @article{article,
+% author = {Hamid, Mounir and Bri, Seddik},
+% year = {2013},
+% month = {01},
+% pages = {},
+% title = {Micromegas Detector Using 55 Fe X-ray Source},
+% volume = {1},
+% journal = {International Journal of Advanced Research}
+% }
+
+\noindent El concepto clave de una MWPC es que, cuando una partícula cargada pasa cerca de los hilos, ioniza el gas dentro de la cámara, lo que provoca una cascada de electrones que son atraídos hacia los hilos ánodos. Esto genera una señal electrónica que se puede registrar. Cada hilo actúa como un detector individual, lo que permite registrar la trayectoria de las partículas al combinar las señales de varios hilos en planos sucesivos.\\
+
+\noindent En experimentos con altos flujos de partículas, como en el LHC, se debe cuidar que la tasa de impactos por canal de lectura no sea demasiado alta. La ocupación, definida como la probabilidad promedio de registrar un impacto en un canal durante la ventana de lectura, aumenta con la tasa de impactos y reduce la información útil de cada impacto. En los detectores gaseosos, el área sensible no puede reducirse arbitrariamente debido a las limitaciones físicas en la longitud de los hilos y la necesidad de una trayectoria suficiente para la ionización.\\
+
+\noindent Por esto, se han desarrollado detectores gaseosos con planos de lectura microestructurados, conocidos como detectores de gas de micropatrones (MPGDs), que pueden manejar altos flujos de partículas, manteniendo ventajas como el bajo costo. Estos detectores, que utilizan microtiras en lugar de hilos, pueden alcanzar tasas de partículas de hasta 2.3 MHz $/cm^{2}$ y se benefician de tecnologías tomadas de los detectores de microtiras de silicio. Además, los MPGDs son útiles no solo como detectores de partículas cargadas, sino también para medir el desplazamiento de electrones en cámaras de proyección temporal.\\
+
+\noindent Los detectores de gas microestructurados, como la cámara de gas de microtiras (MSGC), representan una mejora significativa frente a las Cámaras Proporcionales Multi-hilos (MWPC) debido a su capacidad para manejar tasas de partículas mucho más altas y ofrecer una mejor resolución espacial. Las MSGC utilizan microtiras en lugar de hilos, aplicadas mediante fotolitografía en un sustrato aislante, lo que permite una mayor densidad de partículas en el detector y minimiza las cargas espaciales que pueden alterar los campos eléctricos.\\
+
+\noindent Entre sus ventajas, las MSGC pueden soportar tasas de partículas hasta dos órdenes de magnitud superiores a las MWPCs y alcanzar resoluciones de posición de aproximadamente 30 \textmu m, unas 10-20 veces mejor que las MWPC convencionales. También permiten la implementación modular para cubrir grandes áreas de detección sin zonas muertas y reducir la capacitancia, lo que disminuye el ruido electrónico y prolonga la vida útil del detector.\\
+
+\noindent Sin embargo, las MSGC enfrentan desafíos como las descargas incontrolables que pueden dañar los electrodos, especialmente en experimentos de alta radiación. A pesar de intentos para mitigar estos problemas, como el uso de materiales con resistencia controlada o recubrimientos especiales, su aplicación en experimentos de altas tasas de partículas ha sido limitada.\\
+
+
+\section{GEM detectors}
+
+\noindent Un GEM (Gas Electron Multiplier) es un dispositivo de amplificación gaseosa que consiste en una lámina de material dieléctrico como Kapton de aproximadamente 50 \textmu m de espesor, recubierta de cobre en ambos lados, en la que se han grabado agujeros de entre 50 y 70 \textmu m de diámetro (fig. \ref{fig:gem_hole}). Esta estructura se posiciona entre los electrodos de placas paralelas al interior de una cámara de gas, actuando como etapa intermedia (y de preamplificación) entre la zona de ionización y los electrodos de lectura.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{GEM_hole.PNG}
+    \caption{}
+    \label{fig:gem_hole}
+\end{figure}
+% [847] SAULI, F.: GDD: Gaseous Detector Development, CERN web page. http://
+% gdd.web.cern.ch/GDD/
+\noindent Al aplicar una diferencia de potencial de alrededor de 400V entre los recubrimientos de cobre, se genera un campo eléctrico intenso dentro de los agujeros, lo que permite la amplificación de los electrones en su interior (avalanchas). La mayoría de los electrones generados en las avalanchas se transfieren a la región inferior, donde la lámina GEM actúa como un preamplificador de carga, preservando en gran medida el patrón original de ionización. Cada agujero funciona como un contador proporcional independiente, aislado de los agujeros vecinos. Gracias a la alta densidad de agujeros, la ganancia no se ve afectada por la carga espacial incluso a altos flujos de radiación.\\ 
+
+\noindent Dado que la multiplicación de avalanchas ocurre casi por completo en el campo dipolar dentro de los agujeros, la ganancia es poco sensible a los campos externos y a la forma de la lámina, lo que simplifica los requisitos mecánicos del detector. La recolección de carga y el plano de lectura, separados del electrodo de multiplicación, pueden diseñarse libremente utilizando tiras, almohadillas o una combinación de ambas. Por ejemplo, en la figura \ref{fig:gem_MSGC} se observa un detector cuya etapa de amplificación se basa en GEM y la de lectura en MSGC. En este caso El GEM hace posible que no sea necesario aplicar voltajes muy altos, que generen fácilmente arcos, para obtener señales medibles, evitando daños en el sistema. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{GEM1.PNG}
+    \caption{}
+    \label{fig:gem_MSGC}
+\end{figure}
+
+% [1017] ZEUNER, T. (HERA-B Collaboration): The MSGC-GEM inner tracker for
+% HERA-B. In: Nucl. Inst. Meth. A 446 (2000), p. 324. doi: 10.1016/
+% S0168-9002(00)00042-5
+
+\noindent Los detectores basados en GEM han sido probados en una variedad de gases y condiciones operativas, incluyendo presiones bajas y altas [Sauli (2014)]. Se pueden alcanzar ganancias superiores a mil en la detección de partículas cargadas rápidas y rayos X blandos. Sin embargo, en presencia de trayectorias fuertemente ionizantes, la probabilidad de descarga es comparable a la observada en otros dispositivos de micropatrones, confirmando la naturaleza fundamental del límite de Raether, que se mencionaba anteriormente (Bressan et al., 1999a).\\
+
+\noindent No obstante, una característica única del concepto GEM es que varios amplificadores pueden ser escalonados en el mismo detector, separados por pequeñas brechas de campo (Bouclier et al., 1997; Büttner et al., 1998; Bressan et al., 1999b). La ganancia total de una estructura múltiple corresponde al producto de las ganancias de cada elemento, teniendo en cuenta la eficiencia de transferencia, llamada ganancia efectiva.\\
+
+\noindent Una configuración estándar es el \textit{Triple-GEM}, que utiliza tres etapas de amplificación en serie, alcanzando una ganancia total de hasta $10^4$. Este sistema distribuye la amplificación entre las etapas, lo que asegura que el factor de ganancia en cada una se mantenga por debajo de 100, garantizando una operación confiable y evitando descargas eléctricas que podrían dañar la electrónica.\\
+
+\noindent Dependiendo de las necesidades experimentales, los detectores pueden operar con una amplia variedad de gases. La Figura \ref{fig:gem_gases} presenta ejemplos de la ganancia efectiva medida con un detector triple-GEM en varias mezclas de gases. Se pueden alcanzar ganancias muy altas en tetracloruro de carbono puro, permitiendo la detección de fotoelectrones individuales, como en aplicaciones de imagenología de anillos de Cherenkov. Por otro lado, con mezclas de argón-CO2 no inflamables, las cámaras GEM ofrecen rutinariamente eficiencias de detección de partículas rápidas cercanas al 100\%, precisiones de localización alrededor de 70 $\mu$ m rms y una resolución de 10 ns (Ketzer et al., 2004).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{gem_gases.PNG}
+    \caption{(Breskin et al., 2002)}
+    \label{fig:gem_gases}
+\end{figure}
+
+\noindent El acondicionamiento de señales en los detectores GEM implica una serie de etapas electrónicas diseñadas para transformar la señal de carga emitida por el detector en una señal útil para su análisis posterior. En primer lugar, la pequeña carga generada por la interacción de las partículas con el gas dentro del detector es convertida en una señal de voltaje mediante un preamplificador de sensibilidad a la carga. A continuación, la señal es procesada por un amplificador de conformación que ajusta su ancho de pulso y mejora la relación señal-ruido, haciendo que sea más fácil de analizar. Una vez conformada, la señal es amplificada nuevamente para asegurar que tenga suficiente amplitud para ser detectada y medida con precisión. Por último, la señal pasa a través de un discriminador, el cual genera un pulso digital basado en un umbral establecido, permitiendo la identificación de eventos de interés. Esta señal digital puede ser posteriormente convertida a un formato adecuado para la adquisición de datos a través de un sistema de conversión analógico-digital (ADC) y enviada a un sistema de adquisición de datos (DAQ) para su análisis.
+
+\noindent aplicaciones
+
 \subsection*{References}
 \begin{enumerate}
     \item Sauli, F. (2015). Gaseous radiation detectors: fundamentals and applications (p. 497). Cambridge University Press.
