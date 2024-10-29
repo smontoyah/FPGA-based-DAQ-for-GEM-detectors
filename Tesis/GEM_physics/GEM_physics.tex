@@ -1,43 +1,58 @@
-\documentclass[]{book}
+\documentclass{article}
+
+\title{\textbf{Gaseous detectors and GEMs} }
+\author{Sebastián Montoya Hernández}
+
+
 \usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{amsmath}
+\usepackage{cite}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{listings}
+
 
 
 \begin{document}
-\chapter*{Overview on GEM Detectors}
 
-En numerosos experimentos de física de partículas, los detectores gaseosos, incluidos los GEMs, desempeñan un papel crucial en la medición de partículas cargadas mediante la ionización de gases. Estos detectores permiten trazar con precisión las trayectorias de las partículas, especialmente en entornos con campos magnéticos. En comparación con los detectores de semiconductores, los detectores gaseosos suelen ser más económicos, especialmente en aplicaciones que requieren cubrir grandes volúmenes, y presentan menos material que pueda interferir con las partículas que atraviesan el detector [1]. Dado que los detectores GEM son el enfoque principal de este trabajo, en el presente capítulo se explorarán los conceptos fundamentales de la física que rigen sus interacciones y funcionamiento.
+\maketitle 
+\setcounter{section}{0}
+Aquí va la introducción del capítulo
+\newpage
+\section{Marco teórico}
 
-\section{Electromagnetic interactions of charged particles with matter}
+Aquí va la introducción del marco teórico, mencionando en orden todas las subsecciones.
 
-\noindent De manera general, el proceso de detección de una partícula cargada es posible gracias a la deposición de una fracción o toda su energía en el medio con el cual interactúa. Si bien es posible observar fenómenos como la luminiscencia, centelleo o ionización como resultado de la interación entre partículas cargadas y medios gaseosos, la interacción prevalente en sistemas de baja densidad que puede ser explotada para extraer una señal medible es la ionización.\\
+En numerosos experimentos de física de partículas, los detectores gaseosos, incluidos los GEMs, desempeñan un papel crucial en la medición de partículas cargadas mediante la ionización de gases. Estos detectores permiten trazar con precisión las trayectorias de las partículas, especialmente en entornos con campos magnéticos. En comparación con los detectores de semiconductores, los detectores gaseosos suelen ser más económicos, especialmente en aplicaciones que requieren cubrir grandes volúmenes, y presentan menos material que pueda interferir con las partículas que atraviesan el detector \cite{sauli2015gaseous}. Dado que los detectores GEM son el enfoque principal de este trabajo, en el presente capítulo se explorarán los conceptos fundamentales de la física que rigen sus interacciones y funcionamiento.
 
-\noindent Si los fenómenos de ionización en un gas son estudiados de manera independiente en este contexto, es posible realizar una descripción que sigue la estadística de Poisson
+\subsection{Principios físicos de los detectores gaseosos}
+estadística de energía depositada, drift and diffusion of charges in gases, collisional excitations and charge multiplication in uniform fields
+
+\noindent En términos generales, la detección de una partícula se logra mediante la deposición de una fracción o la totalidad de su energía en el medio con el que interactúa. Aunque fenómenos como la luminiscencia o la emisión de fotones de centelleo, entre otros, pueden manifestarse como resultado de la interacción entre partículas cargadas o fotones y medios gaseosos, la ionización es la interacción predominante en sistemas de baja densidad, y puede aprovecharse para generar una señal medible. En el proceso de ionización de un gas, la energía de la partícula incidente excita los electrones de las capas externas de los átomos, liberándolos y formando pares ion-electrón en su recorrido. Estos electrones iniciales pueden continuar interactuando con el medio, provocando nuevas ionizaciones y excitaciones. En materiales compuestos, los procesos secundarios también contribuyen al número total de electrones generados, ya que parte de la energía de excitación se transforma en ionización o viceversa. Aunque los detectores gaseosos se centran principalmente en la captación de los electrones liberados por la radiación ionizante, la presencia de iones, estados excitados o fotones puede desencadenar fenómenos secundarios, como recombinación, transferencia de carga y efectos fotoeléctricos.\\
+
+\noindent Si los eventos de ionización en un gas son estudiados de manera independiente en este contexto, es posible realizar una descripción que sigue la estadística de Poisson
 
 \begin{equation}
     \label{eq:poisson}
     P_k^n=\frac{n^k}{k!} \mathrm{e}^{-n}
 \end{equation}
 
-\noindent La eficiencia teórica del detector, definida como la probabilidad de tener al menos una interacción, es entonces
+\noindent donde $ P_k^n$ es la probabilidad de observar $k$ eventos en un intervalo fijo, dado un promedio o tasa de eventos $n$. Por deficnición, se asume que los eventos son independientes: la ocurrencia de uno no afecta la probabilidad de los demás. De esta manera, la eficiencia teórica del detector, entendida como la probabilidad de tener al menos una interacción, es entonces
 
 \begin{equation}
     \label{eq:det_eff}
     \varepsilon=1-P_0^n=1-\mathrm{e}^{-n} .
 \end{equation}
 
-\noindent No existe una expresión simple para determinar el número de encuentros ionizantes primarios; por lo tanto, es necesario recurrir a datos obtenidos experimentalmente o a programas de simulación especializados. Si no se tienen en cuenta procesos secundarios como la recombinación, por ejemplo, siendo $\Delta E$ la energía depositada en el medio y $W_{I}$ la energía por par íonico, la cantidad total de pares iónicos en el medio puede ser calculada como 
+\noindent Debido a que no existe una expresión simple para determinar el número de encuentros ionizantes primarios, es necesario recurrir a datos obtenidos experimentalmente o a programas de simulación especializados. Si no se tienen en cuenta procesos secundarios como la recombinación, por ejemplo, siendo $\Delta E$ la energía depositada en el medio y $W_{I}$ la energía por par íonico, la cantidad total de pares iónicos en el medio puede ser calculada como 
 \begin{equation}
     \label{eq:num_ion}
     N_{T} = \frac{\Delta E}{W_{I}}.
 \end{equation}
 
-No obstante, este es un resultado promedio. Para entender con detalle la distribución energética en este fenómeno, es necesario acudir a un marco teórico más robusto.
-
-\subsubsection{Stopping-power}
-
-\noindent La pérdida de energía cinética de la partícula a medida que avanza por el volumen del detector es conocida como stopping power o ecuación de Bethe-Bloch. Una formulación semiclásica para calcular la energía liberada por la partícula al atravesar un medio de grosor $\Delta x$ es: 
+\noindent No obstante, este es un resultado promedio. Para entender con detalle la distribución energética en este fenómeno, es necesario acudir a un marco teórico más robusto. La pérdida de energía cinética de la partícula a medida que avanza por el volumen del detector es conocida como stopping power o ecuación de Bethe-Bloch y una formulación semiclásica para calcularla en un medio de grosor $\Delta x$ es: 
 
 \begin{equation}
     \label{eq:bethe_bloch}
@@ -48,9 +63,9 @@ donde $\beta$ es la velocidad de la partícula, $m$ y $e$ son la masa y la carga
 
 \noindent Algunas consideraciones que deben ser tenidas en cuenta respecto a la ecuación de Bethe-Bloch, son su aplicabilidad a medios isotrópicos, debido a la aparición de "channeling effects" en sistemas cristalinos y las excepción de electrones y protones como partículas incidentes por su indistinguibilidad en la materia [2].\\
 
-\noindent Teniendo en cuenta que la velocidad de la partícula ionizante es uno de los parámetros que rigue la ecuación \ref{eq:bethe_bloch}, es posible describir el comportamiento de su pérdida de energía para distintos regímenes de velocidad. Como ilustra la figura \ref{fig:bethe_b} [3].
+\noindent Teniendo en cuenta que la velocidad de la partícula ionizante es uno de los parámetros que rigue la ecuación \ref{eq:bethe_bloch}, es posible describir el comportamiento de su pérdida de energía para distintos regímenes de velocidad como ilustra la figura \ref{fig:bethe_b} [3].
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{bethe_bloch.PNG}
     \caption{La fórmula de Bethe-Bloch para muones positivos en cobre como función de la velocidad [3] (mostrada entre la segunda y tercera banda gris. El resto se describe mediante otros modelos).}
@@ -58,13 +73,50 @@ donde $\beta$ es la velocidad de la partícula, $m$ y $e$ son la masa y la carga
 
 \end{figure}
 
-\section{Gaseous detectors}
+\noindent Los iones y electrones generados por procesos ionizantes en un gas pierden rápidamente su energía mediante sucesivas colisiones con las moléculas del entorno, equilibrándose con la energía térmica del medio. Al ser sometidos a campos coulombianos en el medio, las cargas se desplazan a través del gas mientras se difunden, hasta que finalmente se neutralizan, ya sea por recombinación en el propio gas o al alcanzar las paredes del recipiente. En el caso de los iones, pueden transferir su carga a otra molécula del mismo gas o a una de diferente tipo con un potencial de ionización más bajo. Los electrones, por otro lado, pueden ser neutralizados al combinarse con un ion positivo, adherirse a moléculas con afinidad electrónica o ser absorbidos por las paredes del contenedor [Loeb, 1961].\\
 
-\noindent La base para la detección de partículas en los detectores gaseosos es la creación de cargas mediante ionización. Para la eficiencia en la formación de señales, también es crucial que las cargas no se pierdan por recombinación o adherencia mientras se desplazan hacia los electrodos.
+\noindent No obstante, a pesar de que los electrones se desplazan de forma aleatoria debido a estas interacciones con el medio, en presencia de un campo eléctrico externo, se introduce una tendencia en su desplazamiento denominado deriva electrónica. La velocidad promedio que los electrones alcanzan en su desplazamiento bajo la influencia del campo eléctrico se denomina velocidad de deriva $w^{-}$ y se define como 
+\begin{equation}
+    w^{-} = \mu E
+\end{equation}
 
-\section{GEM detectors}
+\noindent siendo $\mu$ la movilidad electrónica y $E$ la intensidad del campo eléctrico. Según un enfoque simple propuesto por Townsend en 1947, la velocidad de deriva de los electrones puede expresarse mediante 
+\begin{equation}
+    w^{-}=k \frac{e E}{m} \tau,
+\end{equation}
 
-section{Principle of operation of gaseous detectors}
+\noindent Aunque esta formulación resulta útil para análisis cualitativos, su aplicación práctica es limitada, ya que los valores de la velocidad de deriva $w$ y el tiempo medio entre colisiones $\tau$ dependen tanto del tipo de gas como de la intensidad del campo eléctrico. Durante su desplazamiento en presencia del campo, los electrones sufren múltiples colisiones con las moléculas, lo que provoca la difusión de la nube de carga inicial. La extensión de esta difusión depende no solo del tipo de gas, sino también de la magnitud del campo eléctrico $E$, ya que un campo más intenso permite que los electrones ganen más energía entre colisiones. De acuerdo a la teoría de transporte de carga basada en principios de mecánica estadística, es posible obtener la relación entre la movilidad electrónica $\mu$ y el coeficiente de difusión $D$, también conocida como fórmula de Nernst–Townsend
+\begin{equation}
+    \frac{D}{\mu}=\frac{\varepsilon_k}{e}
+\end{equation}
+\noindent donde $D$ mide la tasa de dispersión de partículas en un medio debido a movimientos aleatorios y $\varepsilon_k$ es una cantidad fenomenológica denominada energía característica, que en el caso particular de difusión térmica toma el valor de $k_{B} T$.\\
+
+\noindent Teniendo en cuenta esto, un importante resultado de la teoría de transporte, que se deriva al considerar una distribución normal localizada de la difusión de los electrones es la expresión de su desviación estándar $\sigma_x$, que describe la extensión de la nube de electrones alrededor de un punto central a medida que se mueven a través del medio bajo la influencia del campo eléctrico aplicado.
+\begin{equation}
+    \sigma_x=\sqrt{\frac{2 \varepsilon_k}{e} \frac{x}{E}}
+\end{equation}
+
+\noindent Esta expresión, también llamada espacio de difusión, no depende por tanto de la presión, solamente de la intensidad del campo eléctrico.\\
+
+\noindent A medida que el campo eléctrico se incrementa, aumenta la probabilidad de colisiones ionizantes y disminuye la de excitaciones. Cada colisión ionizante crea un par electrón-ion, y el electrón primario sigue desplazándose en el gas. Si la trayectoria libre media para colisiones ionizantes es pequeña en comparación con el grosor de la capa de gas, los electrones rápidamente obtienen más energía del campo para continuar ionizando. Esto genera un crecimiento acelerado de una avalancha de electrones e iones, el mecanismo principal para amplificar señales en los contadores proporcionales de gas. Sin embargo, tras una colisión, un electrón puede transferir una cantidad de energía igual o superior a la necesaria para excitar un átomo o molécula. Luego, estos regresan al estado fundamental mediante una o varias transiciones: por ejemplo, los gases nobles emiten fotones al desexcitarse, mientras que las moléculas poliatómicas, como los hidrocarburos, disipan la energía a través de transiciones rotacionales y vibracionales sin emisión de radiación.\\
+
+\noindent Cuando la energía de un electrón acelerado por un campo eléctrico supera el potencial de ionización de un átomo o molécula, los electrones enlazados pueden ser expulsados, dejando atrás un ion positivo. En función de la energía transferida y de la densidad de carga, pueden generarse estados de ionización múltiple. Sin embargo, en las condiciones típicas de los contadores proporcionales, donde las energías de los electrones se mantienen por debajo de unas pocas decenas de electronvoltios (eV), es más común que se formen iones con una sola carga positiva. Si los electrones primarios o secundarios no son capturados o absorbidos por las paredes del detector, continuarán moviéndose a través del gas y podrán generar nuevas ionizaciones. La trayectoria libre media para la ionización ($\lambda$) se define como la distancia promedio que recorre un electrón antes de experimentar una colisión ionizante. El inverso de esta distancia, $\alpha = \lambda ^{-1}$, se conoce como el primer coeficiente de Townsend, y representa el número de pares iónicos generados por unidad de longitud durante el desplazamiento del electrón. Este coeficiente se relaciona con la sección eficaz de ionización (probabilidad de que ocurra una ionización) mediante la expresión 
+\begin{equation}
+    \alpha=N \sigma_{\mathrm{i}}
+\end{equation}
+
+\noindent siendo $N$ el número de moléculas por unidad de volumen. Este mecanismo es clave para la amplificación de señales en detectores gaseosos, ya que cada colisión contribuye a la creación de más portadores de carga, permitiendo detectar eventos con mayor precisión.\\
+
+\noindent El proceso de ionización sucesiva por colisiones permite la amplificación de carga en los contadores proporcionales. Imaginemos un electrón que se libera en una región con un campo eléctrico uniforme. Tras recorrer una trayectoria libre media $1/\alpha$, se produce un par electrón-ion. Ambos electrones continúan su desplazamiento en el gas, generando nuevos pares tras otra trayectoria libre media, y así sucesivamente. Si $n$ representa el número de electrones en una posición dada, su incremento luego de recorrer una distancia diferencial $dx$ es $dn = n \alpha dx$. Al integrar esta expresión sobre una distancia total $x$, se obtiene:
+
+\begin{equation}
+n = n_0 e^{\alpha x} \quad \text{o} \quad M = \frac{n}{n_0} = e^{\alpha x},
+\end{equation}
+donde \(n_0\) es el número inicial de electrones y \(M\) es el factor de multiplicación o ganancia, que indica la amplificación total de carga. Esta expresión describe cómo el número de electrones crece exponencialmente con la distancia recorrida en el gas, siempre que las condiciones de ionización se mantengan constantes.
+
+
+\subsection{Detectores gaseosos precedentes a los GEMs}
+ppc, ppacs, prop. counters, mwpc, dc, tpc, rpc, MPGDs
 
 \noindent El proceso de detección de una partícula cargada se basa en la transferencia de una fracción o la totalidad de su energía al medio con el que interactúa. Aunque fenómenos como la luminiscencia, el centelleo o la ionización pueden observarse como resultado de estas interacciones, en sistemas de baja densidad, la ionización del medio es el fenómeno predominante que puede ser explotado para extraer una señal medible. La ionización, en particular, es un proceso clave en detectores gaseosos, donde las partículas cargadas ionizan los átomos del gas a lo largo de su trayectoria (fig. \ref{fig:ionization_chamber} ).
 
@@ -111,8 +163,6 @@ i_{\text{max}} = \frac{e \rho}{\alpha s_0} \left( e^{\alpha s_0} - 1 \right)
     \caption{Señal de corriente inducida en los cátodos por una trayectoria extendida bajo multiplicación de avalancha.}
     \label{fig:current_avalancha}
 \end{figure}
-
-\section{Modos de operación y detectores precursores de los GEMs}
 
 \noindent Es posible generar campos eléctricos de gran magnitud al implementar estructuras de electrodos entre las placas paralelas como un alambre (contador proporcional o Geiger-Müller) o arreglos de alambres (MWPC). En la proximidad del ánodo de un contador proporcional (fig. \ref{fig:counter}), los electrones en deriva pueden ser acelerados a tal punto que pueden iniciar ionizaciones secundarias. Esto da lugar al desarrollo de una avalancha, amplificando así la carga de ionización con factores de amplificación típicos que oscilan entre \(10^4\) y \(10^6\). A partir de intensidades de campo de aproximadamente \(10-50\) kV/cm, la energía ganada entre colisiones se vuelve suficiente para causar la ionización del gas.\\
 
@@ -197,9 +247,7 @@ i_{\text{max}} = \frac{e \rho}{\alpha s_0} \left( e^{\alpha s_0} - 1 \right)
 
 \noindent Sin embargo, las MSGC enfrentan desafíos como las descargas incontrolables que pueden dañar los electrodos, especialmente en experimentos de alta radiación. A pesar de intentos para mitigar estos problemas, como el uso de materiales con resistencia controlada o recubrimientos especiales, su aplicación en experimentos de altas tasas de partículas ha sido limitada.\\
 
-
-\section{GEM detectors}
-
+\subsection{GEMs}
 \noindent Un GEM (Gas Electron Multiplier) es un dispositivo de amplificación gaseosa que consiste en una lámina de material dieléctrico como Kapton de aproximadamente 50 \textmu m de espesor, recubierta de cobre en ambos lados, en la que se han grabado agujeros de entre 50 y 70 \textmu m de diámetro (fig. \ref{fig:gem_hole}). Esta estructura se posiciona entre los electrodos de placas paralelas al interior de una cámara de gas, actuando como etapa intermedia (y de preamplificación) entre la zona de ionización y los electrodos de lectura.
 
 \begin{figure}[H]
@@ -241,6 +289,18 @@ i_{\text{max}} = \frac{e \rho}{\alpha s_0} \left( e^{\alpha s_0} - 1 \right)
 \end{figure}
 
 \noindent El acondicionamiento de señales en los detectores GEM implica una serie de etapas electrónicas diseñadas para transformar la señal de carga emitida por el detector en una señal útil para su análisis posterior. En primer lugar, la pequeña carga generada por la interacción de las partículas con el gas dentro del detector es convertida en una señal de voltaje mediante un preamplificador de sensibilidad a la carga. A continuación, la señal es procesada por un amplificador de conformación que ajusta su ancho de pulso y mejora la relación señal-ruido, haciendo que sea más fácil de analizar. Una vez conformada, la señal es amplificada nuevamente para asegurar que tenga suficiente amplitud para ser detectada y medida con precisión. Por último, la señal pasa a través de un discriminador, el cual genera un pulso digital basado en un umbral establecido, permitiendo la identificación de eventos de interés. Esta señal digital puede ser posteriormente convertida a un formato adecuado para la adquisición de datos a través de un sistema de conversión analógico-digital (ADC) y enviada a un sistema de adquisición de datos (DAQ) para su análisis.
+\newpage
+
+\section{Montaje experimental}
+\newpage
+
+\section{Resultados y discusión}
+\newpage
+
+\section{Conclusiones}
+\newpage
+
+
 
 \noindent aplicaciones
 
@@ -254,4 +314,9 @@ i_{\text{max}} = \frac{e \rho}{\alpha s_0} \left( e^{\alpha s_0} - 1 \right)
     \item K Nakamura and (Particle Data Group) 2010 J. Phys. G: Nucl. Part. Phys. 37 075021. DOI 10.1088/0954-3899/37/7A/075021
 \end{enumerate}
 
+
+\newpage
+
+\bibliographystyle{ieeetr}
+\bibliography{references}
 \end{document}
