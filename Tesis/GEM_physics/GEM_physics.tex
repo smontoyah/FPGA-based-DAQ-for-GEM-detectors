@@ -28,9 +28,15 @@ Aquí va la introducción del marco teórico, mencionando en orden todas las sub
 En numerosos experimentos de física de partículas, los detectores gaseosos, incluidos los GEMs, desempeñan un papel crucial en la medición de partículas cargadas mediante la ionización de gases. Estos detectores permiten trazar con precisión las trayectorias de las partículas, especialmente en entornos con campos magnéticos. En comparación con los detectores de semiconductores, los detectores gaseosos suelen ser más económicos, especialmente en aplicaciones que requieren cubrir grandes volúmenes, y presentan menos material que pueda interferir con las partículas que atraviesan el detector \cite{sauli2015gaseous}. Dado que los detectores GEM son el enfoque principal de este trabajo, en el presente capítulo se explorarán los conceptos fundamentales de la física que rigen sus interacciones y funcionamiento.
 
 \subsection{Principios físicos de los detectores gaseosos}
-estadística de energía depositada, drift and diffusion of charges in gases, collisional excitations and charge multiplication in uniform fields
 
-\noindent En términos generales, la detección de una partícula se logra mediante la deposición de una fracción o la totalidad de su energía en el medio con el que interactúa. Aunque fenómenos como la luminiscencia o la emisión de fotones de centelleo, entre otros, pueden manifestarse como resultado de la interacción entre partículas cargadas o fotones y medios gaseosos, la ionización es la interacción predominante en sistemas de baja densidad, y puede aprovecharse para generar una señal medible. En el proceso de ionización de un gas, la energía de la partícula incidente excita los electrones de las capas externas de los átomos, liberándolos y formando pares ion-electrón en su recorrido. Estos electrones iniciales pueden continuar interactuando con el medio, provocando nuevas ionizaciones y excitaciones. En materiales compuestos, los procesos secundarios también contribuyen al número total de electrones generados, ya que parte de la energía de excitación se transforma en ionización o viceversa. Aunque los detectores gaseosos se centran principalmente en la captación de los electrones liberados por la radiación ionizante, la presencia de iones, estados excitados o fotones puede desencadenar fenómenos secundarios, como recombinación, transferencia de carga y efectos fotoeléctricos.\\
+\noindent En términos generales, la detección de una partícula se logra mediante la deposición de una fracción o la totalidad de su energía en el medio con el que interactúa. Aunque fenómenos como la luminiscencia o la emisión de fotones de centelleo, entre otros, pueden manifestarse como resultado de la interacción entre partículas cargadas o fotones y medios gaseosos, la ionización es la interacción predominante en sistemas de baja densidad, y puede aprovecharse para generar una señal medible. En el proceso de ionización de un gas, la energía de la partícula incidente excita los electrones de las capas externas de los átomos, liberándolos y formando pares ion-electrón en su recorrido. Estos electrones iniciales pueden continuar interactuando con el medio, provocando nuevas ionizaciones y excitaciones. En materiales compuestos, los procesos secundarios también contribuyen al número total de electrones generados, ya que parte de la energía de excitación se transforma en ionización o viceversa. Aunque los detectores gaseosos se centran principalmente en la captación de los electrones liberados por la radiación ionizante, la presencia de iones, estados excitados o fotones puede desencadenar fenómenos secundarios, como recombinación, transferencia de carga y efectos fotoeléctricos. En la figura \ref{fig:ionization_chamber1}, se ilustra la estructura básica de un detector gaseoso.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{ionization_chamber.PNG}
+    \caption{Diagrama que describe el funcionamiento básico de un detector gaseoso. El medio sensible del detector, en este caso un gas, se encuentra entre dos electrodos con un voltaje aplicado. Cuando una partícula cargada atraviesa el gas, se liberan cargas que se desplazan hacia los electrodos impulsadas por el campo eléctrico. Estas cargas en movimiento generan una señal de corriente en los electrodos. En esencia, el detector actúa como un condensador que se descarga cuando el medio es ionizado. Desde el punto de vista eléctrico, se comporta como una fuente de corriente.}
+    \label{fig:ionization_chamber1}
+\end{figure}
 
 \noindent Si los eventos de ionización en un gas son estudiados de manera independiente en este contexto, es posible realizar una descripción que sigue la estadística de Poisson
 
@@ -39,7 +45,7 @@ estadística de energía depositada, drift and diffusion of charges in gases, co
     P_k^n=\frac{n^k}{k!} \mathrm{e}^{-n}
 \end{equation}
 
-\noindent donde $ P_k^n$ es la probabilidad de observar $k$ eventos en un intervalo fijo, dado un promedio o tasa de eventos $n$. Por deficnición, se asume que los eventos son independientes: la ocurrencia de uno no afecta la probabilidad de los demás. De esta manera, la eficiencia teórica del detector, entendida como la probabilidad de tener al menos una interacción, es entonces
+\noindent donde $ P_k^n$ es la probabilidad de observar $k$ eventos en un intervalo fijo, dado un promedio o tasa de eventos $n$. Por definición, se asume que los eventos son independientes: la ocurrencia de uno no afecta la probabilidad de los demás. De esta manera, la eficiencia teórica del detector, entendida como la probabilidad de tener al menos una interacción, es entonces
 
 \begin{equation}
     \label{eq:det_eff}
@@ -59,7 +65,7 @@ estadística de energía depositada, drift and diffusion of charges in gases, co
     \frac{\Delta E}{\Delta x}=-\rho \frac{2 K Z}{A \beta^2}\left[\ln \frac{2 m c^2 \beta^2}{I\left(1-\beta^2\right)}-\beta^2-\frac{C}{Z}-\frac{\delta}{2}\right], \quad K = \frac{2 \pi N e^{4}}{mc^{2}}
     \end{equation}
 
-donde $\beta$ es la velocidad de la partícula, $m$ y $e$ son la masa y la carga del electrón, $Z$, $A$ y $\rho$ son el número atómico, masa atómica y la densidad del medio, $I$ es el potencial promedio de ionización del medio, el término $C/Z$ hace referencia a correcciones por apantallamiento con capas electrónicas internas y $\delta /2$ solo tiene relevancia en el régimen relativista. Para estimar las mencionadas correcciones, es necesario acudir a tablas de referencia o hallar los parámetros a partir de ajustes con datos experimentales.\\ 
+\noindent donde $\beta$ es la velocidad de la partícula, $m$ y $e$ son la masa y la carga del electrón, $Z$, $A$ y $\rho$ son el número atómico, masa atómica y la densidad del medio, $I$ es el potencial promedio de ionización del medio, el término $C/Z$ hace referencia a correcciones por apantallamiento con capas electrónicas internas y $\delta /2$ solo tiene relevancia en el régimen relativista. Para estimar las mencionadas correcciones, es necesario acudir a tablas de referencia o hallar los parámetros a partir de ajustes con datos experimentales.\\ 
 
 \noindent Algunas consideraciones que deben ser tenidas en cuenta respecto a la ecuación de Bethe-Bloch, son su aplicabilidad a medios isotrópicos, debido a la aparición de "channeling effects" en sistemas cristalinos y las excepción de electrones y protones como partículas incidentes por su indistinguibilidad en la materia [2].\\
 
@@ -111,23 +117,10 @@ donde $\beta$ es la velocidad de la partícula, $m$ y $e$ son la masa y la carga
 
 \begin{equation}
 n = n_0 e^{\alpha x} \quad \text{o} \quad M = \frac{n}{n_0} = e^{\alpha x},
+\label{eq:multiplication}
 \end{equation}
-donde \(n_0\) es el número inicial de electrones y \(M\) es el factor de multiplicación o ganancia, que indica la amplificación total de carga. Esta expresión describe cómo el número de electrones crece exponencialmente con la distancia recorrida en el gas, siempre que las condiciones de ionización se mantengan constantes.
 
-
-\subsection{Detectores gaseosos precedentes a los GEMs}
-ppc, ppacs, prop. counters, mwpc, dc, tpc, rpc, MPGDs
-
-\noindent El proceso de detección de una partícula cargada se basa en la transferencia de una fracción o la totalidad de su energía al medio con el que interactúa. Aunque fenómenos como la luminiscencia, el centelleo o la ionización pueden observarse como resultado de estas interacciones, en sistemas de baja densidad, la ionización del medio es el fenómeno predominante que puede ser explotado para extraer una señal medible. La ionización, en particular, es un proceso clave en detectores gaseosos, donde las partículas cargadas ionizan los átomos del gas a lo largo de su trayectoria (fig. \ref{fig:ionization_chamber} ).
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\textwidth]{ionization_chamber.PNG}
-    \caption{Diagrama que describe el funcionamiento básico de un detector gaseoso. El medio sensible del detector, en este caso un gas, se encuentra entre dos electrodos con un voltaje aplicado. Cuando una partícula cargada atraviesa el gas, se liberan cargas que se desplazan hacia los electrodos impulsadas por el campo eléctrico. Estas cargas en movimiento generan una señal de corriente en los electrodos. En esencia, el detector actúa como un condensador que se descarga cuando el medio es ionizado. Desde el punto de vista eléctrico, se comporta como una fuente de corriente.}
-    \label{fig:ionization_chamber}
-\end{figure}
-
-\noindent En detectores como las cámaras de ionización, las partículas cargadas atraviesan un gas en presencia de un campo eléctrico entre los electrodos de un condensador, que en su forma más simple puede modelarse como un arreglo de placas paralelas. La ionización del gas genera electrones e iones que, al ser separados por el campo eléctrico, provocan una corriente detectable entre los electrodos. Este mecanismo es eficaz para medir flujos de radiación con un gran número de partículas, pero para la detección de partículas individuales, la señal de corriente resultante es demasiado débil y se confunde con el ruido electrónico. Para solucionar esto, se emplea la amplificación de gas, una técnica en la cual un campo eléctrico muy intenso en las proximidades del ánodo provoca una ionización secundaria que desencadena avalanchas de carga, amplificando considerablemente la señal y haciéndola detectable.\\
+\noindent donde \(n_0\) es el número inicial de electrones y \(M\) es el factor de multiplicación o ganancia, que indica la amplificación total de carga. Esta expresión describe cómo el número de electrones crece exponencialmente con la distancia recorrida en el gas, siempre que las condiciones de ionización se mantengan constantes.\\
 
 \noindent Para obtener una lectura precisa de la señal, se puede integrar la corriente a lo largo del tiempo, lo que permite calcular la carga total generada en el detector. La variación del voltaje registrada está relacionada con su capacitancia, y una resistencia externa se utiliza para asegurar que la carga se integre correctamente y la señal se lea con precisión. Aunque las cargas inducidas no dependen de las cargas de polarización del material, la capacitancia del sistema juega un papel crucial en la interpretación correcta de la señal medida.\\
 
@@ -140,7 +133,7 @@ ppc, ppacs, prop. counters, mwpc, dc, tpc, rpc, MPGDs
     \label{fig:avalanche_signal}
 \end{figure}
 
-\noindent No obstante, en el caso de una distribución extendida de carga dentro del espacio entre los electrodos, como la que genera una partícula cargada al atravesar la cámara, cada electrón experimenta una multiplicación por avalancha con un factor \( e^{\alpha s} \), donde \( s \) es la distancia al ánodo. La señal resultante depende de la densidad y distribución espacial de las cargas liberadas en el gas. En el caso particular de una ionización uniforme entre ánodo y cátodo, con una densidad \( \rho \), siendo $T$ el tiempo total de colección para los electrones en la avalanch y $w^-$ la velocidad de deriva de los electrones en avalancha, la corriente inducida por los electrones en la avalancha puede expresarse como:
+\noindent No obstante, en el caso de una distribución extendida de carga dentro del espacio entre los electrodos, aplica el análisis que llevó a la ecuación \ref{eq:bethe_bloch}. La señal resultante depende de la densidad y distribución espacial de las cargas liberadas en el gas. En el caso particular de una ionización uniforme entre ánodo y cátodo, con una densidad \( \rho \), siendo $T$ el tiempo total de colección para los electrones en la avalanch y $w^-$ la velocidad de deriva de los electrones en avalancha, la corriente inducida por los electrones en la avalancha puede expresarse como:
 
 \begin{equation}
 i(t) = \frac{e \rho s_0}{T} \left( e^{\alpha w^- t} - \frac{t}{T} \right), \quad 0 \leq t \leq T
@@ -164,7 +157,7 @@ i_{\text{max}} = \frac{e \rho}{\alpha s_0} \left( e^{\alpha s_0} - 1 \right)
     \label{fig:current_avalancha}
 \end{figure}
 
-\noindent Es posible generar campos eléctricos de gran magnitud al implementar estructuras de electrodos entre las placas paralelas como un alambre (contador proporcional o Geiger-Müller) o arreglos de alambres (MWPC). En la proximidad del ánodo de un contador proporcional (fig. \ref{fig:counter}), los electrones en deriva pueden ser acelerados a tal punto que pueden iniciar ionizaciones secundarias. Esto da lugar al desarrollo de una avalancha, amplificando así la carga de ionización con factores de amplificación típicos que oscilan entre \(10^4\) y \(10^6\). A partir de intensidades de campo de aproximadamente \(10-50\) kV/cm, la energía ganada entre colisiones se vuelve suficiente para causar la ionización del gas.\\
+\noindent Es posible generar campos eléctricos de gran magnitud al implementar estructuras de electrodos entre las placas paralelas como un alambre (contador proporcional). En la proximidad del ánodo de un contador proporcional (fig. \ref{fig:counter}), los electrones en deriva pueden ser acelerados a tal punto que pueden iniciar ionizaciones secundarias. Esto da lugar al desarrollo de una avalancha, amplificando así la carga de ionización con factores de amplificación típicos que oscilan entre \(10^4\) y \(10^6\). A partir de intensidades de campo de aproximadamente \(10-50\) kV/cm, la energía ganada entre colisiones se vuelve suficiente para causar la ionización del gas.\\
 
 \begin{figure}[H]
     \centering
@@ -182,8 +175,6 @@ i_{\text{max}} = \frac{e \rho}{\alpha s_0} \left( e^{\alpha s_0} - 1 \right)
 % journal = {American Journal of Physics},
 % doi = {10.1119/1.4923022}
 % }
-
-\noindent La cantidad de iones generados por unidad de longitud se denomina primer coeficiente de Townsend. Este coeficiente se relaciona con la sección transversal para la ionización y la longitud libre media entre ionizaciones. El aumento en el número de pares electrón-ion a lo largo de una longitud de camino es proporcional a la cantidad inicial de electrones y la relación entre la cantidad de electrones amplificados que llegan al ánodo y la cantidad original define la amplificación del gas. Esta amplificación puede calcularse numéricamente, ya que el coeficiente de Townsend es dependiente de la energía y varía con el campo eléctrico.\\
 
 \noindent En la práctica, el régimen de amplificación se encuentra entre \(10^3\) y \(10^6\), y se puede estimar que el número de colisiones necesarias para lograr tal amplificación es de aproximadamente 13 a 20. La mayoría de los electrones tienen una trayectoria de deriva muy corta hacia el ánodo, mientras que los iones deben recorrer una distancia mayor hasta el cátodo. Esto es crucial en la formación de señales en el ánodo.\\
 
@@ -215,6 +206,23 @@ i_{\text{max}} = \frac{e \rho}{\alpha s_0} \left( e^{\alpha s_0} - 1 \right)
 \end{itemize}
 
 \noindent Estos regímenes de operación y sus mecanismos asociados son cruciales para el funcionamiento eficiente de los detectores de gas.\\
+
+
+\subsection{Detectores gaseosos precedentes a los GEMs}
+ppc, ppacs, prop. counters, mwpc, dc, tpc, rpc, MPGDs
+
+\noindent El proceso de detección de una partícula cargada se basa en la transferencia de una fracción o la totalidad de su energía al medio con el que interactúa. Aunque fenómenos como la luminiscencia, el centelleo o la ionización pueden observarse como resultado de estas interacciones, en sistemas de baja densidad, la ionización del medio es el fenómeno predominante que puede ser explotado para extraer una señal medible. La ionización, en particular, es un proceso clave en detectores gaseosos, donde las partículas cargadas ionizan los átomos del gas a lo largo de su trayectoria (fig. \ref{fig:ionization_chamber} ).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{ionization_chamber.PNG}
+    \caption{Diagrama que describe el funcionamiento básico de un detector gaseoso. El medio sensible del detector, en este caso un gas, se encuentra entre dos electrodos con un voltaje aplicado. Cuando una partícula cargada atraviesa el gas, se liberan cargas que se desplazan hacia los electrodos impulsadas por el campo eléctrico. Estas cargas en movimiento generan una señal de corriente en los electrodos. En esencia, el detector actúa como un condensador que se descarga cuando el medio es ionizado. Desde el punto de vista eléctrico, se comporta como una fuente de corriente.}
+    \label{fig:ionization_chamber}
+\end{figure}
+
+\noindent En detectores como las cámaras de ionización, las partículas cargadas atraviesan un gas en presencia de un campo eléctrico entre los electrodos de un condensador, que en su forma más simple puede modelarse como un arreglo de placas paralelas. La ionización del gas genera electrones e iones que, al ser separados por el campo eléctrico, provocan una corriente detectable entre los electrodos. Este mecanismo es eficaz para medir flujos de radiación con un gran número de partículas, pero para la detección de partículas individuales, la señal de corriente resultante es demasiado débil y se confunde con el ruido electrónico. Para solucionar esto, se emplea la amplificación de gas, una técnica en la cual un campo eléctrico muy intenso en las proximidades del ánodo provoca una ionización secundaria que desencadena avalanchas de carga, amplificando considerablemente la señal y haciéndola detectable.\\
+
+
 
 \noindent Un tipo de detector gaseoso de gran importancia como precursor de los detectores de micropatrones, que incluyen a los GEMs, es la \textit{Cámara Proporcional Multi-hilos} (del inglés \textit{Multiwire Proportional Chamber} o MWPC). Se trata de un tipo de detector que funciona de manera similar a los tubos contadores proporcionales, pero en lugar de tener un solo tubo, tiene múltiples hilos (alambres) dispuestos uno al lado del otro en un plano (fig. \ref{fig:MWPC}). Estos hilos funcionan como ánodos, y el espacio entre ellos permite obtener resolución espacial para las partículas cargadas que atraviesan el plano de hilos.
 
