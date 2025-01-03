@@ -113,7 +113,7 @@ En numerosos experimentos de física de partículas, los detectores gaseosos, in
 
 \noindent siendo $N$ el número de moléculas por unidad de volumen. Este mecanismo es clave para la amplificación de señales en detectores gaseosos, ya que cada colisión contribuye a la creación de más portadores de carga, permitiendo detectar eventos con mayor precisión.\\
 
-\noindent El proceso de ionización sucesiva por colisiones permite la amplificación de carga en los contadores proporcionales. Imaginemos un electrón que se libera en una región con un campo eléctrico uniforme. Tras recorrer una trayectoria libre media $1/\alpha$, se produce un par electrón-ion. Ambos electrones continúan su desplazamiento en el gas, generando nuevos pares tras otra trayectoria libre media, y así sucesivamente. Si $n$ representa el número de electrones en una posición dada, su incremento luego de recorrer una distancia diferencial $dx$ es $dn = n \alpha dx$. Al integrar esta expresión sobre una distancia total $x$, se obtiene:
+\noindent El proceso de ionización sucesiva por colisiones permite la amplificación de carga en los contadores proporcionales. Imaginemos un electrón que se libera en una región con un campo eléctrico uniforme. Tras recorrer una trayectoria libre media $1/\alpha$, se produce un par electrón-ion. Ambos electrones continúan su desplazamiento en el gas, generando nuevos pares tras otra trayectoria libre media, y así sucesivamente. Si $n$ representa el número de electrones en una posición dada, su incremento luego de recorrer una distancia diferencial $dx$ es $dn = n \alpha dx$. Al integrar esta expresión sobre una distancia total $x$, se obtiene \cite{raether1964electron}:
 
 \begin{equation}
 n = n_0 e^{\alpha x} \quad \text{o} \quad M = \frac{n}{n_0} = e^{\alpha x},
@@ -124,12 +124,12 @@ n = n_0 e^{\alpha x} \quad \text{o} \quad M = \frac{n}{n_0} = e^{\alpha x},
 
 \noindent Para obtener una lectura precisa de la señal, se puede integrar la corriente a lo largo del tiempo, lo que permite calcular la carga total generada en el detector. La variación del voltaje registrada está relacionada con su capacitancia, y una resistencia externa se utiliza para asegurar que la carga se integre correctamente y la señal se lea con precisión. Aunque las cargas inducidas no dependen de las cargas de polarización del material, la capacitancia del sistema juega un papel crucial en la interpretación correcta de la señal medida.\\
 
-\noindent La corriente inducida por estos electrones en avalancha aumenta con el tiempo y depende de la velocidad de deriva de los electrones y el coeficiente de Townsend. La señal rápida resultante en un contador de avalancha es una fracción de la carga total generada, destacando que al final del proceso de recolección la carga inducida total es proporcional a la carga inicial multiplicada por un factor exponencial. En la figura \ref{fig:avalanche_signal} se observan las corrientes inducidas por la contribución de los electrones e iones en la avalancha para una configuración con parámetros típicos (page 174).
+\noindent La corriente inducida por estos electrones en avalancha aumenta con el tiempo y depende de la velocidad de deriva de los electrones y el coeficiente de Townsend. La señal rápida resultante en un contador de avalancha es una fracción de la carga total generada, destacando que al final del proceso de recolección la carga inducida total es proporcional a la carga inicial multiplicada por un factor exponencial. En la figura \ref{fig:avalanche_signal} se observan las corrientes inducidas por la contribución de los electrones e iones en la avalancha para una configuración con parámetros típicos.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{avalanche_signal.png}
-    \caption{Corriente inducida por avalancha en cátodos por electrones e iones.}
+    \caption{Corriente inducida por avalancha en cátodos por electrones e iones. Reproducido a partir de \cite{sauli2015gaseous3}}
     \label{fig:avalanche_signal}
 \end{figure}
 
@@ -157,33 +157,22 @@ i_{\text{max}} = \frac{e \rho}{\alpha s_0} \left( e^{\alpha s_0} - 1 \right)
     \label{fig:current_avalancha}
 \end{figure}
 
-\noindent Es posible generar campos eléctricos de gran magnitud al implementar estructuras de electrodos entre las placas paralelas como un alambre (contador proporcional). En la proximidad del ánodo de un contador proporcional (fig. \ref{fig:counter}), los electrones en deriva pueden ser acelerados a tal punto que pueden iniciar ionizaciones secundarias. Esto da lugar al desarrollo de una avalancha, amplificando así la carga de ionización con factores de amplificación típicos que oscilan entre \(10^4\) y \(10^6\). A partir de intensidades de campo de aproximadamente \(10-50\) kV/cm, la energía ganada entre colisiones se vuelve suficiente para causar la ionización del gas.\\
+\noindent Es posible generar campos eléctricos de gran magnitud al implementar estructuras de electrodos entre las placas paralelas como un alambre (contador proporcional) \cite{montgomery1941geiger}. En la proximidad del ánodo de un contador proporcional (fig. \ref{fig:counter}), los electrones en deriva pueden ser acelerados a tal punto que pueden iniciar ionizaciones secundarias. Esto da lugar al desarrollo de una avalancha, amplificando así la carga de ionización con factores de amplificación típicos que oscilan entre \(10^4\) y \(10^6\). A partir de intensidades de campo de aproximadamente \(10-50\) kV/cm, la energía ganada entre colisiones se vuelve suficiente para causar la ionización del gas.\\
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{counter.png}
-    \caption{Diagrama de un contador proporcional donde se describe sus partes principales: cámara de gas, electrodos para generación de campo eléctrico y electrónica de lectura.}
+    \caption{Diagrama de un contador proporcional donde se describe sus partes principales: cámara de gas, electrodos para generación de campo eléctrico y electrónica de lectura \cite{winkler2015}.}
     \label{fig:counter}
 \end{figure}
-%     @article{article,
-% author = {Winkler, Alexander and Karadzhinova, Aneliya and Hilden, T. and Garcia, Francisco and Fedi, Giacomo and Devoto, Francesco and Brücken, Erik},
-% year = {2015},
-% month = {09},
-% pages = {},
-% title = {A gaseous proportional counter built from a conventional aluminum beverage can},
-% volume = {83},
-% journal = {American Journal of Physics},
-% doi = {10.1119/1.4923022}
-% }
+
 
 \noindent En la práctica, el régimen de amplificación se encuentra entre \(10^3\) y \(10^6\), y se puede estimar que el número de colisiones necesarias para lograr tal amplificación es de aproximadamente 13 a 20. La mayoría de los electrones tienen una trayectoria de deriva muy corta hacia el ánodo, mientras que los iones deben recorrer una distancia mayor hasta el cátodo. Esto es crucial en la formación de señales en el ánodo.\\
 
-\noindent Sin embargo, la amplificación del gas no puede volverse arbitrariamente grande, ya que las cargas espaciales tienden a apantallar el campo cerca del ánodo, lo que se conoce como el límite de Raether. Se ha observado empíricamente que el desarrollo de la avalancha alcanza una saturación en la amplificación del número de electrones primarios, en torno a \(10^8\). En este punto, el pulso de corriente en el electrodo se vuelve independiente de la ionización primaria. Contadores como el contador Geiger operan en este modo, y un aumento adicional en el voltaje puede resultar en descargas.\\
+\noindent Sin embargo, la amplificación del gas no puede volverse arbitrariamente grande, ya que las cargas espaciales tienden a apantallar el campo cerca del ánodo, lo que se conoce como el límite de Raether \cite{raether1964electron}. Se ha observado empíricamente que el desarrollo de la avalancha alcanza una saturación en la amplificación del número de electrones primarios, en torno a \(10^8\). En este punto, el pulso de corriente en el electrodo se vuelve independiente de la ionización primaria. Contadores como el contador Geiger operan en este modo, y un aumento adicional en el voltaje puede resultar en descargas.\\
 
-\noindent La figura \ref{fig:amplification} muestra la dependencia principal de la amplificación de gas en función del voltaje entre ánodo y cátodo para un tubo de conteo con un alambre delgado. 
+\noindent La figura \ref{fig:amplification} muestra la dependencia principal de la amplificación de gas en función del voltaje entre ánodo y cátodo para un tubo de conteo con un alambre delgado \cite{montgomery1941geiger}. 
 
-% [715] MONTGOMERY, C.G.; MONTGOMERY, D.D.: Geiger–Mueller counters. In:
-% J. of the Franklin Inst. 231 (1941), p. 447. doi: 10.1016/S0016-0032(41)90498-2
 
 \begin{figure}[H]
     \centering
@@ -193,7 +182,7 @@ i_{\text{max}} = \frac{e \rho}{\alpha s_0} \left( e^{\alpha s_0} - 1 \right)
     \label{fig:amplification}
 \end{figure}
 
-\noindent En los detectores gasesos, la elección del modo de operación depende de la aplicación prevista y diversas restricciones, como consideraciones técnicas o de seguridad. Se pueden distinguir los siguientes regímenes de amplificación: 
+\noindent En los detectores gasesos, la elección del modo de operación depende de la aplicación prevista y diversas restricciones, como consideraciones técnicas o de seguridad. Se pueden distinguir los siguientes regímenes de amplificación \cite{kolanoski2020particle3}: 
 
 \begin{itemize}
     \item \textbf{Región de recombinación, \(G < 1\):} En regiones de bajos campos eléctricos, los electrones primarios e iones tienden a recombinarse.
@@ -209,15 +198,15 @@ i_{\text{max}} = \frac{e \rho}{\alpha s_0} \left( e^{\alpha s_0} - 1 \right)
 
 \noindent Como se mencionó anteriormente, es posible amplificar la señal de ionización al introducir una estructura conectada a un potencial dentro de una cámara de ionización, típicamente un alambre. Los contadores proporcionales y los Geiger-Müller son los ejemplos más representativos de esta configuración. Sin embargo, las capacidades de detección pueden mejorarse significativamente en términos de resolución temporal y espacial mediante el uso de arreglos que integren múltiples alambres en diversas geometrías según la aplicación. Un ejemplo destacado de esta evolución tecnológica son las cámaras proporcionales de múltiples alambres (Multi-Wire Proportional Chambers, MWPC) (fig. \ref{fig:MWPC}).\\
 
-\noindent Los contadores proporcionales de un solo alambre se han utilizado ampliamente para la detección y medición de pérdida de energía de radiación ionizante, pero su capacidad de localización está limitada por el tamaño físico del contador. Aunque inicialmente se creyó que estructuras con múltiples alambres no funcionarían debido a la capacitancia entre alambres paralelos sin apantallar, que dispersa la señal, Georges Charpak y colaboradores demostraron en la década de 1960 que las señales positivas inducidas en los electrodos circundantes compensan las señales negativas producidas por acoplamiento capacitivo. Esto permitió el diseño exitoso de la primera cámara proporcional de múltiples alambres (Charpak et al., 1968).\\
+\noindent Los contadores proporcionales de un solo alambre se han utilizado ampliamente para la detección y medición de pérdida de energía de radiación ionizante, pero su capacidad de localización está limitada por el tamaño físico del contador. Aunque inicialmente se creyó que estructuras con múltiples alambres no funcionarían debido a la capacitancia entre alambres paralelos sin apantallar, que dispersa la señal, Georges Charpak y colaboradores demostraron en la década de 1960 que las señales positivas inducidas en los electrodos circundantes compensan las señales negativas producidas por acoplamiento capacitivo. Esto permitió el diseño exitoso de la primera cámara proporcional de múltiples alambres \cite{charpak1968use}.\\
 
 \noindent Este detector consiste en un conjunto de alambres delgados, paralelos y equiespaciados, colocados simétricamente entre dos planos de cátodo. Las distancias entre los alambres y los planos de cátodo suelen ser de tres a cuatro veces mayores que la separación entre alambres, aunque se han desarrollado dispositivos de brechas más delgadas. Al aplicar potenciales negativos simétricos en los cátodos y mantener los alambres a tierra, se genera un campo eléctrico que guía a los electrones hacia las regiones de alto campo cerca de los alambres, donde ocurre la multiplicación por avalancha.\\
 
-\noindent La resolución temporal de estas cámaras depende del tiempo de colección de los electrones generados por los rastros ionizantes. El campo eléctrico alrededor de los alambres define tres regiones: en la región cercana al alambre, los electrones son recolectados rápidamente debido a la alta velocidad de deriva; en la región de menor campo entre los alambres, se produce una cola característica en la distribución temporal; y en la región más alejada, los electrones se amplifican y recolectan con un retraso proporcional al tiempo de deriva. La resolución temporal típica es de 30 ns para una cámara con separación de 2 mm entre alambres.\\
+\noindent La resolución temporal de estas cámaras depende del tiempo de colección de los electrones generados por los rastros ionizantes. El campo eléctrico alrededor de los alambres define tres regiones: en la región cercana al alambre, los electrones son recolectados rápidamente debido a la alta velocidad de deriva; en la región de menor campo entre los alambres, se produce una cola característica en la distribución temporal; y en la región más alejada, los electrones se amplifican y recolectan con un retraso proporcional al tiempo de deriva. La resolución temporal típica es de 30 ns para una cámara con separación de 2 mm entre alambres \cite{sauli1977principles}.\\
 
-\noindent Cuando se detectan trazas no perpendiculares a la cámara, el número de alambres impactados depende de la longitud de la ventana temporal en la electrónica de detección. Si esta ventana corresponde al tiempo mínimo necesario para la eficiencia total (30 ns), solo uno o dos alambres son activados por cada traza. Sin embargo, con ventanas más largas (por ejemplo, 200 ns), el tamaño del grupo de alambres activados depende del ángulo de las trazas.\\
+\noindent Cuando se detectan trazas no perpendiculares a la cámara, el número de alambres impactados depende de la longitud de la ventana temporal en la electrónica de detección. Si esta ventana corresponde al tiempo mínimo necesario para la eficiencia total (30 ns), solo uno o dos alambres son activados por cada traza. Sin embargo, con ventanas más largas (por ejemplo, 200 ns), el tamaño del grupo de alambres activados depende del ángulo de las trazas \cite{sauli1977principles}.\\
 
-\noindent Charpak y colaboradores también demostraron que la adición de gases electronegativos, como freón-13B1 (CF3Br), permite alcanzar una operación completamente saturada, donde la altura de los pulsos se vuelve independiente de la ionización primaria. Esta mezcla, conocida como "gas mágico" (70$\%$ argón, 29.6$\%$ isobutano y 0.4$\%$ freón), mostró una transición de un régimen casi proporcional a uno totalmente saturado. Sin embargo, la presencia de gases electronegativos también limita la eficiencia de detección, ya que la probabilidad de captura electrónica aumenta en función de la concentración del gas.\\
+\noindent Charpak y colaboradores \cite{charpak1974high} también demostraron que la adición de gases electronegativos, como freón-13B1 (CF3Br), permite alcanzar una operación completamente saturada, donde la altura de los pulsos se vuelve independiente de la ionización primaria. Esta mezcla, conocida como "gas mágico" (70$\%$ argón, 29.6$\%$ isobutano y 0.4$\%$ freón), mostró una transición de un régimen casi proporcional a uno totalmente saturado. Sin embargo, la presencia de gases electronegativos también limita la eficiencia de detección, ya que la probabilidad de captura electrónica aumenta en función de la concentración del gas.\\
 
 \noindent La amplitud elevada y el rango dinámico reducido de los pulsos saturados facilitaron el desarrollo inicial de la tecnología, simplificando los requisitos electrónicos y consolidando a las MWPC como un paso esencial en la evolución de los detectores de partículas.\\
 
