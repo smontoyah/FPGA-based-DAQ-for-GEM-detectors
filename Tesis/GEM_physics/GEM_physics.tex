@@ -23,9 +23,11 @@ Aquí va la introducción del capítulo
 \newpage
 \section{Marco teórico}
 
-Aquí va la introducción del marco teórico, mencionando en orden todas las subsecciones.
+\noindent Los detectores gaseosos, incluidos los multiplicadores de electrones gaseosos (GEM, por sus siglas en inglés), desempeñan un papel fundamental en numerosos experimentos de física de partículas, ya que permiten la medición de partículas cargadas mediante la ionización de gases. Estos detectores son capaces de rastrear con gran precisión las trayectorias de las partículas, incluso en entornos con campos magnéticos. En comparación con los detectores de semiconductores, los detectores gaseosos suelen ser más económicos, especialmente en aplicaciones que requieren la cobertura de grandes volúmenes, y contienen menos material que pueda interferir con las partículas incidentes \cite{sauli2015gaseous}. Dado que los detectores GEM son el tema central de este trabajo, en este capítulo se analizarán tanto los principios fundamentales de la física que rigen sus interacciones y funcionamiento como algunos de los tipos de detectores de los que derivan.\\ 
 
-En numerosos experimentos de física de partículas, los detectores gaseosos, incluidos los GEMs, desempeñan un papel crucial en la medición de partículas cargadas mediante la ionización de gases. Estos detectores permiten trazar con precisión las trayectorias de las partículas, especialmente en entornos con campos magnéticos. En comparación con los detectores de semiconductores, los detectores gaseosos suelen ser más económicos, especialmente en aplicaciones que requieren cubrir grandes volúmenes, y presentan menos material que pueda interferir con las partículas que atraviesan el detector \cite{sauli2015gaseous}. Dado que los detectores GEM son el enfoque principal de este trabajo, en el presente capítulo se explorarán los conceptos fundamentales de la física que rigen sus interacciones y funcionamiento.
+\noindent En primer lugar, se explora la estadística asociada a la detección de partículas en un medio gaseoso, seguida del análisis de la interacción radiación-materia a través de la relación de poder de frenado. Utilizando un marco basado en el transporte de cargas, se estudia el funcionamiento de los detectores gaseosos como multiplicadores de carga, teniendo en cuenta el fenómeno de avalanchas de electrones como mecanismo principal. Además, se describen las características de las señales típicas esperadas a partir de estos eventos.\\
+
+\noindent A continuación, con una base física ya establecida, se explica el funcionamiento de los detectores desde los más simples, como las cámaras de ionización, los contadores proporcionales y los detectores Geiger-Müller, hasta su evolución hacia cámaras proporcionales multi-hilos (MWPCs) y cámaras de placas resistivas (RPCs). Posteriormente, se aborda la transición hacia la miniaturización de las estructuras multiplicadoras de carga, como los detectores gaseosos de micropatrones (MPGDs), lo que culmina en los GEMs. Finalmente, se destaca una de las principales ventajas de los GEMs: la posibilidad de apilar múltiples capas, logrando importantes ganancias en la detección sin comprometer la electrónica de lectura, gracias a su capacidad para evitar descargas significativas.
 
 \subsection{Principios físicos de los detectores gaseosos}
 
@@ -213,7 +215,7 @@ i_{\text{max}} = \frac{e \rho}{\alpha s_0} \left( e^{\alpha s_0} - 1 \right)
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{MWPC.png}
-    \caption{Diagrama básico de una Cámara proporcional multi-hilos o MWPC.}
+    \caption{Diagrama básico de una Cámara proporcional multi-hilos o MWPC. Tomado de \cite{hamid2013micromegas}}
     \label{fig:MWPC}
 \end{figure}
 
@@ -255,7 +257,7 @@ i_{\text{max}} = \frac{e \rho}{\alpha s_0} \left( e^{\alpha s_0} - 1 \right)
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{GEM_hole.PNG}
-    \caption{Fotografía microscópica de una lámina GEM donde se describen las dimensiones de las perforaciones. Tomado de \cite{sauli1997gem} }
+    \caption{Fotografía microscópica de una lámina GEM con distribución hexagonal donde se describen las dimensiones de las perforaciones. Tomado de \cite{sauli1997gem} }
     \label{fig:gem_hole}
 \end{figure}
 
@@ -266,7 +268,7 @@ i_{\text{max}} = \frac{e \rho}{\alpha s_0} \left( e^{\alpha s_0} - 1 \right)
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{GEM1.PNG}
-    \caption{Tomado de \cite{zeuner2000msgc}}
+    \caption{Ilustración de un detector con arreglo GEM-MSGC. Tomado de \cite{zeuner2000msgc}}
     \label{fig:gem_MSGC}
 \end{figure}
 
