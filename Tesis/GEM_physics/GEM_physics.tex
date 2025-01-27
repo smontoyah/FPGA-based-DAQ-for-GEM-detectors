@@ -315,6 +315,113 @@ i_{\text{max}} = \frac{e \rho}{\alpha s_0} \left( e^{\alpha s_0} - 1 \right)
 \newpage
 
 \section{Montaje experimental}
+
+\noindent Se diseñó y ensambló un detector gaseoso basado en la configuración triple GEM en las instalaciones del laboratorio del Grupo de Instrumentación Científica del Instituto de Física. Dado que los protocolos tradicionales para el ensamblaje de este tipo de detectores requieren infraestructura especializada, como cuartos limpios, y que dicha infraestructura no está disponible localmente, se propusieron nuevos protocolos adaptados a condiciones de baja disponibilidad de recursos especializados.\\
+
+\noindent En primer lugar, se describen las partes constitutivas del detector, seguidas del protocolo implementado para su ensamblaje efectivo. Para el diseño, se emplearon tarjetas de circuito impreso que cumplen funciones tanto de estructura mecánica como de circuito electrónico, dependiendo del caso. Las etapas de multiplicación electrónica utilizan láminas GEM de 25 x 25 mm². Además, el marco que conforma la cámara de gas fue fabricado mediante impresión 3D utilizando resina líquida. Este enfoque presenta una alternativa viable y económica para la construcción de detectores GEM en entornos con recursos limitados. En la figura \ref{fig:partes_gem} se muestran los principales componente del detector. La configuración para el detector triple GEM a ensamblar, es como la que se describe en la figura \ref{fig:cross_section}. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{detector_parts/Diapositiva1.PNG}
+    \caption{Componentes básicos del detector. (1) tarjeta de lectura - readout PCB; (2) Marcos de separación entre GEM foils; (3) Tarjeta de electrodo de drift; (4) GEM foils 25x25 $mm^{2}$; (5) Estructura para cámara de gas compuesta por marco impreso en resina, acrílico, o-ring para sellado y acoples para entrada y salida de gas.}
+    \label{fig:partes_gem}
+\end{figure}
+
+\noindent En este diseño, la tarjeta de lectura desempeña múltiples funciones. Como su nombre lo indica, es responsable de adquirir o leer las señales de detección, tarea que realiza gracias a los electrodos paralelos visibles en la figura. Esta versión cuenta con capacidad de resolución espacial en una dimensión, ya que los electrodos abarcan la longitud total del área de detección. Cada electrodo está conectado a un pin del conector Panasonic, a través del cual las señales se envían al sistema de adquisición de datos (DAQ). Además de la adquisición de señales, la tarjeta también distribuye las líneas de alto voltaje a las láminas GEM para la amplificación electrónica. Para ello, está equipada con un conector de 8 pines que se conecta a un divisor de tensión configurado específicamente para suministrar los voltajes calculados a la pila de GEMs. Por otro lado, la tarjeta incluye un puerto de pruebas denominado trigger out, que permite verificar el funcionamiento del detector antes de conectarlo al DAQ. Este diseño integra de manera eficiente las funciones de lectura, distribución de voltajes y diagnóstico, optimizando el desempeño del sistema en general. Finalmente, esta tarjeta cumple con la función de base o soporte para el detector completo, ya que sobre esta se realiza el montaje de los demás componentes.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{readout.png}
+    \caption{Descripción de la tarjeta de lectura. (1) Electrodos de lectura; (2) Conector Panasonic; (3) Conector divisor de tensión múltiple para alto voltaje; (4) Trigger out.}
+    \label{fig:readout_gem}
+\end{figure}
+
+\noindent Los separadores de las láminas GEM, fabricados de FR-4 al igual que las demás tarjetas, son componentes fundamentales, ya que proporcionan la estructura necesaria para la etapa de multiplicación electrónica. Su grosor, calculado previamente, juega un papel crucial en la calibración de la intensidad del campo eléctrico entre láminas GEM contiguas. El diseño de los separadores, en forma de marco con aberturas o muescas, permite que el gas fluya hacia el interior de la pila y, por ende, a través de los orificios de las láminas. Esto facilita el proceso de multiplicación electrónica al garantizar una adecuada distribución del gas en toda la estructura.\\ 
+
+\noindent Por otro lado, la tarjeta de drift, como se muestra en la figura, es una PCB que consiste en un electrodo cuadrado conectado a una fuente de alto voltaje. Esta tarjeta desempeña un papel esencial en la generación y mantenimiento del campo eléctrico necesario para el proceso de detección.\\
+
+\noindent Las láminas GEM utilizadas en este diseño provienen de las muestras de control de calidad asociadas a las láminas de gran superficie empleadas en el experimento CMS. Estas láminas presentan un patrón hexagonal característico y fueron transportadas desde condiciones de cuarto limpio en un recipiente sellado para preservar su integridad y evitar la contaminación.
+
+\noindent El proceso de ensamblaje del detector comienza con la perforación de las láminas GEM en las cuatro esquinas del cuadrado, permitiendo el paso de los tornillos de nylon M3, los cuales proporcionan la estructura necesaria para la pila de capas del triple GEM. Tal como se observa en la figura \ref{fig:gem_perforado}, se propone y se prueba un protocolo diseñado para maximizar la limpieza e integridad de las láminas, que llegan en condiciones de cuarto limpio. Este protocolo consiste en realizar las perforaciones mientras las láminas permanecen dentro de la bolsa sellada en la que fueron entregadas.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{gem_perforado.png}
+    \caption{Protocolo de perforación de GEMs.}
+    \label{fig:gem_perforado}
+\end{figure}
+
+\noindent El operador, utilizando elementos sanitarios como guantes y tapabocas para evitar la contaminación de las piezas, emplea toallas especiales para cuartos limpios de clase 1-10000 y etanol para limpiar cuidadosamente todas las PCB que se utilizarán. Este procedimiento busca eliminar la mayor cantidad de partículas de polvo que podrían interferir con el correcto funcionamiento del detector. Una vez finalizada la limpieza, las tarjetas se cubren con una toalla limpia para prevenir la acumulación de polvo sobre ellas.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{limpieza_partes.png}
+    \caption{limpieza de partes utilizando etanol y toallas de clase 1-10000 para eliminar particulas de polvo e impurezas. Se evidencia el uso de elementos de sanidad como guantes por parte del operador.}
+    \label{fig:limpieza}
+\end{figure}
+
+\noindent A continuación, se instalan los tornillos pasantes en la tarjeta de readout y se inicia la construcción de la pila de capas que conforman el triple GEM. Estas capas incluyen separadores con un grosor específico, calibrado mediante simulaciones computacionales de transporte de carga realizadas en el software GARFIELD, y láminas GEM dispuestas en una geometría precisa. Esta disposición permite conectar los electrodos de alto voltaje a los pads de la tarjeta de readout, manteniendo una distancia suficiente entre ellos para evitar descargas o cortocircuitos eléctricos.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{separador1.png}
+    \caption{Instalación de tornillos pasantes y separadores en la tarjeta de readout.}
+    \label{fig:separador1}
+\end{figure}
+
+\noindent Las láminas GEM se recortan cuidadosamente para eliminar el exceso de kapton y se colocan trozos de cinta de cobre sobre las pestañas de los electrodos, lo que permite establecer la conexión con los pads de alto voltaje en la tarjeta de readout. Durante este proceso, se toman precauciones para mantener las láminas GEM cubiertas, minimizando así su contaminación y preservando su integridad.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{instalacion_gem1.png}
+    \caption{Instalación de lámina GEM en la pila. A la derecha de aprecia la cinta de cobre conectada a la pestaña del GEM, por meido de la cual se conecta al electrodo de alto voltaje.}
+    \label{fig:gem1}
+\end{figure}
+
+\noindent Una vez ubicadas todas las capas de la configuración del triple GEM, se finaliza con la instalación de la tarjeta de drift, que en la fotografía se muestra con el electrodo orientado hacia abajo. Esta tarjeta cuenta además con un orificio diseñado para permitir el ingreso de partículas alfa en caso de realizar experimentos con fuentes de este tipo, dado que el material que compone la PCB, FR-4, las absorbe. Finalmente, la estructura se completa asegurando las capas con tuercas de nylon en los tornillos pasantes, garantizando su firmeza y estabilidad. Como último paso, se recorta el exceso de cinta de cobre de cada electrodo y se suelda en el pad de alto voltaje correspondiente.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{stack.png}
+    \caption{Instalación de la pila de separadores, láminas GEM y drift que componen la pila.}
+    \label{fig:stack}
+\end{figure}
+
+\noindent Una vez terminada la estructura del triple GEM, se utiliza un instrumento especializado en medir el aislamiento eléctrico bajo condiciones de alto voltaje para verificar que no existan cortocircuitos entre las diferentes láminas GEM.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{insulation_test.jpg}
+    \caption{Prueba de aislamiento eléctrico en condiciones de alto voltaje.}
+    \label{fig:ins_test}
+\end{figure}
+
+\noindent A continuación, se instala el divisor de tensión, diseñado específicamente para proporcionar los voltajes adecuados a cada capa del triple GEM, generando así los campos eléctricos óptimos para una multiplicación electrónica estable.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{divider.jpg}
+    \caption{Instalación de divisor de tensión}
+    \label{fig:divider}
+\end{figure}
+
+\noindent Finalmente, se soldan los conectores del puerto de trigger con un filtro RC, que permite probar la señal de detección en el GEM directamente contiguo al readout, conocido como GEM3 bottom, y el puerto de alto voltaje que alimenta al divisor de tensión. Además, se coloca el marco plástico, que cuenta con orificios de entrada y salida para acople rápido a una manguera de poliuretano para gas de 4 mm, con empaques tipo O-ring en ambas caras, constituyendo la cámara de gas. Se instala también la ventana de acrílico de 2 mm, fijándola con tornillos pasantes metálicos.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{ensamblado.jpg}
+    \caption{Detector ensamblado}
+    \label{fig:ensamblado}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{setup.png}
+    \caption{Montaje experimental}
+    \label{fig:setup}
+\end{figure}
+
+
 \newpage
 
 \section{Resultados y discusión}
