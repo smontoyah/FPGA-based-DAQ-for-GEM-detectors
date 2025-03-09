@@ -1,15 +1,5 @@
-*.aux
-*.fdb_latexmk
-*.fls
-*.log
-*.gz
-*.bib
-*.svg
-*.png
-*.out
-*.bbl
-*.PNG
-*.py
-*.tex
-*.blg
-*.out
+# Ignorar todo por defecto
+*
+
+# Excepción: permitir archivos PDF
+!*.pdf

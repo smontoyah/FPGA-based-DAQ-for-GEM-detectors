@@ -19,9 +19,15 @@
 
 \maketitle 
 \setcounter{section}{0}
-\noindent Primero, se presenta el marco teórico sobre detectores gaseosos. En la segunda sección, se describe el montaje experimental, detallando paso a paso la construcción de un detector con lectura unidimensional basado en un sistema triple GEM de 25x25 mm, ensamblado por el grupo de investigación en instrumentación científica del Instituto de Física de la Universidad de Antioquia. Asimismo, se explica el conjunto de instrumentos empleados para su operación.\\
+\noindent Desde los primeros experimentos en física de partículas hasta las más avanzadas investigaciones en astropartículas y física médica, la detección de radiación ionizante ha sido un pilar fundamental en el desarrollo del conocimiento científico. La interacción de partículas energéticas con la materia permite obtener información crucial sobre su naturaleza y propiedades, dando lugar a la evolución de una amplia variedad de tecnologías de detección. Entre ellas, los detectores gaseosos han desempeñado un papel clave debido a su capacidad para registrar eventos de ionización en medios gaseosos con alta resolución espacial y temporal.\\
 
-\noindent Posteriormente, se exponen los resultados obtenidos con el detector ensamblado, tanto para la detección de partículas atmosféricas como para fuentes radiactivas. Finalmente, en la sección de conclusiones y perspectivas, se resalta la importancia de este tipo de desarrollos, así como la posibilidad de implementar en el futuro una configuración de lectura bidimensional.
+\noindent El estudio de los procesos físicos que ocurren dentro de estos detectores es esencial para comprender su funcionamiento y mejorar su desempeño. Cuando una partícula cargada atraviesa un gas, genera pares de iones y electrones que, bajo la influencia de un campo eléctrico, pueden ser recolectados y amplificados para producir señales medibles. Este principio ha dado lugar a distintos tipos de detectores gaseosos, como los contadores Geiger-Müller, las cámaras de proyección de hilos múltiples (Multi-Wire Proportional Chambers, MWPC), las cámaras de placas resistivas (Resistive Plate Chambers, RPCs) y los detectores de micropatrones. Cada uno de estos dispositivos ha sido optimizado para aplicaciones específicas, desde la detección de radiación en ambientes hostiles hasta la implementación en grandes experimentos de física de partículas.\\
+
+\noindent En las últimas décadas, la necesidad de mejorar la resolución espacial y la capacidad de detección en altas tasas de radiación ha impulsado el desarrollo de nuevas tecnologías basadas en microestructuras. En este contexto, los detectores de microestructuras gaseosas (Micropattern Gaseous Detectors, MPGD) han surgido como una alternativa eficiente y versátil. Entre ellos, los detectores de microestructuras con multiplicación de electrones (Gas Electron Multipliers, GEMs) han demostrado ser una solución robusta para diversas aplicaciones, desde experimentos en aceleradores de partículas hasta sistemas de imagen médica y monitores de radiación en astrofísica.\\
+
+\noindent Este trabajo se centra en el estudio y montaje experimental de un detector basado en la configuración triple GEM, desarrollado en el Grupo de Investigación en Instrumentación Científica del Instituto de Física de la Universidad de Antioquia. La construcción y caracterización de este detector representa un avance significativo en las capacidades técnicas de la universidad, el país y la región, ya que este tipo de dispositivos suelen ensamblarse en centros de investigación con infraestructura altamente especializada. Además, este desarrollo fortalece la participación del grupo en colaboraciones internacionales dentro de la física de partículas, al permitir el diseño, ensamble y validación de detectores gaseosos, así como el desarrollo de electrónica de lectura y adquisición de datos.\\
+
+\noindent A lo largo de este documento, se presentará un marco teórico detallado que abarca los procesos de ionización en gases por interacción con partículas energéticas, los mecanismos de amplificación electrónica en estructuras sometidas a altos campos eléctricos y la evolución de los principales detectores gaseosos. Posteriormente, se describirá el montaje experimental del detector triple GEM, incluyendo los materiales y protocolos empleados en su diseño y ensamble. Finalmente, se discutirán los resultados obtenidos y su impacto en el desarrollo de tecnología de detección en el ámbito académico y experimental.\\
 
 \newpage
 \section{Marco teórico}
@@ -410,19 +416,37 @@ i_{\text{max}} = \frac{e \rho}{\alpha s_0} \left( e^{\alpha s_0} - 1 \right)
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{ensamblado.jpg}
-    \caption{Detector ensamblado}
+    \caption{Fotografía del detector ensamblado. Se conecta una trozo de manguera en ambos conectores para gas con el fin de evitar el ingreso de impurezas a la cámara de gas del detetor.}
     \label{fig:ensamblado}
+\end{figure}
+
+\noindent Para validar el detector, es necesario implementar una cadena de instrumentación especializada que permita su correcto funcionamiento y lectura (véase fig. \ref{fig:setup}). En este caso, se emplean tanto módulos en formato NIM (Nuclear Instrumentation Module) como instrumentos de escritorio. El alto voltaje es suministrado por una fuente programable CAEN 14071, mientras que el gas proviene de un circuito de regulación que se a continuación. La electrónica de lectura del detector está compuesta por un preamplificador Ortec 142B y un amplificador lineal ASA LA200A. Adicionalmente, se utiliza el instrumento multifuncional Digilent Analog Discovery 2 para pruebas de funcionamiento, empleándolo como generador de señales y osciloscopio.\\
+
+\noindent El sistema de suministro de gases está compuesto por cilindros de gas puro (Argón y CO2), unidades de regulación de alta a media presión, unidades de media a baja presión, medidores de flujo tipo rotámetro y un mezclador de gases. La proporción de la mezcla que ingresa al mezclador, y posteriormente al detector, se ajusta mediante la lectura de los rotámetros y el control de presión en las unidades de media a baja presión.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{gas_station.jpeg}
+    \caption{Fotografía del sistema de suministro de gases. De derecha a izquierda, se observan el clindro y las unidades de regulación de alta a media presión y las unidades de regulación de media a baja presión.}
+    \label{fig:gas_station}
 \end{figure}
 
 \begin{figure}[H]
     \centering
+    \includegraphics[width=0.7\textwidth]{mixer.jpeg}
+    \caption{Fotografía del mezclador de gases.}
+    \label{fig:mixer}
+\end{figure}
+\newpage
+
+
+\begin{figure}[H]
+    \centering
     \includegraphics[width=1\textwidth]{setup.png}
-    \caption{Montaje experimental}
+    \caption{Montaje experimental utilizado para el funcionamiento del detector. Se observan los principales componentes: (1) crate formato NIM, (2) detector ensamblado basado en triple GEM, (3) fuente del alto voltaje regulable CAEN 14071 formato NIM, (4) preamplificador Ortec 142B, (5) amplificador lineal ASA LA200A, (6) Analog discovery 2 como generador de señales y osciloscopio, (7) linea de gas, (8) medidores de flujo tipo rotámetros.}
     \label{fig:setup}
 \end{figure}
 
-
-\newpage
 
 \section{Resultados y discusión}
 \newpage
